@@ -1,11 +1,11 @@
 extends CharacterBody3D
 
-@export var speed = 14.0
+@export var speed = 40.0
 @export var acceleration = 40.0
 @export var friction = 12.0
 @export var fall_acceleration = 60.0
 @export var jump_velocity = 50.0
-@export var mouse_sensitivity = 0.002
+@export var mouse_sensitivity = 0.005
 
 @onready var head = $Head
 
