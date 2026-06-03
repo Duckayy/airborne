@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dlgeiggnlf0bd"]
 
-[ext_resource type="PackedScene" uid="uid://bknurpu0fxg6q" path="res://Player1.tscn" id="1_a202f"]
+[ext_resource type="PackedScene" uid="uid://bknurpu0fxg6q" path="res://Movement/Movement (Necessary for some reason)/Player1.tscn" id="1_hf6ri"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xowi"]
 size = Vector3(104.59659, 0.2805786, 106.71235)
@@ -85,7 +85,7 @@ skin = SubResource("Skin_a0tk4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.04012, 24.082027, -0.070560455)
 shape = SubResource("BoxShape3D_i5arm")
 
-[node name="CharacterBody3D" parent="." unique_id=874964806 instance=ExtResource("1_a202f")]
+[node name="CharacterBody3D" parent="." unique_id=874964806 instance=ExtResource("1_hf6ri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28049564, 1.5937827, -0.16702193)
 
 [node name="Head" type="Node3D" parent="CharacterBody3D" unique_id=117471176]
