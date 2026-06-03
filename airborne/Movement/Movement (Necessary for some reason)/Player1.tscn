@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7k5wa"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" unique_id=874964806]
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=874964806 groups=["player"]]
 script = ExtResource("1_nkmm1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1603324126]

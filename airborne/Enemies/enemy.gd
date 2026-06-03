@@ -1,9 +1,5 @@
 extends CharacterBody3D
 
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of e50e038 (Fully coded enemy with placeholder sprite image)
 @export var max_health = 100.0
 @export var move_speed = 6.0
 @export var attack_range = 2.0
@@ -23,31 +19,32 @@ var state = State.IDLE
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
+	print("Player found: ", player)  # add this line
 	attack_timer.wait_time = attack_cooldown
 	attack_timer.one_shot = true
 	attack_timer.timeout.connect(_on_attack_cooldown_done)
-	
+
 func _physics_process(delta):
 	if state == State.DEAD:
 		return
-		
+
 	if not is_on_floor():
-		velocity.y -= fall_acceleration *delta
-		
+		velocity.y -= fall_acceleration * delta
+
 	_update_state()
-		
+
 	match state:
 		State.IDLE:
-			velocity.x = move_toward(velocity.x, 0, 10 *delta)
-			velocity.z = move_toward(velocity.z, 0, 10 *delta)
+			velocity.x = move_toward(velocity.x, 0, 10 * delta)
+			velocity.z = move_toward(velocity.z, 0, 10 * delta)
 		State.CHASE:
 			_chase()
 		State.ATTACK:
-			velocity.x = move_toward(velocity.x, 0, 10 *delta)
-			velocity.z = move_toward(velocity.z, 0, 10 *delta)
+			velocity.x = move_toward(velocity.x, 0, 10 * delta)
+			velocity.z = move_toward(velocity.z, 0, 10 * delta)
 			if can_attack:
 				_attack()
-					
+
 	move_and_slide()
 
 func _update_state():
@@ -61,12 +58,12 @@ func _update_state():
 		state = State.CHASE
 	else:
 		state = State.IDLE
-	
+
 func _chase():
 	var direction = (player.global_position - global_position).normalized()
 	velocity.x = direction.x * move_speed
 	velocity.z = direction.z * move_speed
-	
+
 func _attack():
 	can_attack = false
 	attack_timer.start()
@@ -75,7 +72,7 @@ func _attack():
 
 func _on_attack_cooldown_done():
 	can_attack = true
-	
+
 func take_damage(amount: float):
 	if state == State.DEAD:
 		return
@@ -87,5 +84,3 @@ func _die():
 	state = State.DEAD
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
-	
-	

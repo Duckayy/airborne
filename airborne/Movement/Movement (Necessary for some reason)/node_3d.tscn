@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dlgeiggnlf0bd"]
 
 [ext_resource type="PackedScene" uid="uid://bknurpu0fxg6q" path="res://Movement/Movement (Necessary for some reason)/Player1.tscn" id="1_hf6ri"]
+[ext_resource type="PackedScene" uid="uid://da6rihtx00e8p" path="res://Enemies/Enemies.tscn" id="2_qy5rj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xowi"]
 size = Vector3(104.59659, 0.2805786, 106.71235)
@@ -96,11 +97,59 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5509467, -0.27941412)
 [node name="CanvasLayer" type="CanvasLayer" parent="CharacterBody3D" unique_id=1503961507]
 
 [node name="StaminaBar" type="ProgressBar" parent="CharacterBody3D/CanvasLayer" unique_id=465716451]
-offset_left = 22.0
-offset_top = 602.0
-offset_right = 339.0
-offset_bottom = 629.0
+offset_left = 19.0
+offset_top = 570.0
+offset_right = 336.0
+offset_bottom = 597.0
 value = 100.0
+
+[node name="HUD" type="CanvasLayer" parent="CharacterBody3D" unique_id=1333776421]
+
+[node name="HPBar" type="ProgressBar" parent="CharacterBody3D/HUD" unique_id=464054365]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -40.0
+offset_right = 593.0
+offset_bottom = -13.0
+grow_vertical = 0
+
+[node name="DeathScreen" type="Control" parent="CharacterBody3D/HUD" unique_id=1377298416]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DeathLabel" type="Label" parent="CharacterBody3D/HUD/DeathScreen" unique_id=1946327481]
+modulate = Color(1, 1, 1, 0.78431374)
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 651.0
+theme_override_font_sizes/font_size = 72
+text = "YOU DIED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="Button" parent="CharacterBody3D/HUD/DeathScreen" unique_id=567899257]
+process_mode = 3
+layout_mode = 0
+offset_left = 507.0
+offset_top = 423.0
+offset_right = 675.0
+offset_bottom = 500.0
+theme_override_font_sizes/font_size = 30
+text = "QUIT"
+
+[node name="RestartButton" type="Button" parent="CharacterBody3D/HUD/DeathScreen" unique_id=1262653704]
+process_mode = 3
+layout_mode = 0
+offset_left = 507.0
+offset_top = 520.0
+offset_right = 675.0
+offset_bottom = 581.0
+theme_override_font_sizes/font_size = 30
+text = "RESTART"
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=64527600]
 
@@ -200,3 +249,6 @@ mesh = SubResource("BoxMesh_a0tk4")
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1577043379]
 transform = Transform3D(0.02954116, 0.9586662, 0.28299537, -0.9758168, 0.08900543, -0.19964902, -0.216585, -0.27025366, 0.9381121, 24.569172, 18.543427, 5.3974657)
+
+[node name="Enemies" parent="." unique_id=2096716437 instance=ExtResource("2_qy5rj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.011241, 5.5466104, -1.8237686)

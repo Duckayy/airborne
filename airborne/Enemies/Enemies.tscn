@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://da6rihtx00e8p"]
 
 [ext_resource type="Script" uid="uid://d10boah6en1te" path="res://Enemies/enemy.gd" id="1_v0v8g"]
+[ext_resource type="Texture2D" uid="uid://doa3pn8od07es" path="res://icon.svg" id="2_h6uua"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h6uua"]
 
@@ -14,6 +15,7 @@ shape = SubResource("CapsuleShape3D_h6uua")
 
 [node name="Sprite3D" type="Sprite3D" parent="Enemy" unique_id=466312782]
 billboard = 1
+texture = ExtResource("2_h6uua")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemy" unique_id=964110414]
 
