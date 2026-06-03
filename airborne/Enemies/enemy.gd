@@ -1,6 +1,9 @@
 extends CharacterBody3D
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of e50e038 (Fully coded enemy with placeholder sprite image)
 @export var max_health = 100.0
 @export var move_speed = 6.0
 @export var attack_range = 2.0
