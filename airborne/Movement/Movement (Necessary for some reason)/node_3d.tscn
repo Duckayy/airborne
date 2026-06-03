@@ -124,8 +124,10 @@ offset_bottom = 40.0
 [node name="DeathLabel" type="Label" parent="CharacterBody3D/HUD/DeathScreen" unique_id=1946327481]
 modulate = Color(1, 1, 1, 0.78431374)
 layout_mode = 0
-offset_right = 1153.0
-offset_bottom = 651.0
+offset_left = -1.0
+offset_top = -3.0
+offset_right = 1152.0
+offset_bottom = 648.0
 theme_override_font_sizes/font_size = 72
 text = "YOU DIED"
 horizontal_alignment = 1
