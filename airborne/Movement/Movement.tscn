@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://vvl112bgjcnr"]
 
-[ext_resource type="Script" uid="uid://bkxegkupy8jum" path="res://character_body_3d.gd" id="1_vcyby"]
+[ext_resource type="Script" uid="uid://bkxegkupy8jum" path="res://Movement/character_body_3d.gd" id="1_vcyby"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6ljl2"]
 

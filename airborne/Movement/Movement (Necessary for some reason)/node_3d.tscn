@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dlgeiggnlf0bd"]
 
-[ext_resource type="PackedScene" uid="uid://bknurpu0fxg6q" path="res://Player1.tscn" id="1_a202f"]
+[ext_resource type="PackedScene" uid="uid://bknurpu0fxg6q" path="res://Movement/Movement (Necessary for some reason)/Player1.tscn" id="1_hf6ri"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xowi"]
 size = Vector3(104.59659, 0.2805786, 106.71235)
@@ -39,7 +39,7 @@ size = Vector3(103.38324, 51.583496, 4.904297)
 size = Vector3(112.26123, 51.165894, 4.1777067)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_noarx"]
-size = Vector3(5.763382, 1, 5.876709)
+size = Vector3(5.9592533, 1, 5.876709)
 
 [sub_resource type="BoxMesh" id="BoxMesh_a0tk4"]
 
@@ -59,7 +59,7 @@ transparency = 0.51
 mesh = SubResource("PlaneMesh_a202f")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=918927577]
-transform = Transform3D(-0.15184474, 0.8657774, -0.47683638, -0.9746307, -0.05089432, 0.21795622, 0.16443318, 0.4978348, 0.8515413, -51.554245, 44.4472, 5.3974657)
+transform = Transform3D(-0.9703157, -0.073570475, 0.23038004, 0.17733946, -0.8641459, 0.47095945, 0.1644332, 0.4978348, 0.85154116, -13.629581, 38.324093, 5.3974657)
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1285015150]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9929566, 0)
@@ -84,7 +84,7 @@ skin = SubResource("Skin_a0tk4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.04012, 24.082027, -0.070560455)
 shape = SubResource("BoxShape3D_i5arm")
 
-[node name="CharacterBody3D" parent="." unique_id=874964806 instance=ExtResource("1_a202f")]
+[node name="CharacterBody3D" parent="." unique_id=874964806 instance=ExtResource("1_hf6ri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28049564, 1.5937827, -0.16702193)
 
 [node name="Head" type="Node3D" parent="CharacterBody3D" unique_id=117471176]
@@ -168,31 +168,34 @@ mesh = SubResource("BoxMesh_a0tk4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.081352, 26.175837, -40.60864)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D9" unique_id=420627516]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.451702, 4.134325, 33.330982)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.429474, -5.130295, 33.330982)
 shape = SubResource("BoxShape3D_noarx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D9" unique_id=1762138031]
-transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, -40.437737, 4.20549, 33.248188)
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, -40.437737, -5.1276436, 33.248188)
 mesh = SubResource("BoxMesh_a0tk4")
 
 [node name="StaticBody3D10" type="StaticBody3D" parent="." unique_id=1008970068]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.081352, 26.175837, -0.72091675)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D10" unique_id=783260814]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.451702, 4.134325, 33.330982)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.451702, 1.8292427, 19.674545)
 shape = SubResource("BoxShape3D_noarx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D10" unique_id=934396046]
-transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, -40.437737, 4.20549, 33.248188)
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, -40.437737, 1.7746353, 19.675697)
 mesh = SubResource("BoxMesh_a0tk4")
 
 [node name="StaticBody3D11" type="StaticBody3D" parent="." unique_id=1145079691]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.02045, 34.52764, -0.72091675)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D11" unique_id=912645678]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.543354, 4.134323, 33.330982)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.941568, -0.8652916, 29.500408)
 shape = SubResource("BoxShape3D_noarx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D11" unique_id=763338064]
-transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, -40.437737, 4.20549, 33.248188)
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, -16.9439, -0.8014221, 29.230625)
 mesh = SubResource("BoxMesh_a0tk4")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1577043379]
+transform = Transform3D(0.02954116, 0.9586662, 0.28299537, -0.9758168, 0.08900543, -0.19964902, -0.216585, -0.27025366, 0.9381121, 24.569172, 18.543427, 5.3974657)
