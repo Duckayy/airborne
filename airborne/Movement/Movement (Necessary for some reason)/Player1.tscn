@@ -14,3 +14,49 @@ shape = SubResource("CapsuleShape3D_5pxne")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1016919514]
 mesh = SubResource("CapsuleMesh_7k5wa")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=2032354258]
+
+[node name="HPBar" type="ProgressBar" parent="HUD" unique_id=62090329]
+offset_left = 14.0
+offset_top = 607.0
+offset_right = 724.0
+offset_bottom = 639.0
+
+[node name="DeathScreen" type="Control" parent="HUD" unique_id=565278997]
+process_mode = 3
+modulate = Color(1, 1, 1, 0.78431374)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Deathlabel" type="Label" parent="HUD/DeathScreen" unique_id=1096170843]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+theme_override_font_sizes/font_size = 72
+text = "You Died!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="HUD/DeathScreen" unique_id=1823767402]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 525.0
+offset_right = 665.0
+offset_bottom = 603.0
+theme_override_font_sizes/font_size = 35
+text = "Restart
+"
+
+[node name="QuitButton" type="Button" parent="HUD/DeathScreen" unique_id=1015372864]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 437.0
+offset_right = 665.0
+offset_bottom = 514.0
+theme_override_font_sizes/font_size = 35
+text = "Quit"
