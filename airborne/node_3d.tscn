@@ -44,7 +44,6 @@ size = Vector3(5.763382, 1, 5.876709)
 [sub_resource type="BoxMesh" id="BoxMesh_a0tk4"]
 
 [node name="Node3D" type="Node3D" unique_id=638677023]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026870728, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=16001541]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13632417, -0.36493182)

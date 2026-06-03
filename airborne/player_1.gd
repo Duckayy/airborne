@@ -52,7 +52,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("Move Forward"):
 		input_dir.y += 1
 
-	if Input.is_action_pressed("Move Backwards"):
+	if Input.is_action_pressed("Move Backward"):
 		input_dir.y -= 1
 
 	input_dir = input_dir.normalized()
