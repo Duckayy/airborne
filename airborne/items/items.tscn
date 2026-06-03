@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cdxo6tcq5l4u0"]
 
-[ext_resource type="Texture2D" uid="uid://77t27ngv8nmw" path="res://items/sword.png" id="1_wa2fs"]
+[ext_resource type="Texture2D" uid="uid://77t27ngv8nmw" path="res://items/Sword.png" id="1_wa2fs"]
 [ext_resource type="Script" uid="uid://q0k27yh1wiod" path="res://items/scripts/item.gd" id="2_n0bbx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n0bbx"]
-font_size = 73
-outline_size = 15
+font_size = 58
+outline_size = 14
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control" unique_id=280787630]
@@ -27,9 +27,9 @@ stretch_mode = 5
 
 [node name="Label" type="Label" parent="." unique_id=929087930]
 layout_mode = 0
-offset_left = 226.0
-offset_top = 269.0
-offset_right = 422.0
-offset_bottom = 436.0
+offset_left = 195.0
+offset_top = 176.0
+offset_right = 278.0
+offset_bottom = 277.0
 text = "99"
 label_settings = SubResource("LabelSettings_n0bbx")

@@ -17,8 +17,14 @@ func fit_item() -> void:
 	
 	#stretch texture rect tinside to fill
 	var texture_rect = item.get_node("TextureRect")
+	var label1 = item.get_node("Label")
 	texture_rect.anchors_preset = Control.PRESET_FULL_RECT
 	texture_rect.size = self.size
+	print("control size: ", self.size)
+	print("label size: ", label1.size)
+	print("label position: ", label1.position)
+	label1.anchors_preset = Control.PRESET_BOTTOM_RIGHT
+	label1.size = self.size / 4
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
