@@ -2,10 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://dnvmwilwsam1" path="res://inventory/inventorybox.png" id="1_qse2j"]
 [ext_resource type="Texture2D" uid="uid://dh8nswo1weee0" path="res://inventory/inventoryslot.png" id="2_f8i2h"]
-[ext_resource type="Script" uid="uid://ddhufkkpsrdyp" path="res://inventory/slots.gd" id="3_f8i2h"]
+[ext_resource type="Script" uid="uid://ddhufkkpsrdyp" path="res://inventory/scripts/slots.gd" id="3_f8i2h"]
+[ext_resource type="Script" uid="uid://64melc063qkq" path="res://inventory/scripts/ghost_slot.gd" id="4_lhcfm"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qse2j"]
 texture = ExtResource("2_f8i2h")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lhcfm"]
 
 [node name="Node2D" type="Node2D" unique_id=518256483]
 
@@ -30,89 +33,113 @@ columns = 5
 [node name="Slots1" type="Panel" parent="GridContainer1" unique_id=2052643726]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
 script = ExtResource("3_f8i2h")
 
 [node name="Slots2" type="Panel" parent="GridContainer1" unique_id=2050452793]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
 script = ExtResource("3_f8i2h")
 
 [node name="Slots3" type="Panel" parent="GridContainer1" unique_id=462665824]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
 script = ExtResource("3_f8i2h")
 
 [node name="Slots4" type="Panel" parent="GridContainer1" unique_id=251563917]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
 script = ExtResource("3_f8i2h")
 
 [node name="Slots5" type="Panel" parent="GridContainer1" unique_id=2029955084]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
 script = ExtResource("3_f8i2h")
 
 [node name="Slots6" type="Panel" parent="GridContainer1" unique_id=268133748]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
 script = ExtResource("3_f8i2h")
 
 [node name="Slots7" type="Panel" parent="GridContainer1" unique_id=1280868730]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
 script = ExtResource("3_f8i2h")
 
 [node name="Slots8" type="Panel" parent="GridContainer1" unique_id=311495238]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
 script = ExtResource("3_f8i2h")
 
 [node name="Slots9" type="Panel" parent="GridContainer1" unique_id=401251160]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
 script = ExtResource("3_f8i2h")
 
 [node name="Slots10" type="Panel" parent="GridContainer1" unique_id=1936104334]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
 script = ExtResource("3_f8i2h")
 
 [node name="Slots11" type="Panel" parent="GridContainer1" unique_id=1472123052]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
 script = ExtResource("3_f8i2h")
 
 [node name="Slots12" type="Panel" parent="GridContainer1" unique_id=430697799]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
 script = ExtResource("3_f8i2h")
 
 [node name="Slots13" type="Panel" parent="GridContainer1" unique_id=1314611113]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
 script = ExtResource("3_f8i2h")
 
 [node name="Slots14" type="Panel" parent="GridContainer1" unique_id=1370014231]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
 script = ExtResource("3_f8i2h")
 
 [node name="Slots15" type="Panel" parent="GridContainer1" unique_id=714897211]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
 script = ExtResource("3_f8i2h")
+
+[node name="GhostSlot" type="Panel" parent="." unique_id=2132416458]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 120)
+offset_right = 120.0
+offset_bottom = 120.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_lhcfm")
+script = ExtResource("4_lhcfm")
