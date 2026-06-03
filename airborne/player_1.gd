@@ -43,16 +43,16 @@ func _physics_process(delta):
 
 	var input_dir = Vector2.ZERO
 
-	if Input.is_action_pressed("Move right"):
+	if Input.is_action_pressed("Move Right"):
 		input_dir.x += 1
 
-	if Input.is_action_pressed("Move left"):
+	if Input.is_action_pressed("Move Left"):
 		input_dir.x -= 1
 
-	if Input.is_action_pressed("Move forward"):
+	if Input.is_action_pressed("Move Forward"):
 		input_dir.y += 1
 
-	if Input.is_action_pressed("Move backwards"):
+	if Input.is_action_pressed("Move Backwards"):
 		input_dir.y -= 1
 
 	input_dir = input_dir.normalized()
