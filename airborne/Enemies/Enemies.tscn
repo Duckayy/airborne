@@ -1,33 +1,16 @@
 [gd_scene format=3 uid="uid://da6rihtx00e8p"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_a1fng"]
+[ext_resource type="Script" uid="uid://b0xswtfoacgtj" path="res://Movement/Movement (Necessary for some reason)/Scripts/player_1.gd" id="1_v0v8g"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_v0v8g"]
-size = Vector3(10.00699, 1.048082, 9.995747)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5pxne"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_h6uua"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7k5wa"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m4rhk"]
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=874964806]
+script = ExtResource("1_v0v8g")
 
-[node name="Enemies" type="Node3D" unique_id=843553958]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1603324126]
+shape = SubResource("CapsuleShape3D_5pxne")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=255348113]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=540529882]
-transform = Transform3D(500, 0, 0, 0, 5, 0, 0, 0, 500, 0, 0, 0)
-mesh = SubResource("BoxMesh_a1fng")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1911431169]
-transform = Transform3D(50, 0, 0, 0, 5, 0, 0, 0, 50, 0, 0, 0)
-shape = SubResource("BoxShape3D_v0v8g")
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=2002097157]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=961698171]
-mesh = SubResource("CapsuleMesh_h6uua")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=694470885]
-shape = SubResource("CapsuleShape3D_m4rhk")
-
-[node name="Node2D" type="Node2D" parent="CharacterBody3D" unique_id=1613819694]
-position = Vector2(162, 111)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1016919514]
+mesh = SubResource("CapsuleMesh_7k5wa")

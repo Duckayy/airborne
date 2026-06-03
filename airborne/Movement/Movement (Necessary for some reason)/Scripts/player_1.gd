@@ -15,32 +15,23 @@ extends CharacterBody3D
 @export var stamina_regen = 25.0
 @export var stamina_recharge_delay = 3.0
 
-@export var max_health = 100.0
+var is_dead = false
 
 var stamina = max_stamina
 var recharge_timer = 0.0
 
-var is_dead = false
-var health = max_health
-
-@onready var head = $Head
-@onready var stamina_bar = $CanvasLayer/StaminaBar
-
 @onready var hp_bar = $HUD/HPBar
 @onready var death_screen = $HUD/DeathScreen
 @onready var restart_button = $HUD/DeathScreen/RestartButton
-@onready var quit_button = $HUD/DeathScreen/QuitButton
+@onready var quit_button = $HUD/DeathScreen/QuitButton 
+@onready var head = $Head
+@onready var stamina_bar = $CanvasLayer/StaminaBar
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	stamina_bar.max_value = max_stamina
 	stamina_bar.value = stamina
-	death_screen.visible = false
-	hp_bar.max_value = max_health
-	hp_bar.value = health
-	restart_button.pressed.connect(_on_restart)
-	quit_button.pressed.connect(_on_quit)
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -126,27 +117,3 @@ func _physics_process(delta):
 		velocity.y -= fall_acceleration * delta
 
 	move_and_slide()
-func take_damage(amount: float):
-	health -= amount
-	health = clamp(health, 0, max_health)
-	hp_bar.value = health
-	print("Player HP: ", health)
-	if health <= 0:
-		_die()
-
-func _die():
-	if is_dead:
-		return
-	is_dead = true
-	print("_die called!")
-	death_screen.visible = true
-	get_tree().paused = true
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	
-func _on_restart():
-	get_tree().paused = false
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	get_tree().reload_current_scene()
-	
-func _on_quit():
-	get_tree().quit()
