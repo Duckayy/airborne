@@ -15,8 +15,12 @@ extends CharacterBody3D
 @export var stamina_regen = 25.0
 @export var stamina_recharge_delay = 3.0
 
+@export var max_health = 100.0
+
 var stamina = max_stamina
 var recharge_timer = 0.0
+
+var health = max_health
 
 @onready var head = $Head
 @onready var stamina_bar = $CanvasLayer/StaminaBar
@@ -111,3 +115,8 @@ func _physics_process(delta):
 		velocity.y -= fall_acceleration * delta
 
 	move_and_slide()
+func take_damage(amount: float):
+	health -= amount
+	print("Player HP: 0", health)
+	if health <= 0:
+		print("You died!")
