@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3lat"]
 
-[node name="Player" type="Node3D" unique_id=61944695]
+[node name="Player2" type="Node3D" unique_id=61944695]
 
 [node name="PLAYER" type="CharacterBody3D" parent="." unique_id=891961531]
 script = ExtResource("1_l8h54")
