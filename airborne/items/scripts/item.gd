@@ -4,7 +4,17 @@ var item_name
 var item_quantity
 var stack_size
 
-func setup() -> void:
+func setup(i_name, i_quantity) -> void:
+	item_name = i_name
+	item_quantity = i_quantity
+	$TextureRect.texture = load("res://items/" + item_name + ".png")
+	stack_size = int(JsonData.item_data[item_name]["StackSize"])
+	if item_quantity == null:
+		item_quantity = randi() % stack_size + 1
+	if stack_size == 1:
+		$Label.visible = false
+	else:
+		$Label.text = str(item_quantity)
 	pass
 	
 # Called when the node enters the scene tree for the first time.
@@ -15,14 +25,7 @@ func _ready() -> void:
 			item_name = "Sword" 
 		else:
 			item_name = "Hammer"
-	$TextureRect.texture = load("res://items/" + item_name + ".png")
-	stack_size = int(JsonData.item_data[item_name]["StackSize"])
-	if item_quantity == null:
-		item_quantity = randi() % stack_size + 1
-	if stack_size == 1:
-		$Label.visible = false
-	else:
-		$Label.text = str(item_quantity)
+	setup(item_name, item_quantity)
 
 func add_item_quantity(amount_to_add):
 	item_quantity += amount_to_add

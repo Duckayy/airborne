@@ -50,6 +50,9 @@ func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
 				else:
 					if ghost_panel.item.item_quantity > 1:
 						inv_slots.slot_mult_place(ghost_panel.item.item_name, 1)
+						ghost_panel.item.remove_item_quantity(1)
+					else:
+						inv_slots.slot_place_item(ghost_panel.item)
 						
 						
 				
