@@ -1,3 +1,7 @@
 [gd_scene format=3 uid="uid://cihedhawub4rn"]
 
+[ext_resource type="PackedScene" uid="uid://da6rihtx00e8p" path="res://Enemies/Enemies.tscn" id="1_l3tvo"]
+
 [node name="TestLevel" type="Node3D" unique_id=476030538]
+
+[node name="Enemies" parent="." unique_id=843553958 instance=ExtResource("1_l3tvo")]
