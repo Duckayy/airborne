@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://c5ff1w245d708"]
+[gd_scene format=3 uid="uid://bngbegk1f5iue"]
 
-[ext_resource type="Script" path="res://Player/player-1.gd" id="1_3qydi"]
+[ext_resource type="Script" path="res://Player/player-1.gd" id="1_l8h54"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3qydi"]
 
@@ -9,7 +9,7 @@
 [node name="Player" type="Node3D" unique_id=61944695]
 
 [node name="PLAYER" type="CharacterBody3D" parent="." unique_id=891961531]
-script = ExtResource("1_3qydi")
+script = ExtResource("1_l8h54")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PLAYER" unique_id=780385553]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9512358, 0)
