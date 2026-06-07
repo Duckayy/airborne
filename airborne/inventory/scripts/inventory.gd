@@ -38,8 +38,8 @@ func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
 				inv_slots.slot_take_item()
 		elif event.button_index == MOUSE_BUTTON_RIGHT and event.is_pressed():
 			print("right click")
-			if inv_slots.item != null:
-				if ghost_panel.item != null:
+			if ghost_panel.item != null:
+				if inv_slots.item != null:
 					if ghost_panel.item.item_name == inv_slots.item.item_name and inv_slots.item.stack_size > inv_slots.item.item_quantity:
 						print("Stacking...")
 						ghost_panel.item.remove_item_quantity(1)
@@ -47,13 +47,13 @@ func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
 						if ghost_panel.item.item_quantity == 0:
 							ghost_panel.remove_child(ghost_panel.item)
 							ghost_panel.item = null
-			elif ghost_panel.item != null:
-				if ghost_panel.item.item_quantity > 1:
-					ghost_panel.item.remove_item_quantity(1)
-					var ItemClass = preload("res://items/items.tscn")
-					var new_item = ItemClass.instantiate() 
-					add_child(new_item)
-					inv_slots.item = new_item
+				else:
+					if ghost_panel.item.item_quantity > 1:
+						inv_slots.slot_mult_place(ghost_panel.item.item_name, 1)
+						
+						
+				
+					
 				
 				
 				

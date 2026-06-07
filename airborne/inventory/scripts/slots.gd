@@ -41,10 +41,9 @@ func slot_take_item():
 	ghost_panel.item = item
 	self.item = null
 
-func slot_mult_place():
+func slot_mult_place(new_name, quantity):
 	ghost_panel.item.remove_item_quantity(1)
-	ItemClass.instantiate()
-	add_child(item)
-	fit_item()
-	self.item = ghost_panel.item
-	item.add_item_quantity(1)
+	var new_item = ItemClass.new(new_name, quantity)
+	add_child(new_item)
+	new_item.item = ghost_panel.item
+	new_item.add_item_quantity(quantity)
