@@ -1,14 +1,36 @@
 extends Control
 
+var item_name
+var item_quantity
+var stack_size
 
+func setup(i_name, i_quantity) -> void:
+	item_name = i_name
+	item_quantity = i_quantity
+	$TextureRect.texture = load("res://items/" + item_name + ".png")
+	stack_size = int(JsonData.item_data[item_name]["StackSize"])
+	if item_quantity == null:
+		item_quantity = randi() % stack_size + 1
+	if stack_size == 1:
+		$Label.visible = false
+	else:
+		$Label.text = str(item_quantity)
+	pass
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if randi() % 2 == 0:	
-		$TextureRect.texture = load("res://items/sword.png") # Replace with function body.
-	else:
-		$TextureRect.texture = load("res://items/hammer.png")
+	#randomizes what item object is
+	if item_name == null:
+		if randi() % 2 == 0:	
+			item_name = "Sword" 
+		else:
+			item_name = "Hammer"
+	setup(item_name, item_quantity)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+func add_item_quantity(amount_to_add):
+	item_quantity += amount_to_add
+	$Label.text = str(item_quantity)
+	
+func remove_item_quantity(amount_to_remove):
+	item_quantity -= amount_to_remove
+	$Label.text = str(item_quantity)

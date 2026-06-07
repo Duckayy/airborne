@@ -1,0 +1,16 @@
+{
+	"Iron Sword": {
+		"ItemCategory": "Sword",
+		"ItemAttack": 3,
+		"ItemSpeed": 1,
+		"StackSize": 1,
+		"Description": "Pretty dull blade but still sharp enough to be of use."
+	},
+	"Hammer": {
+		"ItemCategory": "Hammer",
+		"ItemAttack": 5,
+		"ItemSpeed": 0.5,
+		"StackSize": 2,
+		"Description": "Looks like the blacksmith made the handle a little too short."
+	}
+}
