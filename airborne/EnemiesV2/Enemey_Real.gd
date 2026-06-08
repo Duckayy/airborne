@@ -19,6 +19,7 @@ var state = State.IDLE
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
+	#print("Player found: ", player)
 	attack_timer.wait_time = attack_cooldown
 	attack_timer.one_shot = true
 	attack_timer.timeout.connect(_on_attack_cooldown_done)
