@@ -1,33 +1,136 @@
 [gd_scene format=3 uid="uid://da6rihtx00e8p"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_a1fng"]
+[sub_resource type="GDScript" id="GDScript_a1fng"]
+script/source = "extends CharacterBody3D
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_v0v8g"]
-size = Vector3(10.00699, 1.048082, 9.995747)
+@export var speed = 14.0
+@export var sprint_speed = 35.0
+@export var acceleration = 50.0
+@export var friction = 60.0
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_h6uua"]
+@export var fall_acceleration = 60.0
+@export var jump_velocity = 30.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m4rhk"]
+@export var mouse_sensitivity = 0.002
 
-[node name="Enemies" type="Node3D" unique_id=843553958]
+@export var max_stamina = 100.0
+@export var stamina_drain = 30.0
+@export var stamina_regen = 25.0
+@export var stamina_recharge_delay = 3.0
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=255348113]
+var is_dead = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=540529882]
-transform = Transform3D(500, 0, 0, 0, 5, 0, 0, 0, 500, 0, 0, 0)
-mesh = SubResource("BoxMesh_a1fng")
+var stamina = max_stamina
+var recharge_timer = 0.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1911431169]
-transform = Transform3D(50, 0, 0, 0, 5, 0, 0, 0, 50, 0, 0, 0)
-shape = SubResource("BoxShape3D_v0v8g")
+@onready var hp_bar = $HUD/HPBar
+@onready var death_screen = $HUD/DeathScreen
+@onready var restart_button = $HUD/DeathScreen/RestartButton
+@onready var quit_button = $HUD/DeathScreen/QuitButton 
+@onready var head = $Head
+@onready var stamina_bar = $CanvasLayer/StaminaBar
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=2002097157]
+func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	stamina_bar.max_value = max_stamina
+	stamina_bar.value = stamina
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=961698171]
-mesh = SubResource("CapsuleMesh_h6uua")
+func _unhandled_input(event):
+	if event is InputEventMouseMotion:
+		rotate_y(-event.relative.x * mouse_sensitivity)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=694470885]
-shape = SubResource("CapsuleShape3D_m4rhk")
+		head.rotate_x(-event.relative.y * mouse_sensitivity)
 
-[node name="Node2D" type="Node2D" parent="CharacterBody3D" unique_id=1613819694]
-position = Vector2(162, 111)
+		head.rotation.x = clamp(
+			head.rotation.x,
+			deg_to_rad(-80),
+			deg_to_rad(80)
+		)
+
+func _physics_process(delta):
+
+	var input_dir = Vector2.ZERO
+
+	if Input.is_action_pressed(\"Move Right\"):
+		input_dir.x += 1
+
+	if Input.is_action_pressed(\"Move Left\"):
+		input_dir.x -= 1
+
+	if Input.is_action_pressed(\"Move Forward\"):
+		input_dir.y += 1
+
+	if Input.is_action_pressed(\"Move Backward\"):
+		input_dir.y -= 1
+
+	input_dir = input_dir.normalized()
+
+	var direction = (
+		transform.basis *
+		Vector3(input_dir.x, 0, -input_dir.y)
+	).normalized()
+
+	var current_speed = speed
+
+	if Input.is_action_pressed(\"Sprint\") and stamina > 0 and input_dir != Vector2.ZERO:
+		current_speed = sprint_speed
+		stamina -= stamina_drain * delta
+		recharge_timer = stamina_recharge_delay
+	else:
+		if recharge_timer > 0:
+			recharge_timer -= delta
+		else:
+			stamina += stamina_regen * delta
+
+	stamina = clamp(stamina, 0.0, max_stamina)
+	stamina_bar.value = stamina
+
+	var target_velocity = direction * current_speed
+
+	velocity.x = move_toward(
+		velocity.x,
+		target_velocity.x,
+		acceleration * delta
+	)
+
+	velocity.z = move_toward(
+		velocity.z,
+		target_velocity.z,
+		acceleration * delta
+	)
+
+	if input_dir == Vector2.ZERO:
+		velocity.x = move_toward(
+			velocity.x,
+			0.0,
+			friction * delta
+		)
+
+		velocity.z = move_toward(
+			velocity.z,
+			0.0,
+			friction * delta
+		)
+
+	if is_on_floor():
+		if Input.is_action_just_pressed(\"Jump\"):
+			velocity.y = jump_velocity
+	else:
+		velocity.y -= fall_acceleration * delta
+
+	move_and_slide()
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5pxne"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7k5wa"]
+
+[node name="CharacterBody3D2" type="CharacterBody3D" unique_id=874964806]
+script = SubResource("GDScript_a1fng")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1603324126]
+shape = SubResource("CapsuleShape3D_5pxne")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1016919514]
+mesh = SubResource("CapsuleMesh_7k5wa")
