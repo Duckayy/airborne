@@ -12,7 +12,11 @@ extends CharacterBody3D
 @export var stamina_regen = 25.0
 @export var stamina_recharge_delay = 3.0
 @export var max_health = 100.0
+@export var crouch_speed = 5.0
+@export var crouch_height = 0.5
 
+var is_crouching = false
+var normal_height = 1.0
 var stamina = max_stamina
 var recharge_timer = 0.0
 var health = max_health
@@ -75,7 +79,18 @@ func _physics_process(delta):
 			recharge_timer -= delta
 		else:
 			stamina += stamina_regen * delta
-
+	if Input.is_action_just_pressed("Crouch"):
+		is_crouching = true
+		$CollisionShape3D.shape.height = crouch_height
+		head.position.y = 0.5
+	elif Input.is_action_just_released("Crouch"):
+		is_crouching = false
+		$CollisionShape3D.shape.height = normal_height
+		head.position.y = 1.0
+		
+	if is_crouching:
+		current_speed = min(current_speed, crouch_speed)
+		
 	stamina = clamp(stamina, 0.0, max_stamina)
 	stamina_bar.value = stamina
 
