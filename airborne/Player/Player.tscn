@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://bngbegk1f5iue"]
+
+[ext_resource type="Script" uid="uid://bfbfabdu0rkwq" path="res://Player/playerV2.gd" id="1_3qydi"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3qydi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3lat"]
+
+[node name="PLAYER" type="CharacterBody3D" unique_id=421517997 groups=["player"]]
+script = ExtResource("1_3qydi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2097901659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9512358, 0)
+mesh = SubResource("CapsuleMesh_3qydi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=543733144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.953411, 0)
+shape = SubResource("CapsuleShape3D_q3lat")
+
+[node name="Head" type="Node3D" parent="." unique_id=865033745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0260494, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=946532365]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5509467, -0.27941412)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1524351219]
+
+[node name="StaminaBar" type="ProgressBar" parent="CanvasLayer" unique_id=616705718]
+offset_left = 19.0
+offset_top = 570.0
+offset_right = 336.0
+offset_bottom = 597.0
+value = 100.0
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1970272350]
+
+[node name="HPBar" type="ProgressBar" parent="HUD" unique_id=1188699423]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -40.0
+offset_right = 593.0
+offset_bottom = -13.0
+grow_vertical = 0
+
+[node name="DeathScreen" type="Control" parent="HUD" unique_id=476535539]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DeathLabel" type="Label" parent="HUD/DeathScreen" unique_id=1769644823]
+modulate = Color(1, 1, 1, 0.78431374)
+layout_mode = 0
+offset_left = -1.0
+offset_top = -3.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_font_sizes/font_size = 72
+text = "YOU DIED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="Button" parent="HUD/DeathScreen" unique_id=2086717552]
+process_mode = 3
+layout_mode = 0
+offset_left = 507.0
+offset_top = 423.0
+offset_right = 675.0
+offset_bottom = 500.0
+theme_override_font_sizes/font_size = 30
+text = "QUIT"
+
+[node name="RestartButton" type="Button" parent="HUD/DeathScreen" unique_id=235352377]
+process_mode = 3
+layout_mode = 0
+offset_left = 507.0
+offset_top = 520.0
+offset_right = 675.0
+offset_bottom = 581.0
+theme_override_font_sizes/font_size = 30
+text = "RESTART"
