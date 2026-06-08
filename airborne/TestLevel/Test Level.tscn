@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cihedhawub4rn"]
 
-[ext_resource type="PackedScene" uid="uid://da6rihtx00e8p" path="res://Enemies/Enemies.tscn" id="1_l3tvo"]
+[ext_resource type="PackedScene" uid="uid://qxu6n4gogkxd" path="res://Enemies/Enemies.tscn" id="1_l3tvo"]
 
 [node name="TestLevel" type="Node3D" unique_id=476030538]
 

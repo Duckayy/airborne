@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dfp7p3127po27"]
+
+[ext_resource type="PackedScene" uid="uid://b60qk5kboq3ly" path="res://TestLevel/player_2.tscn" id="1_b3p1c"]
+[ext_resource type="PackedScene" uid="uid://rnbvfxgt5mew" path="res://EnemiesV2/EnemiesV2.tscn" id="2_5ur7j"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c1f7x"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_b3p1c"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="TestScene" type="Node3D" unique_id=72766877]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2077917649]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=31158428]
+transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 200, -0.027402878, -9.536743e-07, 0.014969349)
+mesh = SubResource("BoxMesh_c1f7x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1316170113]
+transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 200, -0.027402878, -9.536743e-07, 0.014969349)
+shape = SubResource("ConcavePolygonShape3D_b3p1c")
+
+[node name="Player2" parent="." unique_id=61944695 groups=["player"] instance=ExtResource("1_b3p1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7255106, 0)
+
+[node name="EnemiesV2" parent="." unique_id=730054890 instance=ExtResource("2_5ur7j")]
+transform = Transform3D(0.9993671, 0.017955793, -0.030708758, -0.016790913, 0.99914503, 0.037779413, 0.03136086, -0.037239872, 0.99881417, -24.711374, 2.7290144, 0)
