@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://rnbvfxgt5mew"]
 
 [ext_resource type="Script" uid="uid://bsi4vfoq1tvue" path="res://EnemiesV2/Enemey_Real.gd" id="1_yijlj"]
-[ext_resource type="Texture2D" uid="uid://doa3pn8od07es" path="res://icon.svg" id="2_fwpyi"]
+[ext_resource type="Texture2D" uid="uid://cuyocur8symkk" path="res://Screenshot 2026-06-08 031828.png" id="2_yijlj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pyp5w"]
 
@@ -15,7 +15,7 @@ shape = SubResource("CapsuleShape3D_pyp5w")
 
 [node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D" unique_id=783669240]
 billboard = 1
-texture = ExtResource("2_fwpyi")
+texture = ExtResource("2_yijlj")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D" unique_id=243977881]
 
