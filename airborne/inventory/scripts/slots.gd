@@ -24,7 +24,7 @@ func fit_item() -> void:
 	print("label size: ", label1.size)
 	print("label position: ", label1.position)
 	label1.anchors_preset = Control.PRESET_BOTTOM_RIGHT
-	label1.size = self.size / 4
+	label1.size = self.size
 
 ##Places object owned by user and puts it into slot
 func slot_place_item(held_item):

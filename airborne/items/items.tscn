@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://q0k27yh1wiod" path="res://items/scripts/item.gd" id="2_n0bbx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n0bbx"]
-font_size = 58
+font_size = 44
 outline_size = 14
 outline_color = Color(0, 0, 0, 1)
 
@@ -18,18 +18,18 @@ script = ExtResource("2_n0bbx")
 layout_mode = 0
 offset_left = 2.0
 offset_top = 4.0
-offset_right = 400.0
-offset_bottom = 355.0
+offset_right = 317.0
+offset_bottom = 392.0
 mouse_filter = 2
 texture = ExtResource("1_wa2fs")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="." unique_id=929087930]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 84.0
-offset_bottom = 102.0
+layout_mode = 1
+offset_left = 257.0
+offset_top = 327.0
+offset_right = 307.0
+offset_bottom = 388.0
 text = "99"
 label_settings = SubResource("LabelSettings_n0bbx")

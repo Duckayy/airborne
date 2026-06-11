@@ -38,8 +38,9 @@ func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
 				inv_slots.slot_take_item()
 		elif event.button_index == MOUSE_BUTTON_RIGHT and event.is_pressed():
 			print("right click")
-			if ghost_panel.item != null:
+			if ghost_panel.item != null: #Holding Item Check
 				if inv_slots.item != null:
+					#check if item is same and doesnt exceed stack size
 					if ghost_panel.item.item_name == inv_slots.item.item_name and inv_slots.item.stack_size > inv_slots.item.item_quantity:
 						print("Stacking...")
 						ghost_panel.item.remove_item_quantity(1)
@@ -48,6 +49,7 @@ func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
 							ghost_panel.remove_child(ghost_panel.item)
 							ghost_panel.item = null
 				else:
+					#Place single item into slot
 					if ghost_panel.item.item_quantity > 1:
 						inv_slots.slot_mult_place(ghost_panel.item.item_name, 1)
 						ghost_panel.item.remove_item_quantity(1)
