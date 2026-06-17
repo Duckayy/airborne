@@ -7,14 +7,15 @@ const SlotClass = preload("res://inventory/scripts/slots.gd")
 var hide_screen = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	 #Allows slots to accept input
 	for inv_slots in inventory_slots.get_children():
 		inv_slots.connect("gui_input", _slot_gui_input.bind(inv_slots))
-	for hot_slots in hotbar_slots.get_children():
+	for hot_slots in hotbar_slots.get_children(): 
 		hot_slots.connect("gui_input", _slot_gui_input.bind(hot_slots))
+	
 	$TextureRect.hide()
 	$GridContainer1.hide()
 	%GhostSlot.hide()
-	 # Replace with function body.
 
 func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
 	print("input received")
@@ -62,14 +63,20 @@ func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
 						inv_slots.slot_place_item(ghost_panel.item)
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	if event.is_action_pressed("InventoryScreen"):
+	
+	#open and closes inventory
+	if event.is_action_pressed("InventoryScreen"): 
 		if hide_screen:
 			$TextureRect.show()
 			$GridContainer1.show()
 			%GhostSlot.show()
+			for hot_slots in hotbar_slots.get_children(): #Allows hotbar to be interacted
+				hot_slots.mouse_filter = Control.MOUSE_FILTER_STOP
 			hide_screen = false
 		else:
 			$TextureRect.hide()
 			$GridContainer1.hide()
 			%GhostSlot.hide()
+			for hot_slots in hotbar_slots.get_children(): #prevents hotbar to be interacted
+				hot_slots.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			hide_screen = true
