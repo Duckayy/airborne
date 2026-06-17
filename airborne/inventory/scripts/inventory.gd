@@ -3,12 +3,17 @@ extends Node
 const SlotClass = preload("res://inventory/scripts/slots.gd")
 @onready var inventory_slots = $GridContainer1
 @onready var ghost_panel = %GhostSlot
-
-
+@onready var hotbar_slots = $HBoxContainer
+var hide_screen = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for inv_slots in inventory_slots.get_children():
 		inv_slots.connect("gui_input", _slot_gui_input.bind(inv_slots))
+	for hot_slots in hotbar_slots.get_children():
+		hot_slots.connect("gui_input", _slot_gui_input.bind(hot_slots))
+	$TextureRect.hide()
+	$GridContainer1.hide()
+	%GhostSlot.hide()
 	 # Replace with function body.
 
 func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
@@ -55,10 +60,16 @@ func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
 						ghost_panel.item.remove_item_quantity(1)
 					else:
 						inv_slots.slot_place_item(ghost_panel.item)
-						
-						
-				
-					
-				
-				
-				
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed("InventoryScreen"):
+		if hide_screen:
+			$TextureRect.show()
+			$GridContainer1.show()
+			%GhostSlot.show()
+			hide_screen = false
+		else:
+			$TextureRect.hide()
+			$GridContainer1.hide()
+			%GhostSlot.hide()
+			hide_screen = true
