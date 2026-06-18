@@ -20,6 +20,10 @@ func _physics_process(delta):
 		_damage_bodies()
 
 func _on_body_entered(body):
+<<<<<<< Updated upstream
+=======
+	print("Spike hit: ", body.name, " has take_damage: ", body.has_method("take_damage"))
+>>>>>>> Stashed changes
 	if body.has_method("take_damage"):
 		if not bodies_in_zone.has(body):
 			bodies_in_zone.append(body)
