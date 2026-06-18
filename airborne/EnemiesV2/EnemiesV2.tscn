@@ -22,3 +22,16 @@ texture = ExtResource("2_yijlj")
 [node name="AttackTimer" type="Timer" parent="CharacterBody3D" unique_id=2022850287]
 wait_time = 1.5
 one_shot = true
+
+[node name="HealthBarAnchor" type="Node3D" parent="CharacterBody3D" unique_id=550194655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="HealthBarBG" type="Sprite3D" parent="CharacterBody3D/HealthBarAnchor" unique_id=1503264060]
+modulate = Color(0.2592937, 0.2592937, 0.2592937, 1)
+pixel_size = 0.005
+billboard = 1
+
+[node name="HealthBarFill" type="Sprite3D" parent="CharacterBody3D/HealthBarAnchor" unique_id=1181974488]
+modulate = Color(0.14316317, 0.6765515, 3.85046e-07, 1)
+pixel_size = 0.005
+billboard = 1
