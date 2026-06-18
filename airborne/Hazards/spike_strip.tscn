@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bc6isfo62qqc1"]
+
+[ext_resource type="Script" uid="uid://b1456m3hd6ghk" path="res://Hazards/spike_strip.gd" id="1_goqwx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ei81t"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cr78l"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="SpikeStrip" type="Area3D" unique_id=1422921587]
+script = ExtResource("1_goqwx")
+tick_interval = 0.3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=880942758]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_ei81t")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=188995012]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_cr78l")
