@@ -23,18 +23,6 @@ texture = ExtResource("2_yijlj")
 wait_time = 1.5
 one_shot = true
 
-<<<<<<< Updated upstream
-[node name="HealthBarAnchor" type="Node3D" parent="CharacterBody3D" unique_id=1129704829]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="HealthBarBG" type="Sprite3D" parent="CharacterBody3D/HealthBarAnchor" unique_id=1176463278]
-modulate = Color(0.16078432, 0.16078432, 0.16078432, 1)
-pixel_size = 0.005
-billboard = 1
-
-[node name="HealthBarFill" type="Sprite3D" parent="CharacterBody3D/HealthBarAnchor" unique_id=1946537601]
-modulate = Color(0.018030597, 0.822672, 0, 1)
-=======
 [node name="HealthBarAnchor" type="Node3D" parent="CharacterBody3D" unique_id=550194655]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
@@ -46,11 +34,8 @@ render_target_update_mode = 4
 [node name="HealthProgressBar" type="ProgressBar" parent="CharacterBody3D/HealthBarAnchor/HealthBarViewport" unique_id=353740045]
 offset_right = 600.0
 offset_bottom = 50.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
 value = 100.0
 
 [node name="HealthBarSprite" type="Sprite3D" parent="CharacterBody3D/HealthBarAnchor" unique_id=950545608]
->>>>>>> Stashed changes
 pixel_size = 0.005
 billboard = 1

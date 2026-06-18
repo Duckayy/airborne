@@ -99,27 +99,3 @@ transform = Transform3D(0.008253574, -0.7838279, -0.6209233, 0.23437394, -0.6021
 
 [node name="EnemiesV3" parent="." unique_id=2131282674 instance=ExtResource("2_et2tj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.594868, 1.8647635, 4.913553)
-
-[node name="EnemiesV4" parent="." unique_id=2022174593 instance=ExtResource("2_et2tj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8647635, 4.913553)
-
-[node name="EnemiesV2" parent="EnemiesV4" unique_id=1050029583 instance=ExtResource("2_et2tj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8647635, 4.913553)
-
-[node name="EnemiesV2" parent="EnemiesV4/EnemiesV2" unique_id=88493598 instance=ExtResource("2_et2tj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8647635, 4.913553)
-
-[node name="EnemiesV2" parent="EnemiesV4/EnemiesV2/EnemiesV2" unique_id=473406187 instance=ExtResource("2_et2tj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8647635, 4.913553)
-
-[node name="EnemiesV2" parent="EnemiesV4/EnemiesV2/EnemiesV2/EnemiesV2" unique_id=2073538026 instance=ExtResource("2_et2tj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8647635, 4.913553)
-
-[node name="EnemiesV2" parent="EnemiesV4/EnemiesV2/EnemiesV2/EnemiesV2/EnemiesV2" unique_id=40128853 instance=ExtResource("2_et2tj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8647635, 4.913553)
-
-[node name="EnemiesV2" parent="EnemiesV4/EnemiesV2/EnemiesV2/EnemiesV2/EnemiesV2/EnemiesV2" unique_id=788287882 instance=ExtResource("2_et2tj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8647635, 4.913553)
-
-[node name="EnemiesV2" parent="EnemiesV4/EnemiesV2/EnemiesV2/EnemiesV2/EnemiesV2/EnemiesV2/EnemiesV2" unique_id=445901441 instance=ExtResource("2_et2tj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8647635, 4.913553)
