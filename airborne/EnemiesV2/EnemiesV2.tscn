@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://rnbvfxgt5mew"]
 
 [ext_resource type="Script" uid="uid://bsi4vfoq1tvue" path="res://EnemiesV2/Enemey_Real.gd" id="1_yijlj"]
-[ext_resource type="Texture2D" uid="uid://cq6m3n76jufwy" path="res://EnemiesV2/Screenshot 2026-06-08 030527.png" id="2_yijlj"]
+[ext_resource type="Texture2D" uid="uid://cuyocur8symkk" path="res://Screenshot 2026-06-08 031828.png" id="2_yijlj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pyp5w"]
 
@@ -23,34 +23,15 @@ texture = ExtResource("2_yijlj")
 wait_time = 1.5
 one_shot = true
 
-<<<<<<< Updated upstream
-[node name="HealthBarAnchor" type="Node3D" parent="CharacterBody3D" unique_id=1129704829]
+[node name="HealthBarAnchor" type="Node3D" parent="CharacterBody3D" unique_id=550194655]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="HealthBarBG" type="Sprite3D" parent="CharacterBody3D/HealthBarAnchor" unique_id=1176463278]
-modulate = Color(0.16078432, 0.16078432, 0.16078432, 1)
+[node name="HealthBarBG" type="Sprite3D" parent="CharacterBody3D/HealthBarAnchor" unique_id=1503264060]
+modulate = Color(0.2592937, 0.2592937, 0.2592937, 1)
 pixel_size = 0.005
 billboard = 1
 
-[node name="HealthBarFill" type="Sprite3D" parent="CharacterBody3D/HealthBarAnchor" unique_id=1946537601]
-modulate = Color(0.018030597, 0.822672, 0, 1)
-=======
-[node name="HealthBarAnchor" type="Node3D" parent="CharacterBody3D" unique_id=550194655]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
-
-[node name="HealthBarViewport" type="SubViewport" parent="CharacterBody3D/HealthBarAnchor" unique_id=1410459971]
-transparent_bg = true
-size = Vector2i(600, 50)
-render_target_update_mode = 4
-
-[node name="HealthProgressBar" type="ProgressBar" parent="CharacterBody3D/HealthBarAnchor/HealthBarViewport" unique_id=353740045]
-offset_right = 600.0
-offset_bottom = 50.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-value = 100.0
-
-[node name="HealthBarSprite" type="Sprite3D" parent="CharacterBody3D/HealthBarAnchor" unique_id=950545608]
->>>>>>> Stashed changes
+[node name="HealthBarFill" type="Sprite3D" parent="CharacterBody3D/HealthBarAnchor" unique_id=1181974488]
+modulate = Color(0.14316317, 0.6765515, 3.85046e-07, 1)
 pixel_size = 0.005
 billboard = 1
