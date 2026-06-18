@@ -5,6 +5,7 @@ const SlotClass = preload("res://inventory/scripts/slots.gd")
 @onready var ghost_panel = %GhostSlot
 @onready var hotbar_slots = $HBoxContainer
 var hide_screen = true
+var save_data = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	 #Allows slots to accept input
@@ -80,3 +81,18 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			for hot_slots in hotbar_slots.get_children(): #prevents hotbar to be interacted
 				hot_slots.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			hide_screen = true
+			save_inventory()
+
+func save_inventory():
+	for inv_slots in inventory_slots.get_children():
+		if inv_slots.item == null:
+			continue
+		for property in inv_slots.item.get_property_list():
+			var slot_data = {}
+			slot_data[property["name"]] = inv_slots.item.get(property["name"])
+			print(slot_data)
+		# keep this one
+	#for hot_slots in hotbar_slots:
+		#save_data.append(hot_slots)
+		
+	pass
