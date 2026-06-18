@@ -30,6 +30,7 @@ var debug_open = false
 @onready var death_screen = $HUD/DeathScreen
 @onready var restart_button = $HUD/DeathScreen/RestartButton
 @onready var quit_button = $HUD/DeathScreen/QuitButton
+@onready var hp_label = $HUD/HPBar/HPLabel
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -42,6 +43,26 @@ func _ready():
 	quit_button.pressed.connect(_on_quit)
 	debug_menu.visible = false
 	_build_debug_menu()
+	hp_bar.show_percentage = false
+	var hp_fill = StyleBoxFlat.new()
+	hp_fill.bg_color = Color(1.0, 0.0, 0.0, 1.0)
+	hp_bar.add_theme_stylebox_override("fill", hp_fill)
+
+	var hp_bg = StyleBoxFlat.new()
+	hp_bg.bg_color = Color(0.2, 0.2, 0.2, 1.0)
+	hp_bar.add_theme_stylebox_override("background", hp_bg)
+	hp_label.text = str(int(health)) + " / " + str(int(max_health))
+	hp_label.add_theme_color_override("font_color", Color.BLACK)
+	
+	# Stamina bar - green
+	var stamina_fill = StyleBoxFlat.new()
+	stamina_fill.bg_color = Color(0.0, 1.0, 0.0, 1.0)
+	stamina_bar.add_theme_stylebox_override("fill", stamina_fill)
+
+	var stamina_bg = StyleBoxFlat.new()
+	stamina_bg.bg_color = Color(0.2, 0.2, 0.2, 1.0)
+	stamina_bar.add_theme_stylebox_override("background", stamina_bg)
+	stamina_bar.add_theme_color_override("font_color", Color.BLACK)
 
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed:
@@ -128,6 +149,7 @@ func take_damage(amount: float):
 	hp_bar.value = health
 	if health <= 0:
 		_die()
+	hp_label.text = str(int(health)) + " / " + str(int(max_health))
 
 func _die():
 	if is_dead:
