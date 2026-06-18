@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bngbegk1f5iue" path="res://Player/Player.tscn" id="1_f0ew4"]
 [ext_resource type="PackedScene" uid="uid://rnbvfxgt5mew" path="res://EnemiesV2/EnemiesV2.tscn" id="2_et2tj"]
+[ext_resource type="PackedScene" uid="uid://bc6isfo62qqc1" path="res://Hazards/spike_strip.tscn" id="3_t7csg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_et2tj"]
 
@@ -56,6 +57,9 @@ mesh = SubResource("BoxMesh_t7csg")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1051454850]
 transform = Transform3D(200, 0, 0, 0, 100, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_t7csg")
+
+[node name="SpikeStrip" parent="StaticBody3D2" unique_id=1422921587 instance=ExtResource("3_t7csg")]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -22.696259, -49.409943, -115.88504)
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=547532666]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 50, 0)
