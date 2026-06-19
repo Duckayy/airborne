@@ -2,12 +2,15 @@ extends Control
 
 var item_name
 var item_quantity
+var item_category
+var slot_index
 
 func setup(i_name, i_quantity) -> void:
 	item_name = i_name
 	item_quantity = i_quantity
 	$TextureRect.texture = load("res://items/" + item_name + ".png")
 	var stack_size = int(JsonData.item_data[item_name]["StackSize"])
+	item_category = String(JsonData.item_data[item_name]["ItemCategory"])
 	if item_quantity == null:
 		item_quantity = randi() % stack_size + 1
 	if stack_size == 1:

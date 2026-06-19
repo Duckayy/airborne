@@ -20,9 +20,6 @@ func fit_item() -> void:
 	var label1 = item.get_node("Label")
 	texture_rect.anchors_preset = Control.PRESET_FULL_RECT
 	texture_rect.size = self.size
-	print("control size: ", self.size)
-	print("label size: ", label1.size)
-	print("label position: ", label1.position)
 	label1.anchors_preset = Control.PRESET_BOTTOM_RIGHT
 	label1.size = self.size
 

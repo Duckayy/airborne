@@ -19,10 +19,10 @@ func _ready() -> void:
 	%GhostSlot.hide()
 
 func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
-	print("input received")
+	#print("input received")
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-			print("Left clicked")
+			#print("Left clicked")
 			"""Solution: 
 				1. Check if user is holding item
 				2. check if item in slot is same name AND won't hit max
@@ -85,12 +85,18 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 func save_inventory():
 	for inv_slots in inventory_slots.get_children():
+		var slot_data = {}
+		var inv_index = -1
+		inv_index = inv_index + 1
 		if inv_slots.item == null:
 			continue
 		for property in inv_slots.item.get_property_list():
-			var slot_data = {}
-			slot_data[property["name"]] = inv_slots.item.get(property["name"])
-			print(slot_data)
+			if property["usage"] & PROPERTY_USAGE_SCRIPT_VARIABLE:
+				slot_data[property["name"]] = inv_slots.item.get(property["name"])
+				print(slot_data)
+		save_data.append(slot_data)
+		
+	print(save_data)
 		# keep this one
 	#for hot_slots in hotbar_slots:
 		#save_data.append(hot_slots)

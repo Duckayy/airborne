@@ -14,7 +14,6 @@ func LoadData(file_path):
 		var file_data = FileAccess.open(file_path, FileAccess.READ)
 		#turns file into string then into dictionary
 		json_text = file_data.get_as_text() 
-		print(json_text)
 		var json_data = JSON.parse_string(json_text) 
 		file_data.close()
 		return json_data
