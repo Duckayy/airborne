@@ -81,24 +81,24 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			for hot_slots in hotbar_slots.get_children(): #prevents hotbar to be interacted
 				hot_slots.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			hide_screen = true
-			save_inventory()
 
-func save_inventory():
+
+func save_inventory(): 
+	var inv_index = -1
 	for inv_slots in inventory_slots.get_children():
 		var slot_data = {}
-		var inv_index = -1
 		inv_index = inv_index + 1
 		if inv_slots.item == null:
 			continue
-		for property in inv_slots.item.get_property_list():
-			if property["usage"] & PROPERTY_USAGE_SCRIPT_VARIABLE:
+		for property in inv_slots.item.get_property_list(): #gets attributes of itemclass
+			if property["usage"] & PROPERTY_USAGE_SCRIPT_VARIABLE: #gets variables created in script of item.gd
 				slot_data[property["name"]] = inv_slots.item.get(property["name"])
-				print(slot_data)
+				slot_data["slot_index"] = inv_index
+		print(slot_data)
 		save_data.append(slot_data)
-		
-	print(save_data)
 		# keep this one
 	#for hot_slots in hotbar_slots:
 		#save_data.append(hot_slots)
+	JsonData.SaveJSON("res://Data/Inventory/InventoryData.json", save_data)
 		
 	pass
