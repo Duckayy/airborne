@@ -20,3 +20,13 @@ func LoadData(file_path):
 	else:
 		print("File not found")
 		return {} #{} better than null as it prevents future crashes
+		
+func SaveJSON(path: String, data: Variant) -> void:
+	# 1. Convert data to a JSON string
+	var json_string = JSON.stringify(data, "\t") # "\t" adds indentation for readability
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	if file:
+		file.store_string(json_string)
+		file.close()
+	else:
+		print("Error opening file: ", path)
