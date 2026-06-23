@@ -1,13 +1,13 @@
 {
 	"Sword": {
-		"ItemCategory": "Sword",
+		"ItemCategory": "Item",
 		"ItemAttack": 3,
 		"ItemSpeed": 1,
 		"StackSize": 1,
 		"Description": "Pretty dull blade but still sharp enough to be of use."
 	},
 	"Hammer": {
-		"ItemCategory": "Hammer",
+		"ItemCategory": "Item",
 		"ItemAttack": 5,
 		"ItemSpeed": 0.5,
 		"StackSize": 4,

@@ -18,4 +18,4 @@ func fit_item() -> void:
 	texture_rect.size = self.size
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	self.position = get_global_mouse_position() - size / 4
+	self.position = get_global_mouse_position() - size / 2
