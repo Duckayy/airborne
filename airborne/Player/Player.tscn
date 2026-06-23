@@ -1,20 +1,17 @@
 [gd_scene format=3 uid="uid://bngbegk1f5iue"]
 
 [ext_resource type="Script" uid="uid://bfbfabdu0rkwq" path="res://Player/playerV2.gd" id="1_3qydi"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_3qydi"]
+[ext_resource type="PackedScene" uid="uid://co2x61lvprik1" path="res://Models/Ranger.glb" id="2_q3lat"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3lat"]
+radius = 0.3774414
+height = 2.0090332
 
 [node name="PLAYER" type="CharacterBody3D" unique_id=421517997 groups=["player"]]
 script = ExtResource("1_3qydi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2097901659]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9512358, 0)
-mesh = SubResource("CapsuleMesh_3qydi")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=543733144]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.953411, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0331229, 0)
 shape = SubResource("CapsuleShape3D_q3lat")
 
 [node name="Head" type="Node3D" parent="." unique_id=865033745]
@@ -121,3 +118,12 @@ offset_bottom = 600.0
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/DebugMenu/ScrollContainer" unique_id=1364587404]
 process_mode = 3
 layout_mode = 2
+
+[node name="Ranger" parent="." unique_id=1683521415 instance=ExtResource("2_q3lat")]
+transform = Transform3D(0.00047119058, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 0.00047119058, -0.0015862584, 0, 1.0063021)
+
+[node name="ThirdPersonPivot" type="Node3D" parent="." unique_id=502752551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="ThirdPersonCamera" type="Camera3D" parent="ThirdPersonPivot" unique_id=2011120114]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 4)
