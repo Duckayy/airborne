@@ -1,0 +1,14 @@
+[
+	{
+		"item_category": "Item",
+		"item_name": "Sword",
+		"item_quantity": 1,
+		"slot_index": 0
+	},
+	{
+		"item_category": "Item",
+		"item_name": "Hammer",
+		"item_quantity": "3",
+		"slot_index": 1
+	}
+]

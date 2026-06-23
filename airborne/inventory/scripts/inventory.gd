@@ -13,6 +13,7 @@ func _ready() -> void:
 		inv_slots.connect("gui_input", _slot_gui_input.bind(inv_slots))
 	for hot_slots in hotbar_slots.get_children(): 
 		hot_slots.connect("gui_input", _slot_gui_input.bind(hot_slots))
+	load_inventory()
 	
 	$TextureRect.hide()
 	$GridContainer1.hide()
@@ -58,7 +59,7 @@ func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
 				else:
 					#Place single item into slot
 					if ghost_panel.item.item_quantity > 1:
-						inv_slots.slot_mult_place(ghost_panel.item.item_name, 1)
+						inv_slots.create_item(ghost_panel.item.item_name, 1)
 						ghost_panel.item.remove_item_quantity(1)
 					else:
 						inv_slots.slot_place_item(ghost_panel.item)
@@ -81,6 +82,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			for hot_slots in hotbar_slots.get_children(): #prevents hotbar to be interacted
 				hot_slots.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			hide_screen = true
+			
 
 
 func save_inventory(): 
@@ -99,6 +101,13 @@ func save_inventory():
 		# keep this one
 	#for hot_slots in hotbar_slots:
 		#save_data.append(hot_slots)
-	JsonData.SaveJSON("res://Data/Inventory/InventoryData.json", save_data)
-		
+	#JsonData.SaveJSON("res://Data/Inventory/InventoryData.json", save_data)
+	
+func load_inventory():
+	save_data = JsonData.LoadData("res://Data/Inventory/InventoryData.json")
+	
+	for i in range(save_data.size()):
+		var slot = inventory_slots.get_child(save_data[i]["slot_index"])
+
+		slot.create_item(save_data[i]["item_name"], save_data[i]["item_quantity"])
 	pass
