@@ -21,13 +21,16 @@ var stamina = max_stamina
 var recharge_timer = 0.0
 var health = max_health
 var is_dead = false
+var debug_open = false
 
+@onready var debug_menu = $HUD/DebugMenu
 @onready var head = $Head
 @onready var stamina_bar = $CanvasLayer/StaminaBar
 @onready var hp_bar = $HUD/HPBar
 @onready var death_screen = $HUD/DeathScreen
 @onready var restart_button = $HUD/DeathScreen/RestartButton
 @onready var quit_button = $HUD/DeathScreen/QuitButton
+@onready var hp_label = $HUD/HPBar/HPLabel
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -38,9 +41,37 @@ func _ready():
 	hp_bar.value = health
 	restart_button.pressed.connect(_on_restart)
 	quit_button.pressed.connect(_on_quit)
+	debug_menu.visible = false
+	_build_debug_menu()
+	hp_bar.show_percentage = false
+	var hp_fill = StyleBoxFlat.new()
+	hp_fill.bg_color = Color(1.0, 0.0, 0.0, 1.0)
+	hp_bar.add_theme_stylebox_override("fill", hp_fill)
+
+	var hp_bg = StyleBoxFlat.new()
+	hp_bg.bg_color = Color(0.2, 0.2, 0.2, 1.0)
+	hp_bar.add_theme_stylebox_override("background", hp_bg)
+	hp_label.text = str(int(health)) + " / " + str(int(max_health))
+	hp_label.add_theme_color_override("font_color", Color.BLACK)
+	
+	# Stamina bar - green
+	var stamina_fill = StyleBoxFlat.new()
+	stamina_fill.bg_color = Color(0.0, 1.0, 0.0, 1.0)
+	stamina_bar.add_theme_stylebox_override("fill", stamina_fill)
+
+	var stamina_bg = StyleBoxFlat.new()
+	stamina_bg.bg_color = Color(0.2, 0.2, 0.2, 1.0)
+	stamina_bar.add_theme_stylebox_override("background", stamina_bg)
+	stamina_bar.add_theme_color_override("font_color", Color.BLACK)
 
 func _unhandled_input(event):
+	if event is InputEventKey and event.pressed:
+		if event.is_action("ui_cancel"):
+			_toggle_debug()
+			return
 	if event is InputEventMouseMotion:
+		if debug_open:
+			return
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		head.rotate_x(-event.relative.y * mouse_sensitivity)
 		head.rotation.x = clamp(
@@ -118,6 +149,7 @@ func take_damage(amount: float):
 	hp_bar.value = health
 	if health <= 0:
 		_die()
+	hp_label.text = str(int(health)) + " / " + str(int(max_health))
 
 func _die():
 	if is_dead:
@@ -135,3 +167,57 @@ func _on_restart():
 
 func _on_quit():
 	get_tree().quit()
+	
+func _toggle_debug():
+	debug_open = !debug_open
+	debug_menu.visible = debug_open
+	if debug_open:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func _build_debug_menu():
+	var vbox = $HUD/DebugMenu/ScrollContainer/VBoxContainer
+	var title = Label.new()
+	title.text = "DEBUG MENU"
+	vbox.add_child(title)
+	var exports = {
+		"speed": "speed",
+		"sprint_speed": "sprint_speed",
+		"acceleration": "acceleration",
+		"friction": "friction",
+		"fall_acceleration": "fall_acceleration",
+		"jump_velocity": "jump_velocity",
+		"mouse_sensitivity": "mouse_sensitivity",
+		"max_stamina": "max_stamina",
+		"stamina_drain": "stamina_drain",
+		"stamina_regen": "stamina_regen",
+		"stamina_recharge_delay": "stamina_recharge_delay",
+		"max_health": "max_health",
+		"crouch_speed": "crouch_speed",
+		"crouch_height": "crouch_height",
+	}
+	for label_text in exports:
+		var prop = exports[label_text]
+		var row = HBoxContainer.new()
+		var lbl = Label.new()
+		lbl.text = label_text
+		lbl.custom_minimum_size.x = 200
+		row.add_child(lbl)
+		var slider = HSlider.new()
+		slider.min_value = 0
+		slider.max_value = 200
+		slider.value = get(prop)
+		slider.custom_minimum_size.x = 150
+		slider.value_changed.connect(func(val): set(prop, val))
+		row.add_child(slider)
+		var val_label = Label.new()
+		val_label.text = str(get(prop))
+		slider.value_changed.connect(func(val): val_label.text = str(snappedf(val, 0.01)))
+		row.add_child(val_label)
+		
+		vbox.add_child(row)
+	var quit_btn = Button.new()
+	quit_btn.text = "Quit Game"
+	quit_btn.pressed.connect(get_tree().quit)
+	vbox.add_child(quit_btn)
