@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bvo40fs81y0pi"]
 
 [ext_resource type="PackedScene" uid="uid://bngbegk1f5iue" path="res://Player/Player.tscn" id="1_f0ew4"]
-[ext_resource type="PackedScene" uid="uid://rnbvfxgt5mew" path="res://EnemiesV2/EnemiesV2.tscn" id="2_et2tj"]
+[ext_resource type="PackedScene" uid="uid://rnbvfxgt5mew" path="res://EnemiesV2/CloseRangeEnemies/EnemiesV2.tscn" id="2_et2tj"]
 [ext_resource type="PackedScene" uid="uid://bc6isfo62qqc1" path="res://Hazards/spike_strip.tscn" id="3_t7csg"]
+[ext_resource type="PackedScene" uid="uid://cepwpgcb5j2j" path="res://EnemiesV2/RangedEnemies/RangedEnemies.tscn" id="4_dfxfp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_et2tj"]
 
@@ -99,3 +100,6 @@ transform = Transform3D(0.008253574, -0.7838279, -0.6209233, 0.23437394, -0.6021
 
 [node name="EnemiesV3" parent="." unique_id=2131282674 instance=ExtResource("2_et2tj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.594868, 1.8647635, 4.913553)
+
+[node name="RangedEnemies" parent="." unique_id=2134068809 instance=ExtResource("4_dfxfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.084904, 1.14, 4.6146355)

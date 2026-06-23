@@ -78,7 +78,7 @@ func _unhandled_input(event):
 		if debug_open:
 			return
 		rotate_y(-event.relative.x * mouse_sensitivity)
-		if is_third_person:
+		if is_third_person: 
 			third_person_pivot.rotate_x(-event.relative.y * mouse_sensitivity)
 			third_person_pivot.rotation.x = clamp(
 				third_person_pivot.rotation.x,
