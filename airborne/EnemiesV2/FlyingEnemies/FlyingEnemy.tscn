@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ccjnibtf1ya7p"]
 
 [ext_resource type="Script" uid="uid://bjy5ooi0vo4ie" path="res://EnemiesV2/FlyingEnemies/flying_enemy.gd" id="1_fchkx"]
+[ext_resource type="Texture2D" uid="uid://doa3pn8od07es" path="res://icon.svg" id="2_442qi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_442qi"]
 
@@ -14,9 +15,29 @@ shape = SubResource("CapsuleShape3D_442qi")
 
 [node name="Sprite3D" type="Sprite3D" parent="FlyingEnemy" unique_id=677284758]
 billboard = 1
+texture = ExtResource("2_442qi")
 
 [node name="LineOfSightRay" type="RayCast3D" parent="FlyingEnemy" unique_id=1101803036]
 
 [node name="AttackTimer" type="Timer" parent="FlyingEnemy" unique_id=1974094529]
 
 [node name="DiveCooldownTimer" type="Timer" parent="FlyingEnemy" unique_id=860940042]
+
+[node name="ShootCooldownTimer" type="Timer" parent="FlyingEnemy" unique_id=1534546258]
+
+[node name="HealthBarAnchor" type="Node3D" parent="FlyingEnemy" unique_id=1537306835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="HealthBarViewport" type="SubViewport" parent="FlyingEnemy/HealthBarAnchor" unique_id=324189924]
+transparent_bg = true
+size = Vector2i(600, 50)
+render_target_update_mode = 4
+
+[node name="HealthProgressBar" type="ProgressBar" parent="FlyingEnemy/HealthBarAnchor/HealthBarViewport" unique_id=518141544]
+offset_right = 600.0
+offset_bottom = 50.0
+value = 100.0
+
+[node name="HealthBarSprite" type="Sprite3D" parent="FlyingEnemy/HealthBarAnchor" unique_id=1551949461]
+pixel_size = 0.005
+billboard = 1
