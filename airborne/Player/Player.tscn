@@ -24,10 +24,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5509467, -0.27941412)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1524351219]
 
 [node name="StaminaBar" type="ProgressBar" parent="CanvasLayer" unique_id=616705718]
-offset_left = 19.0
-offset_top = 570.0
-offset_right = 336.0
-offset_bottom = 597.0
+offset_left = 13.0
+offset_top = 46.0
+offset_right = 215.0
+offset_bottom = 73.0
 value = 100.0
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1970272350]
@@ -36,10 +36,10 @@ value = 100.0
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 19.0
-offset_top = -40.0
-offset_right = 593.0
-offset_bottom = -13.0
+offset_left = 13.0
+offset_top = -633.0
+offset_right = 570.0
+offset_bottom = -606.0
 grow_vertical = 0
 
 [node name="HPLabel" type="Label" parent="HUD/HPBar" unique_id=1140272104]
