@@ -8,7 +8,7 @@
 	{
 		"item_category": "Item",
 		"item_name": "Hammer",
-		"item_quantity": "3",
+		"item_quantity": 3,
 		"slot_index": 1
 	}
 ]
