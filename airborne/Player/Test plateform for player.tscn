@@ -43,7 +43,7 @@ transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 200, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_et2tj")
 
 [node name="EnemiesV2" parent="." unique_id=730054890 instance=ExtResource("2_et2tj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8647635, 4.913553)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.64209, 1.8647635, 4.913553)
 
 [node name="Player2" parent="." unique_id=61944695 instance=ExtResource("1_f0ew4")]
 transform = Transform3D(-0.9999947, 0, -0.0032638572, 0, 1, 0, 0.0032638572, 0, -0.9999947, 0, 1.5881703, -5.424842)
@@ -99,7 +99,7 @@ shape = SubResource("ConcavePolygonShape3D_tqbij")
 transform = Transform3D(0.008253574, -0.7838279, -0.6209233, 0.23437394, -0.6021314, 0.7632212, -0.9721114, -0.1518275, 0.17873906, 130.82254, 116.4144, 0)
 
 [node name="EnemiesV3" parent="." unique_id=2131282674 instance=ExtResource("2_et2tj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.594868, 1.8647635, 4.913553)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.76063, 1.8647635, 4.913553)
 
 [node name="RangedEnemies" parent="." unique_id=2134068809 instance=ExtResource("4_dfxfp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.084904, 1.14, 4.6146355)
