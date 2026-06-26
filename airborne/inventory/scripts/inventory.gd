@@ -85,6 +85,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			for hot_slots in hotbar_slots.get_children(): #prevents hotbar to be interacted
 				hot_slots.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			hide_screen = true
+			save_inventory()
 			
 
 
@@ -104,12 +105,8 @@ func save_inventory():
 		# keep this one
 	#for hot_slots in hotbar_slots:
 		#save_data.append(hot_slots)
-<<<<<<< Updated upstream
-	#JsonData.SaveJSON("res://Data/Inventory/InventoryData.json", save_data)
-=======
 	print(save_data)
 	JsonData.SaveJSON("res://Data/Inventory/InventoryData.json", save_data)
->>>>>>> Stashed changes
 	
 func load_inventory():
 	save_data = JsonData.LoadData("res://Data/Inventory/InventoryData.json")
