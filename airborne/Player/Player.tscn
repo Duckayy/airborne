@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bfbfabdu0rkwq" path="res://Player/playerV2.gd" id="1_3qydi"]
 [ext_resource type="PackedScene" uid="uid://co2x61lvprik1" path="res://Models/Ranger.glb" id="2_q3lat"]
+[ext_resource type="PackedScene" uid="uid://8qewhu38evia" path="res://inventory/inventory.tscn" id="2_tok1r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3lat"]
 radius = 0.3774414
@@ -118,6 +119,8 @@ offset_bottom = 600.0
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/DebugMenu/ScrollContainer" unique_id=1364587404]
 process_mode = 3
 layout_mode = 2
+
+[node name="Inventory" parent="HUD" unique_id=518256483 instance=ExtResource("2_tok1r")]
 
 [node name="Ranger" parent="." unique_id=1683521415 instance=ExtResource("2_q3lat")]
 transform = Transform3D(0.00047119058, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 0.00047119058, -0.0015862584, 0, 1.0063021)
