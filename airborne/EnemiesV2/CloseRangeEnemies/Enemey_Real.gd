@@ -7,7 +7,7 @@ extends CharacterBody3D
 @export var attack_cooldown = 1.5
 @export var detection_range = 20.0
 @export var fall_acceleration = 60.0
-@export var health_bar_visible_range = 10.0
+@export var health_bar_visible_range = 50.0
 
 var health = max_health
 var player: Node3D = null

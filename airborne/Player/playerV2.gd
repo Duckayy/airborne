@@ -22,6 +22,7 @@ var recharge_timer = 0.0
 var health = max_health
 var is_dead = false
 var debug_open = false
+var is_third_person = false
 
 @onready var debug_menu = $HUD/DebugMenu
 @onready var head = $Head
@@ -31,6 +32,10 @@ var debug_open = false
 @onready var restart_button = $HUD/DeathScreen/RestartButton
 @onready var quit_button = $HUD/DeathScreen/QuitButton
 @onready var hp_label = $HUD/HPBar/HPLabel
+@onready var first_person_camera = $Head/Camera3D
+@onready var third_person_camera = $ThirdPersonPivot/ThirdPersonCamera
+@onready var third_person_pivot = $ThirdPersonPivot
+
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -73,12 +78,27 @@ func _unhandled_input(event):
 		if debug_open:
 			return
 		rotate_y(-event.relative.x * mouse_sensitivity)
-		head.rotate_x(-event.relative.y * mouse_sensitivity)
-		head.rotation.x = clamp(
-			head.rotation.x,
-			deg_to_rad(-80),
-			deg_to_rad(80)
-		)
+		if is_third_person: 
+			third_person_pivot.rotate_x(-event.relative.y * mouse_sensitivity)
+			third_person_pivot.rotation.x = clamp(
+				third_person_pivot.rotation.x,
+				deg_to_rad(-80),
+				deg_to_rad(80)
+			)
+		else:
+			head.rotate_x(-event.relative.y * mouse_sensitivity)
+			head.rotation.x = clamp(
+				head.rotation.x,
+				deg_to_rad(-80),
+				deg_to_rad(80)
+			)
+		
+	if event.is_action_pressed("ToggleCamera"):
+		is_third_person = !is_third_person
+		if is_third_person:
+			third_person_camera.current = true
+		else:
+			first_person_camera.current = true
 
 func _physics_process(delta):
 	if is_dead:
