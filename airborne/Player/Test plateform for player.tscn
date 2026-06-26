@@ -60,7 +60,7 @@ transform = Transform3D(200, 0, 0, 0, 100, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_t7csg")
 
 [node name="SpikeStrip" parent="StaticBody3D2" unique_id=1422921587 instance=ExtResource("3_t7csg")]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -22.696259, -49.409943, -115.88504)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -22.696259, -49.409943, -115.88504)
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=547532666]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 50, 0)

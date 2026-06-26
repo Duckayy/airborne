@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ccjnibtf1ya7p"]
+
+[ext_resource type="Script" uid="uid://bjy5ooi0vo4ie" path="res://EnemiesV2/FlyingEnemies/flying_enemy.gd" id="1_fchkx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_442qi"]
+
+[node name="FlyingEnemy" type="Node3D" unique_id=577321513]
+
+[node name="FlyingEnemy" type="CharacterBody3D" parent="." unique_id=687815155]
+script = ExtResource("1_fchkx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FlyingEnemy" unique_id=323708145]
+shape = SubResource("CapsuleShape3D_442qi")
+
+[node name="Sprite3D" type="Sprite3D" parent="FlyingEnemy" unique_id=677284758]
+billboard = 1
+
+[node name="LineOfSightRay" type="RayCast3D" parent="FlyingEnemy" unique_id=1101803036]
+
+[node name="AttackTimer" type="Timer" parent="FlyingEnemy" unique_id=1974094529]
+
+[node name="DiveCooldownTimer" type="Timer" parent="FlyingEnemy" unique_id=860940042]
