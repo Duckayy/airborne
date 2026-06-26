@@ -30,3 +30,4 @@ func SaveJSON(path: String, data: Variant) -> void:
 		file.close()
 	else:
 		print("Error opening file: ", path)
+		

@@ -76,6 +76,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 				hot_slots.mouse_filter = Control.MOUSE_FILTER_STOP
 			hide_screen = false
 		else:
+			if ghost_panel.item != null:
+				print("Item needs to be dropped to close menu")
+				return
 			$TextureRect.hide()
 			$GridContainer1.hide()
 			%GhostSlot.hide()
@@ -101,7 +104,12 @@ func save_inventory():
 		# keep this one
 	#for hot_slots in hotbar_slots:
 		#save_data.append(hot_slots)
+<<<<<<< Updated upstream
 	#JsonData.SaveJSON("res://Data/Inventory/InventoryData.json", save_data)
+=======
+	print(save_data)
+	JsonData.SaveJSON("res://Data/Inventory/InventoryData.json", save_data)
+>>>>>>> Stashed changes
 	
 func load_inventory():
 	save_data = JsonData.LoadData("res://Data/Inventory/InventoryData.json")
