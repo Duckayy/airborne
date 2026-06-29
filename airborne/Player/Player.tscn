@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bfbfabdu0rkwq" path="res://Player/playerV2.gd" id="1_3qydi"]
 [ext_resource type="PackedScene" uid="uid://co2x61lvprik1" path="res://Models/Ranger.glb" id="2_q3lat"]
+[ext_resource type="PackedScene" uid="uid://8qewhu38evia" path="res://inventory/inventory.tscn" id="2_tok1r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3lat"]
 radius = 0.3774414
@@ -23,10 +24,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5509467, -0.27941412)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1524351219]
 
 [node name="StaminaBar" type="ProgressBar" parent="CanvasLayer" unique_id=616705718]
-offset_left = 19.0
-offset_top = 570.0
-offset_right = 336.0
-offset_bottom = 597.0
+offset_left = 13.0
+offset_top = 46.0
+offset_right = 215.0
+offset_bottom = 73.0
 value = 100.0
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1970272350]
@@ -35,10 +36,10 @@ value = 100.0
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 19.0
-offset_top = -40.0
-offset_right = 593.0
-offset_bottom = -13.0
+offset_left = 13.0
+offset_top = -633.0
+offset_right = 570.0
+offset_bottom = -606.0
 grow_vertical = 0
 
 [node name="HPLabel" type="Label" parent="HUD/HPBar" unique_id=1140272104]
@@ -118,6 +119,8 @@ offset_bottom = 600.0
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/DebugMenu/ScrollContainer" unique_id=1364587404]
 process_mode = 3
 layout_mode = 2
+
+[node name="Inventory" parent="HUD" unique_id=518256483 instance=ExtResource("2_tok1r")]
 
 [node name="Ranger" parent="." unique_id=1683521415 instance=ExtResource("2_q3lat")]
 transform = Transform3D(0.00047119058, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 0.00047119058, -0.0015862584, 0, 1.0063021)

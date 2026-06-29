@@ -75,6 +75,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			for hot_slots in hotbar_slots.get_children(): #Allows hotbar to be interacted
 				hot_slots.mouse_filter = Control.MOUSE_FILTER_STOP
 			hide_screen = false
+			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			if ghost_panel.item != null:
 				print("Item needs to be dropped to close menu")
@@ -85,12 +87,15 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			for hot_slots in hotbar_slots.get_children(): #prevents hotbar to be interacted
 				hot_slots.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			hide_screen = true
+			if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			save_inventory()
 			
 
 
 func save_inventory(): 
 	var inv_index = -1
+	save_data = []
 	for inv_slots in inventory_slots.get_children():
 		var slot_data = {}
 		inv_index = inv_index + 1
@@ -103,16 +108,27 @@ func save_inventory():
 		print(slot_data)
 		save_data.append(slot_data)
 		# keep this one
+	for hot_slots in hotbar_slots.get_children():
+		var slot_data = {}
+		inv_index = inv_index + 1
+		if hot_slots.item == null:
+			continue
+		for property in hot_slots.item.get_property_list(): #gets attributes of itemclass
+			if property["usage"] & PROPERTY_USAGE_SCRIPT_VARIABLE: #gets variables created in script of item.gd
+				slot_data[property["name"]] = hot_slots.item.get(property["name"])
+				slot_data["slot_index"] = inv_index
+		save_data.append(slot_data)
 	#for hot_slots in hotbar_slots:
 		#save_data.append(hot_slots)
-	print(save_data)
 	JsonData.SaveJSON("res://Data/Inventory/InventoryData.json", save_data)
 	
 func load_inventory():
 	save_data = JsonData.LoadData("res://Data/Inventory/InventoryData.json")
-	
 	for i in range(save_data.size()):
-		var slot = inventory_slots.get_child(save_data[i]["slot_index"])
-
-		slot.create_item(save_data[i]["item_name"], save_data[i]["item_quantity"])
-	pass
+		if save_data[i]["slot_index"] < inventory_slots.get_child_count():
+			var slot = inventory_slots.get_child(save_data[i]["slot_index"])
+			slot.create_item(save_data[i]["item_name"], save_data[i]["item_quantity"])
+		else:
+			var slot = hotbar_slots.get_child(save_data[i]["slot_index"] - inventory_slots.get_child_count()) #15 added to offset inventory
+			slot.create_item(save_data[i]["item_name"], save_data[i]["item_quantity"])
+			

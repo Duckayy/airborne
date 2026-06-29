@@ -35,6 +35,7 @@ var is_third_person = false
 @onready var first_person_camera = $Head/Camera3D
 @onready var third_person_camera = $ThirdPersonPivot/ThirdPersonCamera
 @onready var third_person_pivot = $ThirdPersonPivot
+@onready var inventory = $HUD/Inventory
 
 
 func _ready():
