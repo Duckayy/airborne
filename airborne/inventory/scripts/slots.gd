@@ -7,10 +7,7 @@ var item = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if randi() % 2 == 0:
-		item = ItemClass.instantiate()
-		add_child(item) # Replace with function body.
-		fit_item()
+	pass
 
 func fit_item() -> void:
 	item.position = Vector2.ZERO
@@ -38,7 +35,7 @@ func slot_take_item():
 	ghost_panel.item = item
 	self.item = null
 
-func slot_mult_place(new_name, quantity):
+func create_item(new_name, quantity): #can be used to create items
 	item = ItemClass.instantiate()
 	item.setup(new_name, quantity)
 	add_child(item)
