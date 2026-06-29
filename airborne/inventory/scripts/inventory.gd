@@ -1,11 +1,15 @@
 extends Node
 
+signal item_selected(item_data)
+
 const SlotClass = preload("res://inventory/scripts/slots.gd")
 @onready var inventory_slots = $GridContainer1
 @onready var ghost_panel = %GhostSlot
 @onready var hotbar_slots = $HBoxContainer
 var hide_screen = true
 var save_data = []
+var active_item_slot = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	 #Allows slots to accept input
@@ -18,6 +22,18 @@ func _ready() -> void:
 	$TextureRect.hide()
 	$GridContainer1.hide()
 	%GhostSlot.hide()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_up"): #scroll up/left
+		active_item_slot = (active_item_slot - 1) % hotbar_slots.get_child_count()
+		if active_item_slot < 0:
+			active_item_slot = hotbar_slots.get_child_count() - 1
+		_update_selection()
+		print(active_item_slot)
+	elif event.is_action_pressed("ui_down"): #scroll down/right
+		active_item_slot = (active_item_slot + 1) % hotbar_slots.get_child_count()
+		_update_selection()
+		print(active_item_slot)
 
 func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
 	#print("input received")
@@ -90,8 +106,6 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			save_inventory()
-			
-
 
 func save_inventory(): 
 	var inv_index = -1
@@ -121,7 +135,7 @@ func save_inventory():
 	#for hot_slots in hotbar_slots:
 		#save_data.append(hot_slots)
 	JsonData.SaveJSON("res://Data/Inventory/InventoryData.json", save_data)
-	
+
 func load_inventory():
 	save_data = JsonData.LoadData("res://Data/Inventory/InventoryData.json")
 	for i in range(save_data.size()):
@@ -131,4 +145,11 @@ func load_inventory():
 		else:
 			var slot = hotbar_slots.get_child(save_data[i]["slot_index"] - inventory_slots.get_child_count()) #15 added to offset inventory
 			slot.create_item(save_data[i]["item_name"], save_data[i]["item_quantity"])
-			
+
+func _update_selection():
+	if active_item_slot < hotbar_slots.get_child_count():
+		var slot = hotbar_slots.get_child(active_item_slot)
+		item_selected.emit(slot.item)
+		
+	else:
+		item_selected.emit(null)
