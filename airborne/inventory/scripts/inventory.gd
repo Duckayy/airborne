@@ -86,11 +86,13 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			hide_screen = true
 			if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			save_inventory()
 			
 
 
 func save_inventory(): 
 	var inv_index = -1
+	save_data = []
 	for inv_slots in inventory_slots.get_children():
 		var slot_data = {}
 		inv_index = inv_index + 1
@@ -120,7 +122,10 @@ func save_inventory():
 func load_inventory():
 	save_data = JsonData.LoadData("res://Data/Inventory/InventoryData.json")
 	for i in range(save_data.size()):
-		var slot = inventory_slots.get_child(save_data[i]["slot_index"])
-
-		slot.create_item(save_data[i]["item_name"], save_data[i]["item_quantity"])
-	pass
+		if save_data[i]["slot_index"] < inventory_slots.get_child_count():
+			var slot = inventory_slots.get_child(save_data[i]["slot_index"])
+			slot.create_item(save_data[i]["item_name"], save_data[i]["item_quantity"])
+		else:
+			var slot = hotbar_slots.get_child(save_data[i]["slot_index"] - inventory_slots.get_child_count()) #15 added to offset inventory
+			slot.create_item(save_data[i]["item_name"], save_data[i]["item_quantity"])
+			

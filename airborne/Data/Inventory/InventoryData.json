@@ -1,14 +1,16 @@
 [
 	{
 		"item_category": "Item",
-		"item_name": "Sword",
-		"item_quantity": 1,
-		"slot_index": 0
+		"item_name": "Hammer",
+		"item_quantity": 3,
+		"slot_index": 1,
+		"stack_size": 4
 	},
 	{
 		"item_category": "Item",
-		"item_name": "Hammer",
-		"item_quantity": 3,
-		"slot_index": 1
+		"item_name": "Sword",
+		"item_quantity": 1,
+		"slot_index": 15,
+		"stack_size": 1
 	}
 ]
