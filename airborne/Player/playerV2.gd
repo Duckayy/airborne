@@ -23,6 +23,7 @@ var health = max_health
 var is_dead = false
 var debug_open = false
 var is_third_person = false
+var equipped_weapon = null
 
 @onready var debug_menu = $HUD/DebugMenu
 @onready var head = $Head
@@ -69,6 +70,9 @@ func _ready():
 	stamina_bg.bg_color = Color(0.2, 0.2, 0.2, 1.0)
 	stamina_bar.add_theme_stylebox_override("background", stamina_bg)
 	stamina_bar.add_theme_color_override("font_color", Color.BLACK)
+	
+	#Get inventory node
+	inventory.item_selected.connect(_on_item_selected)
 
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed:
@@ -242,3 +246,10 @@ func _build_debug_menu():
 	quit_btn.text = "Quit Game"
 	quit_btn.pressed.connect(get_tree().quit)
 	vbox.add_child(quit_btn)
+
+func _on_item_selected(item_data):
+	if item_data:
+		equipped_weapon = item_data.item_name
+	else:
+		equipped_weapon = null
+	
