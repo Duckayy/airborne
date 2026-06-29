@@ -7,7 +7,7 @@ var item = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	refresh_style()
 
 func fit_item() -> void:
 	item.position = Vector2.ZERO
@@ -40,3 +40,12 @@ func create_item(new_name, quantity): #can be used to create items
 	item.setup(new_name, quantity)
 	add_child(item)
 	fit_item()
+
+func refresh_style():
+	var stylebox = StyleBoxTexture.new()
+	if item == null:
+		stylebox.texture = load("res://inventory/inventoryslot.png")
+	else:
+		stylebox.texture = load("res://inventory/inventoryslotfill.png")
+	add_theme_stylebox_override("panel", stylebox)
+	print(stylebox)
