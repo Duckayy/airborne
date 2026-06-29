@@ -26,6 +26,7 @@ func slot_place_item(held_item):
 	add_child(held_item)
 	self.item = ghost_panel.item
 	ghost_panel.item = null
+	refresh_style()
 	
 	
 ##Takes object owned by slot and gives it to user
@@ -34,12 +35,15 @@ func slot_take_item():
 	ghost_panel.add_child(item)
 	ghost_panel.item = item
 	self.item = null
+	refresh_style()
 
 func create_item(new_name, quantity): #can be used to create items
 	item = ItemClass.instantiate()
 	item.setup(new_name, quantity)
 	add_child(item)
 	fit_item()
+	refresh_style()
+
 
 func refresh_style():
 	var stylebox = StyleBoxTexture.new()

@@ -150,5 +150,6 @@ func _update_selection():
 	if active_item_slot < hotbar_slots.get_child_count():
 		var slot = hotbar_slots.get_child(active_item_slot)
 		item_selected.emit(slot.item)
+		
 	else:
 		item_selected.emit(null)
