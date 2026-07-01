@@ -44,12 +44,18 @@ func create_item(new_name, quantity): #can be used to create items
 	fit_item()
 	refresh_style()
 
-
-func refresh_style():
+func refresh_style(held := false):
 	var stylebox = StyleBoxTexture.new()
-	if item == null:
-		stylebox.texture = load("res://inventory/inventoryslot.png")
+	if held:
+		stylebox.texture = load("res://inventory/inventoryslotheldfill.png")
 	else:
-		stylebox.texture = load("res://inventory/inventoryslotfill.png")
+		if item == null:
+			stylebox.texture = load("res://inventory/inventoryslot.png")
+		else:
+			stylebox.texture = load("res://inventory/inventoryslotfill.png")
 	add_theme_stylebox_override("panel", stylebox)
 	print(stylebox)
+
+func get_styleboxtexture():
+	pass
+	

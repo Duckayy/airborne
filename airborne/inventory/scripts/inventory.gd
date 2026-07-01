@@ -18,6 +18,7 @@ func _ready() -> void:
 	for hot_slots in hotbar_slots.get_children(): 
 		hot_slots.connect("gui_input", _slot_gui_input.bind(hot_slots))
 	load_inventory()
+	hotbar_slots.get_child(active_item_slot).refresh_style(true)
 	
 	$TextureRect.hide()
 	$GridContainer1.hide()
@@ -25,12 +26,14 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_up"): #scroll up/left
+		hotbar_slots.get_child(active_item_slot).refresh_style()
 		active_item_slot = (active_item_slot - 1) % hotbar_slots.get_child_count()
 		if active_item_slot < 0:
 			active_item_slot = hotbar_slots.get_child_count() - 1
 		_update_selection()
 		print(active_item_slot)
 	elif event.is_action_pressed("ui_down"): #scroll down/right
+		hotbar_slots.get_child(active_item_slot).refresh_style()
 		active_item_slot = (active_item_slot + 1) % hotbar_slots.get_child_count()
 		_update_selection()
 		print(active_item_slot)
@@ -147,9 +150,12 @@ func load_inventory():
 			slot.create_item(save_data[i]["item_name"], save_data[i]["item_quantity"])
 
 func _update_selection():
+	var slot = hotbar_slots.get_child(active_item_slot)
 	if active_item_slot < hotbar_slots.get_child_count():
-		var slot = hotbar_slots.get_child(active_item_slot)
 		item_selected.emit(slot.item)
-		
+		slot.refresh_style(true)
 	else:
 		item_selected.emit(null)
+		
+	
+	
