@@ -21,6 +21,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0260494, 0)
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=946532365]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5509467, -0.27941412)
 
+[node name="WeaponModel" type="Sprite3D" parent="Head/Camera3D" unique_id=1606890674]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1524351219]
 
 [node name="StaminaBar" type="ProgressBar" parent="CanvasLayer" unique_id=616705718]

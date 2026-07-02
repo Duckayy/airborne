@@ -37,7 +37,7 @@ var equipped_weapon = null
 @onready var third_person_camera = $ThirdPersonPivot/ThirdPersonCamera
 @onready var third_person_pivot = $ThirdPersonPivot
 @onready var inventory = $HUD/Inventory
-
+@onready var weapon_model = $Head/Camera3D/WeaponModel
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -253,3 +253,7 @@ func _on_item_selected(item_data):
 	else:
 		equipped_weapon = null
 	
+func update_player_visuals(item_data):
+	if item_data:
+		pass
+	pass
