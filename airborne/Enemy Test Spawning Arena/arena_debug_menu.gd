@@ -47,7 +47,7 @@ func _build_ui():
 	scroll.add_child(vbox)
 
 	_add_label(vbox, "ARENA DEBUG MENU", 28)
-	_add_label(vbox, "Press ESC to toggle", 14)
+	_add_label(vbox, "Press F1 to toggle", 14)
 	_add_separator(vbox)
 
 	# Enemy count display

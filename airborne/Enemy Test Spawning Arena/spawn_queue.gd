@@ -8,7 +8,7 @@ signal queue_started
 signal group_spawned(group_index, types)
 signal queue_finished
 
-@export var delay_between_groups = 1.5  # seconds between each group spawning
+@export var delay_between_groups = 5  # seconds between each group spawning
 
 var spawner: Node = null   # set this from the arena after _ready
 var queue: Array = []      # array of arrays: [["melee","ranged"], ["flying","melee"]]
@@ -22,8 +22,7 @@ const PRESET_GROUPS = {
 	"solo_flying": ["flying"],
 	"basic_duo": ["melee", "ranged"],
 	"air_support": ["flying", "melee"],
-	"full_squad": ["melee", "melee", "ranged"],
-	"chaos": ["flying", "melee", "ranged"],
+	"full_squad": ["melee", "flying", "ranged"],
 }
 
 func set_spawner(s: Node):
