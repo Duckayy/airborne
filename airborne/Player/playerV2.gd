@@ -73,6 +73,15 @@ func _ready():
 	
 	#Get inventory node
 	inventory.item_selected.connect(_on_item_selected)
+	
+	#load viewmodels
+	var inventory_data = JsonData.LoadData("res://Data/Inventory/InventoryData.json")
+	var item_data = JsonData.LoadData("res://Data/ItemData.json")
+	for i in range(inventory_data.size()):
+		var item_name = inventory_data[i]["item_name"]
+		var item = item_data[item_name]["ModelPath"]
+		load(item)
+	
 
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed:

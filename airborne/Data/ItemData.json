@@ -4,13 +4,15 @@
 		"ItemAttack": 3,
 		"ItemSpeed": 1,
 		"StackSize": 1,
-		"Description": "Pretty dull blade but still sharp enough to be of use."
+		"Description": "Pretty dull blade but still sharp enough to be of use.",
+		"ModelPath": "res://Models/Viewmodels/Weapons/ViewModelSword.png"
 	},
 	"Hammer": {
 		"ItemCategory": "Item",
 		"ItemAttack": 5,
 		"ItemSpeed": 0.5,
 		"StackSize": 4,
-		"Description": "Looks like the blacksmith made the handle a little too short."
+		"Description": "Looks like the blacksmith made the handle a little too short.",
+		"ModelPath": "res://Models/Viewmodels/Weapons/ViewModelHammer.png"
 	}
 }
