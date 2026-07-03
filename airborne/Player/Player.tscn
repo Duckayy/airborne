@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bngbegk1f5iue"]
 
 [ext_resource type="Script" uid="uid://bfbfabdu0rkwq" path="res://Player/playerV2.gd" id="1_3qydi"]
+[ext_resource type="Script" uid="uid://cfln66wlwbrie" path="res://Models/Viewmodels/Script/models.gd" id="2_ddoul"]
 [ext_resource type="PackedScene" uid="uid://co2x61lvprik1" path="res://Models/Ranger.glb" id="2_q3lat"]
 [ext_resource type="PackedScene" uid="uid://8qewhu38evia" path="res://inventory/inventory.tscn" id="2_tok1r"]
 
@@ -22,6 +23,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0260494, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5509467, -0.27941412)
 
 [node name="ItemModel" type="Sprite3D" parent="Head/Camera3D" unique_id=1606890674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47499347, -0.1462605, -0.5405171)
+pixel_size = 0.0003
+region_rect = Rect2(0, 0, 1500, 700)
+script = ExtResource("2_ddoul")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1524351219]
 

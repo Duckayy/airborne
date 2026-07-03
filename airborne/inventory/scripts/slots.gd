@@ -54,7 +54,6 @@ func refresh_style(held := false):
 		else:
 			stylebox.texture = load("res://inventory/inventoryslotfill.png")
 	add_theme_stylebox_override("panel", stylebox)
-	print(stylebox)
 
 func get_styleboxtexture():
 	pass

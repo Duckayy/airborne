@@ -13,6 +13,7 @@ var active_item_slot = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_update_selection()
 	 #Allows slots to accept input
 	for inv_slots in inventory_slots.get_children():
 		inv_slots.connect("gui_input", _slot_gui_input.bind(inv_slots))
@@ -20,6 +21,7 @@ func _ready() -> void:
 		hot_slots.connect("gui_input", _slot_gui_input.bind(hot_slots))
 	load_inventory()
 	hotbar_slots.get_child(active_item_slot).refresh_style(true)
+	
 	
 	$TextureRect.hide()
 	$GridContainer1.hide()
@@ -32,12 +34,12 @@ func _input(event: InputEvent) -> void:
 		if active_item_slot < 0:
 			active_item_slot = hotbar_slots.get_child_count() - 1
 		_update_selection()
-		print(active_item_slot)
+		#print("Current Active Item Slot: ", active_item_slot)
 	elif event.is_action_pressed("ui_down"): #scroll down/right
 		hotbar_slots.get_child(active_item_slot).refresh_style()
 		active_item_slot = (active_item_slot + 1) % hotbar_slots.get_child_count()
 		_update_selection()
-		print(active_item_slot)
+		#print("Current Active Item Slot: ", active_item_slot)
 
 func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
 	#print("input received")
@@ -127,7 +129,7 @@ func save_inventory():
 			if property["usage"] & PROPERTY_USAGE_SCRIPT_VARIABLE: #gets variables created in script of item.gd
 				slot_data[property["name"]] = inv_slots.item.get(property["name"])
 				slot_data["slot_index"] = inv_index
-		print(slot_data)
+		#print(slot_data)
 		save_data.append(slot_data)
 		# keep this one
 	for hot_slots in hotbar_slots.get_children():
