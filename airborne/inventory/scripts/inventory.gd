@@ -1,12 +1,13 @@
 extends Node
 
 signal item_selected(item_data)
+signal inventory_menu(state: bool)
 
 const SlotClass = preload("res://inventory/scripts/slots.gd")
 @onready var inventory_slots = $GridContainer1
 @onready var ghost_panel = %GhostSlot
 @onready var hotbar_slots = $HBoxContainer
-var hide_screen = true
+var inventory_screen = false
 var save_data = []
 var active_item_slot = 0
 
@@ -87,28 +88,32 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	
 	#open and closes inventory
 	if event.is_action_pressed("InventoryScreen"): 
-		if hide_screen:
-			$TextureRect.show()
-			$GridContainer1.show()
-			%GhostSlot.show()
-			for hot_slots in hotbar_slots.get_children(): #Allows hotbar to be interacted
-				hot_slots.mouse_filter = Control.MOUSE_FILTER_STOP
-			hide_screen = false
-			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		else:
-			if ghost_panel.item != null:
-				print("Item needs to be dropped to close menu")
-				return
-			$TextureRect.hide()
-			$GridContainer1.hide()
-			%GhostSlot.hide()
-			for hot_slots in hotbar_slots.get_children(): #prevents hotbar to be interacted
-				hot_slots.mouse_filter = Control.MOUSE_FILTER_IGNORE
-			hide_screen = true
-			if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
-				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-			save_inventory()
+		toggle_inventory()
+
+func toggle_inventory():
+	if not inventory_screen:
+		$TextureRect.show()
+		$GridContainer1.show()
+		%GhostSlot.show()
+		for hot_slots in hotbar_slots.get_children(): #Allows hotbar to be interacted
+			hot_slots.mouse_filter = Control.MOUSE_FILTER_STOP
+		inventory_screen = true
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		if ghost_panel.item != null:
+			print("Item needs to be dropped to close menu")
+			return
+		$TextureRect.hide()
+		$GridContainer1.hide()
+		%GhostSlot.hide()
+		for hot_slots in hotbar_slots.get_children(): #prevents hotbar to be interacted
+			hot_slots.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		inventory_screen = false
+		if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		save_inventory()
+	inventory_menu.emit(inventory_screen)
 
 func save_inventory(): 
 	var inv_index = -1

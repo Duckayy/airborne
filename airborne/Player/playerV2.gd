@@ -24,6 +24,7 @@ var is_dead = false
 var debug_open = false
 var is_third_person = false
 var equipped_weapon = null
+var inventory_screen = false
 
 @onready var debug_menu = $HUD/DebugMenu
 @onready var head = $Head
@@ -37,7 +38,7 @@ var equipped_weapon = null
 @onready var third_person_camera = $ThirdPersonPivot/ThirdPersonCamera
 @onready var third_person_pivot = $ThirdPersonPivot
 @onready var inventory = $HUD/Inventory
-@onready var weapon_model = $Head/Camera3D/WeaponModel
+@onready var weapon_model = $Head/Camera3D/ItemModel
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -73,6 +74,7 @@ func _ready():
 	
 	#Get inventory node
 	inventory.item_selected.connect(_on_item_selected)
+	inventory.inventory_menu.connect(_on_inventory_open)
 	
 	#load viewmodels
 	var inventory_data = JsonData.LoadData("res://Data/Inventory/InventoryData.json")
@@ -91,6 +93,10 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		if debug_open:
 			return
+		if inventory_screen:
+			print("inventory screen should close")
+			return
+		print(inventory_screen)
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		if is_third_person: 
 			third_person_pivot.rotate_x(-event.relative.y * mouse_sensitivity)
@@ -113,6 +119,8 @@ func _unhandled_input(event):
 			third_person_camera.current = true
 		else:
 			first_person_camera.current = true
+
+
 
 func _physics_process(delta):
 	if is_dead:
@@ -261,6 +269,11 @@ func _on_item_selected(item_data):
 		equipped_weapon = item_data.item_name
 	else:
 		equipped_weapon = null
+func _on_inventory_open(open):
+	if open:
+		inventory_screen = true
+	else:
+		inventory_screen = false
 	
 func update_player_visuals(item_data):
 	if item_data:
