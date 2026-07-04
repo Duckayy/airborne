@@ -7,13 +7,17 @@ const SlotClass = preload("res://inventory/scripts/slots.gd")
 @onready var inventory_slots = $GridContainer1
 @onready var ghost_panel = %GhostSlot
 @onready var hotbar_slots = $HBoxContainer
+@onready var player = $"../.."
 var inventory_screen = false
 var save_data = []
 var active_item_slot = 0
+var debug_menu = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_update_selection()
+	
+	player.debug_state.connect(_debug_menu)
+	
 	 #Allows slots to accept input
 	for inv_slots in inventory_slots.get_children():
 		inv_slots.connect("gui_input", _slot_gui_input.bind(inv_slots))
@@ -28,17 +32,19 @@ func _ready() -> void:
 	%GhostSlot.hide()
 
 func _input(event: InputEvent) -> void:
+	if debug_menu:
+		return
 	if event.is_action_pressed("ui_up"): #scroll up/left
 		hotbar_slots.get_child(active_item_slot).refresh_style()
 		active_item_slot = (active_item_slot - 1) % hotbar_slots.get_child_count()
 		if active_item_slot < 0:
 			active_item_slot = hotbar_slots.get_child_count() - 1
-		_update_selection()
+		update_selection()
 		#print("Current Active Item Slot: ", active_item_slot)
 	elif event.is_action_pressed("ui_down"): #scroll down/right
 		hotbar_slots.get_child(active_item_slot).refresh_style()
 		active_item_slot = (active_item_slot + 1) % hotbar_slots.get_child_count()
-		_update_selection()
+		update_selection()
 		#print("Current Active Item Slot: ", active_item_slot)
 
 func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
@@ -87,7 +93,8 @@ func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
 						inv_slots.slot_place_item(ghost_panel.item)
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	
+	if debug_menu:
+		return
 	#open and closes inventory
 	if event.is_action_pressed("InventoryScreen"): 
 		toggle_inventory()
@@ -156,7 +163,7 @@ func load_inventory():
 			var slot = hotbar_slots.get_child(save_data[i]["slot_index"] - inventory_slots.get_child_count()) #15 added to offset inventory
 			slot.create_item(save_data[i]["item_name"], save_data[i]["item_quantity"])
 
-func _update_selection():
+func update_selection():
 	var slot = hotbar_slots.get_child(active_item_slot)
 	if active_item_slot < hotbar_slots.get_child_count():
 		item_selected.emit(slot.item)
@@ -164,5 +171,9 @@ func _update_selection():
 	else:
 		item_selected.emit(null)
 		
-	
+func _debug_menu(state):
+	if state:
+		debug_menu = true
+	else:
+		debug_menu = false
 	

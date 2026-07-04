@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 signal item_model(item_name)
+signal debug_state(state: bool)
 
 @export var speed = 14.0
 @export var sprint_speed = 35.0
@@ -27,6 +28,7 @@ var debug_open = false
 var is_third_person = false
 var equipped_weapon = null
 var inventory_screen = false
+var is_attacking = false
 
 @onready var debug_menu = $HUD/DebugMenu
 @onready var head = $Head
@@ -40,6 +42,8 @@ var inventory_screen = false
 @onready var third_person_camera = $ThirdPersonPivot/ThirdPersonCamera
 @onready var third_person_pivot = $ThirdPersonPivot
 @onready var inventory = $HUD/Inventory
+@onready var viewmodel_attack_animation = $Head/Camera3D/ItemModel/AnimationPlayer
+@onready var timer = $Head/Camera3D/ItemModel/Timer
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -78,7 +82,7 @@ func _ready():
 	inventory.inventory_menu.connect(_on_inventory_open)
 	
 	#load viewmodels
-	
+	inventory.update_selection()
 	
 
 func _unhandled_input(event):
@@ -115,6 +119,7 @@ func _unhandled_input(event):
 
 
 func _physics_process(delta):
+	
 	if is_dead:
 		return
 
@@ -175,6 +180,15 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("Primary Attack"):
+		attack()
+		
+func attack():
+	is_attacking = true
+	viewmodel_attack_animation.play("prototype_sword")
+	timer.start(1.0)
+	
 func take_damage(amount: float):
 	if is_dead:
 		return
@@ -209,6 +223,7 @@ func _toggle_debug():
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	debug_state.emit(debug_open)
 
 func _build_debug_menu():
 	var vbox = $HUD/DebugMenu/ScrollContainer/VBoxContainer
@@ -263,6 +278,7 @@ func _on_item_selected(item_data):
 		equipped_weapon = null
 	item_model.emit(equipped_weapon)
 	print("Equiped Weapon: ", equipped_weapon)
+	
 func _on_inventory_open(open):
 	if open:
 		inventory_screen = true
@@ -273,3 +289,6 @@ func update_player_visuals(item_data):
 	if item_data:
 		pass
 	pass
+
+func on_timer_countdown():
+	is_attacking = false
