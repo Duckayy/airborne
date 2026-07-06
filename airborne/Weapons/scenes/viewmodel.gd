@@ -9,7 +9,7 @@ var item_resources = {}
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_item_models()
-	#player.item_model.connect(load_model)
+	player.item_model.connect(load_model)
 	pass # Replace with function body.
 
 func load_item_models():

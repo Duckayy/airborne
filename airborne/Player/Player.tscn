@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bngbegk1f5iue"]
 
 [ext_resource type="Script" uid="uid://bfbfabdu0rkwq" path="res://Player/playerV2.gd" id="1_3qydi"]
+[ext_resource type="PackedScene" uid="uid://b2t2eydjcbi6l" path="res://Weapons/scenes/viewmodel.tscn" id="2_6ysni"]
 [ext_resource type="Texture2D" uid="uid://nwybidcono2t" path="res://Models/Viewmodels/Weapons/ViewModelSword.png" id="2_8g4oa"]
 [ext_resource type="Script" uid="uid://cfln66wlwbrie" path="res://Models/Viewmodels/Script/models.gd" id="2_ddoul"]
 [ext_resource type="PackedScene" uid="uid://co2x61lvprik1" path="res://Models/Ranger.glb" id="2_q3lat"]
@@ -99,6 +100,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5509467, -0.27941412)
 
 [node name="ItemModel" type="Sprite3D" parent="Head/Camera3D" unique_id=1606890674]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47499347, -0.1462605, -0.5405171)
+visible = false
 pixel_size = 0.0003
 texture = ExtResource("2_8g4oa")
 region_rect = Rect2(0, 0, 1500, 700)
@@ -108,6 +110,13 @@ script = ExtResource("2_ddoul")
 libraries/ = SubResource("AnimationLibrary_s1rgi")
 
 [node name="Timer" type="Timer" parent="Head/Camera3D/ItemModel" unique_id=937147205]
+
+[node name="Melee" parent="Head/Camera3D" unique_id=1912451902 instance=ExtResource("2_6ysni")]
+offset_left = -29.0
+offset_top = 4.0
+offset_right = 138.93799
+offset_bottom = 175.82628
+mouse_filter = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1524351219]
 
