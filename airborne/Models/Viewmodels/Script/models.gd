@@ -4,12 +4,13 @@ var inventory_data = JsonData.LoadData("res://Data/Inventory/InventoryData.json"
 var item_data = JsonData.LoadData("res://Data/ItemData.json")
 
 @onready var player = $"../../.."
+@onready var model = $SubViewportContainer/SubViewport/Sprite3D
 
 var item_resources = {}
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_item_models()
-	#player.item_model.connect(load_model)
+	player.item_model.connect(load_model)
 	pass # Replace with function body.
 
 func load_item_models():
@@ -19,7 +20,7 @@ func load_item_models():
 		
 func load_model(model_id):
 	if model_id != null:
-		self.texture = item_resources[model_id]
+		model.texture = item_resources[model_id]
 	else:
-		self.texture = null
-	print(self.texture)
+		model.texture = null
+	print(model.texture)

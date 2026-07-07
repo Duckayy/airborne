@@ -42,8 +42,6 @@ var is_attacking = false
 @onready var third_person_camera = $ThirdPersonPivot/ThirdPersonCamera
 @onready var third_person_pivot = $ThirdPersonPivot
 @onready var inventory = $HUD/Inventory
-@onready var viewmodel_attack_animation = $Head/Camera3D/ItemModel/AnimationPlayer
-@onready var timer = $Head/Camera3D/ItemModel/Timer
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -116,8 +114,6 @@ func _unhandled_input(event):
 		else:
 			first_person_camera.current = true
 
-
-
 func _physics_process(delta):
 	
 	if is_dead:
@@ -186,8 +182,8 @@ func _process(_delta: float) -> void:
 		
 func attack():
 	is_attacking = true
-	viewmodel_attack_animation.play("prototype_sword")
-	timer.start(1.0)
+	#viewmodel_attack_animation.play("prototype_sword")
+	#timer.start(1.0)
 	
 func take_damage(amount: float):
 	if is_dead:
