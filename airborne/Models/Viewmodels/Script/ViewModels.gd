@@ -24,3 +24,6 @@ func load_model(model_id):
 	else:
 		model.texture = null
 	print(model.texture)
+	
+func play_animation():
+	pass

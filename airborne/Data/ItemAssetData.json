@@ -1,0 +1,10 @@
+{
+	"Sword": {
+		"ItemCategory": "Weapon",
+		"ModelPath": "res://Models/Viewmodels/Weapons/ViewModelSword.png"
+	},
+	"Hammer": {
+		"ItemCategory": "Weapon",
+		"ModelPath": "res://Models/Viewmodels/Weapons/ViewModelHammer.png"
+	}
+}
