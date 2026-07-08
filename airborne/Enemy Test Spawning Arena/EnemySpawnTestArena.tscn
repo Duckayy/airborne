@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://4la6eumihua5" path="res://Enemy Test Spawning Arena/spawn_queue.gd" id="3_sy4wt"]
 [ext_resource type="Script" uid="uid://c7kgbiceqkj2b" path="res://Enemy Test Spawning Arena/arena_debug_menu.gd" id="4_cmt4b"]
 [ext_resource type="PackedScene" uid="uid://bngbegk1f5iue" path="res://Player/Player.tscn" id="5_cutvx"]
+[ext_resource type="Script" uid="uid://c4vdhtryd1oek" path="res://Enemy Test Spawning Arena/combat_log.gd" id="6_aet1b"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wf00a"]
 
@@ -55,3 +56,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="ArenaDebugMenu" type="CanvasLayer" parent="." unique_id=113067643]
 script = ExtResource("4_cmt4b")
+
+[node name="CombatLog" type="CanvasLayer" parent="." unique_id=2076157133]
+script = ExtResource("6_aet1b")
