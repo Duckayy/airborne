@@ -1,10 +1,12 @@
 {
 	"Sword": {
 		"ItemCategory": "Weapon",
-		"ModelPath": "res://Models/Viewmodels/Weapons/ViewModelSword.png"
+		"ModelPath": "res://Models/Viewmodels/Weapons/ViewModelSword.png",
+		"UseAnimation": "res://Models/Viewmodels/Weapons/Animation/prototype_sword.res"
 	},
 	"Hammer": {
 		"ItemCategory": "Weapon",
-		"ModelPath": "res://Models/Viewmodels/Weapons/ViewModelHammer.png"
+		"ModelPath": "res://Models/Viewmodels/Weapons/ViewModelHammer.png",
+		"UseAnimation": "res://Models/Viewmodels/Weapons/Animation/prototype_sword.res"
 	}
 }

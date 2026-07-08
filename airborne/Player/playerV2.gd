@@ -42,6 +42,7 @@ var is_attacking = false
 @onready var third_person_camera = $ThirdPersonPivot/ThirdPersonCamera
 @onready var third_person_pivot = $ThirdPersonPivot
 @onready var inventory = $HUD/Inventory
+@onready var viewmodel = $Head/Camera3D/Melee
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -182,6 +183,8 @@ func _process(_delta: float) -> void:
 		
 func attack():
 	is_attacking = true
+	viewmodel.play_animation()
+	
 	#viewmodel_attack_animation.play("prototype_sword")
 	#timer.start(1.0)
 	
