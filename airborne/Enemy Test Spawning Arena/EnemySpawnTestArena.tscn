@@ -52,7 +52,7 @@ script = ExtResource("2_aet1b")
 script = ExtResource("3_sy4wt")
 
 [node name="PLAYER" parent="." unique_id=421517997 instance=ExtResource("5_cutvx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(-0.043584526, 0, 0.9990497, 0, 1, 0, -0.9990497, 0, -0.043584526, 38.324944, 1, 0)
 
 [node name="ArenaDebugMenu" type="CanvasLayer" parent="." unique_id=113067643]
 script = ExtResource("4_cmt4b")
