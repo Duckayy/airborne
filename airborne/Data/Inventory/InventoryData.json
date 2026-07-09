@@ -3,14 +3,14 @@
 		"item_category": "Item",
 		"item_name": "Hammer",
 		"item_quantity": 1,
-		"slot_index": 0,
+		"slot_index": 6,
 		"stack_size": 4
 	},
 	{
 		"item_category": "Item",
 		"item_name": "Hammer",
 		"item_quantity": 1,
-		"slot_index": 5,
+		"slot_index": 11,
 		"stack_size": 4
 	},
 	{
