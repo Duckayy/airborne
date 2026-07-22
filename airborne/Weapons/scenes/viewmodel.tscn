@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://b2t2eydjcbi6l"]
 
-[ext_resource type="Texture2D" uid="uid://nwybidcono2t" path="res://Models/Viewmodels/Weapons/ViewModelSword.png" id="1_ngi7l"]
 [ext_resource type="Script" uid="uid://cfln66wlwbrie" path="res://Models/Viewmodels/Script/ViewModels.gd" id="2_6qnac"]
+[ext_resource type="PackedScene" uid="uid://cvdlswnhag8u0" path="res://Models/Viewmodels/Weapons/Swords.glb" id="2_ni46q"]
+[ext_resource type="Animation" uid="uid://boho2tbu7t0ej" path="res://Weapons/Animations/prototype_sword.res" id="3_ni46q"]
 
 [sub_resource type="Animation" id="Animation_jphhe"]
 length = 0.001
@@ -29,42 +30,40 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_pcwsm"]
-resource_name = "prototype_sword"
-length = 1.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.55, 0.8333333, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector3(0, 0, -0.90486825), Vector3(-0.23886415, 0, -0.90486825), Vector3(-0.45930308, -0.20265386, -0.90486825), Vector3(-0.23886415, 0, -0.90486825), Vector3(0, 0, -0.90486825)]
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Swords:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.55, -0.05, -0.651)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.55, 0.8333333, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.8897514), Vector3(0, 0, 2.027514), Vector3(0, 0, 0.8897514), Vector3(0, 0, 0)]
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Swords:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.3926991, -1.8360864, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_647al"]
 _data = {
-&"RESET": SubResource("Animation_jphhe"),
-&"prototype_sword": SubResource("Animation_pcwsm")
+&"RESET": SubResource("Animation_jphhe")
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hmfu4"]
+_data = {
+&"prototype_sword": ExtResource("3_ni46q")
+}
 
 [node name="Melee" type="Control" unique_id=1912451902]
 layout_mode = 3
@@ -73,26 +72,25 @@ script = ExtResource("2_6qnac")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1371241252]
 layout_mode = 0
-offset_left = 496.0
-offset_top = 174.0
-offset_right = 1496.0
-offset_bottom = 686.0
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 1154.0
+offset_bottom = 653.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=76551724]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(1000, 512)
+size = Vector2i(1153, 650)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1578986142]
 
-[node name="Sprite3D" type="Sprite3D" parent="SubViewportContainer/SubViewport" unique_id=12367235]
-transform = Transform3D(0.06500001, 0, 0, 0, 0.06500001, 0, 0, 0, 0.06499999, 0, 0, -0.90486825)
-texture = ExtResource("1_ngi7l")
+[node name="Swords" parent="SubViewportContainer/SubViewport" unique_id=978528198 instance=ExtResource("2_ni46q")]
+transform = Transform3D(-0.022286082, 0.03139014, -0.07578251, 0, 0.078529745, 0.03252809, 0.08202639, 0.008528514, -0.020589653, 0.55, -0.05, -0.651)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/Sprite3D" unique_id=1308104387]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/Swords" unique_id=1308104387]
 libraries/ = SubResource("AnimationLibrary_647al")
 libraries/WeaponAnimation = SubResource("AnimationLibrary_hmfu4")
 
-[node name="Timer" type="Timer" parent="SubViewportContainer/SubViewport/Sprite3D" unique_id=1591528786]
+[node name="Timer" type="Timer" parent="SubViewportContainer/SubViewport/Swords" unique_id=1591528786]
