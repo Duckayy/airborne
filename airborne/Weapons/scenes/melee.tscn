@@ -1,10 +1,8 @@
 [gd_scene format=3 uid="uid://dfjrwdwwa8kc5"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aguxj"]
-load_path = "res://.godot/imported/ViewModelSword.png-037ce40e64ad72ba8ede43ff926e5ecf.s3tc.ctex"
+[ext_resource type="PackedScene" uid="uid://cvdlswnhag8u0" path="res://Models/Viewmodels/Weapons/Swords.glb" id="1_itk0p"]
 
 [node name="Node3D" type="Node3D" unique_id=302008554]
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=148568655]
-transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.30430722, -0.01977193, -0.46629468)
-texture = SubResource("CompressedTexture2D_aguxj")
+[node name="Swords" parent="." unique_id=978528198 instance=ExtResource("1_itk0p")]
+transform = Transform3D(0.285, 0, 0, 0, 0.285, 0, 0, 0, 0.285, 0.55, -0.05, -0.651)
