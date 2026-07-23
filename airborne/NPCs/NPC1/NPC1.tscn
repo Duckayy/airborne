@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://rtklii13ha0q"]
+
+[ext_resource type="Script" uid="uid://bey8ohbc0w3e8" path="res://NPCs/NPC1/npc1.gd" id="1_sax1o"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hyxgw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d8yeo"]
+radius = 2.5
+
+[node name="NPC1" type="Node3D" unique_id=912602157]
+
+[node name="NPC1" type="StaticBody3D" parent="." unique_id=1431512237]
+script = ExtResource("1_sax1o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC1" unique_id=1739337543]
+shape = SubResource("CapsuleShape3D_hyxgw")
+
+[node name="Sprite3D" type="Sprite3D" parent="NPC1" unique_id=1090163138]
+billboard = 1
+
+[node name="InteractArea" type="Area3D" parent="NPC1" unique_id=40642782]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC1/InteractArea" unique_id=237479817]
+shape = SubResource("SphereShape3D_d8yeo")
