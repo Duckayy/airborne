@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dc6d4hd0yf0j5"]
+
+[ext_resource type="Script" uid="uid://dpjw0vfujihny" path="res://Enemies V3 (Inheretence)/CloseRangeEnemiesV3/Enemey_RealV3.gd" id="1_rucs4"]
+[ext_resource type="Texture2D" uid="uid://buj1t2wog8p3s" path="res://Enemies V3 (Inheretence)/CloseRangeEnemiesV3/Screenshot 2026-06-08 030527.png" id="2_2md7k"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pyp5w"]
+
+[node name="EnemiesV3" type="Node3D" unique_id=730054890]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=314726639]
+script = ExtResource("1_rucs4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1113612187]
+shape = SubResource("CapsuleShape3D_pyp5w")
+
+[node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D" unique_id=783669240]
+billboard = 1
+texture = ExtResource("2_2md7k")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D" unique_id=243977881]
+
+[node name="AttackTimer" type="Timer" parent="CharacterBody3D" unique_id=2022850287]
+wait_time = 1.5
+one_shot = true
+
+[node name="HealthBarAnchor" type="Node3D" parent="CharacterBody3D" unique_id=550194655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="HealthBarViewport" type="SubViewport" parent="CharacterBody3D/HealthBarAnchor" unique_id=1410459971]
+transparent_bg = true
+size = Vector2i(600, 50)
+render_target_update_mode = 4
+
+[node name="HealthProgressBar" type="ProgressBar" parent="CharacterBody3D/HealthBarAnchor/HealthBarViewport" unique_id=353740045]
+offset_right = 600.0
+offset_bottom = 50.0
+value = 100.0
+
+[node name="HealthBarSprite" type="Sprite3D" parent="CharacterBody3D/HealthBarAnchor" unique_id=950545608]
+pixel_size = 0.005
+billboard = 1

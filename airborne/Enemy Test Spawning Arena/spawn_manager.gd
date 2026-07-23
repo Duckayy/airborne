@@ -11,9 +11,9 @@ signal player_entered_range
 @export var player_trigger_range = 15.0
 
 const ENEMY_SCENES = {
-	"melee": "res://EnemiesV2/CloseRangeEnemies/EnemiesV2.tscn",
-	"ranged": "res://EnemiesV2/RangedEnemies/RangedEnemies.tscn",
-	"flying": "res://EnemiesV2/FlyingEnemies/FlyingEnemy.tscn",
+	"melee": "res://Enemies V3 (Inheretence)/CloseRangeEnemiesV3/EnemiesV3.tscn",
+	"ranged": "res://Enemies V3 (Inheretence)/RangedEnemiesV3/RangedEnemiesV3.tscn",
+	"flying": "res://Enemies V3 (Inheretence)/FlyingEnemiesV3/FlyingEnemyV3.tscn",
 }
 
 var active_enemies: Array = []
