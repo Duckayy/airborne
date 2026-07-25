@@ -3,13 +3,6 @@
 		"item_category": "Item",
 		"item_name": "Hammer",
 		"item_quantity": 1,
-		"slot_index": 7,
-		"stack_size": 4
-	},
-	{
-		"item_category": "Item",
-		"item_name": "Hammer",
-		"item_quantity": 1,
 		"slot_index": 11,
 		"stack_size": 4
 	},
@@ -25,6 +18,13 @@
 		"item_name": "Hammer",
 		"item_quantity": 1,
 		"slot_index": 16,
+		"stack_size": 4
+	},
+	{
+		"item_category": "Item",
+		"item_name": "Hammer",
+		"item_quantity": 1,
+		"slot_index": 17,
 		"stack_size": 4
 	}
 ]
