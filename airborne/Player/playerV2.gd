@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 signal item_model(item_name)
 signal debug_state(state: bool)
+signal died
 
 @export var speed = 14.0
 @export var sprint_speed = 35.0
@@ -206,6 +207,7 @@ func _die():
 	if is_dead:
 		return
 	is_dead = true
+	emit_signal("died")
 	death_screen.visible = true
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

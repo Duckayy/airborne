@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://brfu0j2t42bu7"]
+
+[ext_resource type="Script" uid="uid://gc6nqd5xjw3g" path="res://NPCs/NPC1/dialogue_ui.gd" id="1_g8eiy"]
+
+[node name="DialogueUI" type="Control" unique_id=604385924]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_g8eiy")
+
+[node name="DialogueBox" type="PanelContainer" parent="." unique_id=1594530261]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -648.0
+offset_bottom = -448.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogueBox" unique_id=1226888678]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueBox/MarginContainer" unique_id=532192591]
+layout_mode = 2
+
+[node name="NPCNameLabel" type="Label" parent="DialogueBox/MarginContainer/VBoxContainer" unique_id=417898647]
+layout_mode = 2
+text = "NPC Name:"
+
+[node name="DialogueText" type="Label" parent="DialogueBox/MarginContainer/VBoxContainer" unique_id=1020565899]
+layout_mode = 2
+text = "Dialogue goes here"
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogueBox/MarginContainer/VBoxContainer" unique_id=1070543655]
+layout_mode = 2
+
+[node name="NextButton" type="Button" parent="DialogueBox/MarginContainer/VBoxContainer/HBoxContainer" unique_id=803749033]
+layout_mode = 2
+text = "Next ->"
+
+[node name="TradeButton" type="Button" parent="DialogueBox/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1001751988]
+layout_mode = 2
+text = "Trade"
+
+[node name="CloseButton" type="Button" parent="DialogueBox/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1436587336]
+layout_mode = 2
+text = "Close"
