@@ -6,7 +6,7 @@
 	},
 	"Hammer": {
 		"ItemCategory": "Weapon",
-		"ModelPath": "res://Models/Viewmodels/Weapons/ViewModelHammer.png",
+		"ModelPath": "res://Models/Viewmodels/Weapons/Swords.glb",
 		"UseAnimation": "res://Models/Viewmodels/Weapons/Animation/prototype_sword.res"
 	}
 }

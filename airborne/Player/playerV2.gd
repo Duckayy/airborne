@@ -29,6 +29,7 @@ var is_third_person = false
 var equipped_weapon = null
 var inventory_screen = false
 var is_attacking = false
+var equipped_weapon_instance: Node3D = null
 
 @onready var debug_menu = $HUD/DebugMenu
 @onready var head = $Head
@@ -275,6 +276,7 @@ func _on_item_selected(item_data):
 		equipped_weapon = item_data.item_name
 	else:
 		equipped_weapon = null
+	update_player_visuals(item_data)
 	item_model.emit(equipped_weapon)
 	print("Equiped Weapon: ", equipped_weapon)
 	
@@ -285,8 +287,23 @@ func _on_inventory_open(open):
 		inventory_screen = false
 	
 func update_player_visuals(item_data):
-	if item_data:
-		pass
+	if equipped_weapon_instance != null:
+		equipped_weapon_instance.queue_free()
+		equipped_weapon_instance = null
+		
+	if item_data == null:
+		return
+		
+	var static_data = JsonData.item_data[item_data.item_name]
+	var weapon_scene: PackedScene = load(static_data["WeaponScenePath"])
+	var weapon_instance = weapon_scene.instantiate()
+	
+	$Head/WeaponHolder.add_child(weapon_instance)
+	weapon_instance.setup(item_data)
+	
+	equipped_weapon_instance = weapon_instance
+
+		
 	pass
 
 func on_timer_countdown():

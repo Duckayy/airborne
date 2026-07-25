@@ -29,6 +29,9 @@ offset_right = 1164.0
 offset_bottom = 660.0
 mouse_filter = 2
 
+[node name="WeaponHolder" type="Node3D" parent="Head" unique_id=1097903957]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.36545807, -0.26108575, 0)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1524351219]
 
 [node name="StaminaBar" type="ProgressBar" parent="CanvasLayer" unique_id=616705718]

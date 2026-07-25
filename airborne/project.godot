@@ -24,6 +24,12 @@ JsonData="*uid://bj7jyrmksayx0"
 
 project/assembly_name="Airborne"
 
+[global_group]
+
+Player=""
+Enemy=""
+Teammate=""
+
 [input]
 
 ui_up={
