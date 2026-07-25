@@ -122,6 +122,7 @@ func take_damage(amount: float):
 	health = clamp(health, 0, max_health)
 	progress_bar.value = health
 	health_viewport.get_node("HPLabel").text = str(int(health)) + " / " + str(int(max_health))
+	print("Enemy Health:", health)
 	if health <= 0:
 		_die()
 

@@ -1,7 +1,7 @@
 {
 	"Sword": {
 		"ItemCategory": "Item",
-		"Damage": 3,
+		"Damage": 40,
 		"ItemSpeed": 1,
 		"StackSize": 1,
 		"Description": "Pretty dull blade but still sharp enough to be of use.",

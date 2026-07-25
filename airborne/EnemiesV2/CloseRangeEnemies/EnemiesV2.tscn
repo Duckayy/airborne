@@ -5,9 +5,10 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pyp5w"]
 
-[node name="EnemiesV2" type="Node3D" unique_id=730054890]
+[node name="EnemiesV2" type="Node3D" unique_id=730054890 groups=["Enemy"]]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=314726639]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=314726639 groups=["Enemy"]]
+collision_layer = 3
 script = ExtResource("1_yijlj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1113612187]

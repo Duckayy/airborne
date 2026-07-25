@@ -44,6 +44,7 @@ var equipped_weapon_instance: Node3D = null
 @onready var third_person_pivot = $ThirdPersonPivot
 @onready var inventory = $HUD/Inventory
 @onready var viewmodel = $Head/Camera3D/Melee
+@onready var WeaponAnimation = $Head/WeaponHolder/AnimationPlayer
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -185,6 +186,8 @@ func _process(_delta: float) -> void:
 func attack():
 	is_attacking = true
 	viewmodel.play_animation()
+	if equipped_weapon_instance:
+		perform_attack()
 	
 	#viewmodel_attack_animation.play("prototype_sword")
 	#timer.start(1.0)
@@ -290,21 +293,18 @@ func update_player_visuals(item_data):
 	if equipped_weapon_instance != null:
 		equipped_weapon_instance.queue_free()
 		equipped_weapon_instance = null
-		
 	if item_data == null:
 		return
-		
 	var static_data = JsonData.item_data[item_data.item_name]
 	var weapon_scene: PackedScene = load(static_data["WeaponScenePath"])
 	var weapon_instance = weapon_scene.instantiate()
-	
 	$Head/WeaponHolder.add_child(weapon_instance)
-	weapon_instance.setup(item_data)
-	
+	weapon_instance.setup(static_data)
 	equipped_weapon_instance = weapon_instance
-
-		
 	pass
 
 func on_timer_countdown():
 	is_attacking = false
+	
+func perform_attack() -> void:
+	WeaponAnimation.play("WeaponAttacksWorld/prototype_sword")

@@ -7,13 +7,18 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func setup(data) -> void:
-	damage = data.Damage
-	var mesh_scene: PackedScene = load(data.ModelPath)
+	damage = data["Damage"]
+	var mesh_scene: PackedScene = load(data["ModelPath"])
 	var mesh_instance = mesh_scene.instantiate()
 	$Swords.add_child(mesh_instance)
 	
 
 func _on_body_entered(body: Node3D) -> void:
+	print("hit: ", body.name)
+	print(body.name)
+	print(body.get_class())
+	print(body.get_groups())
 	if body.is_in_group("Enemy"):
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
+			print("Giving Damage")
