@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bc6isfo62qqc1" path="res://Hazards/spike_strip.tscn" id="3_t7csg"]
 [ext_resource type="PackedScene" uid="uid://cepwpgcb5j2j" path="res://EnemiesV2/RangedEnemies/RangedEnemies.tscn" id="4_dfxfp"]
 [ext_resource type="PackedScene" uid="uid://ccjnibtf1ya7p" path="res://EnemiesV2/FlyingEnemies/FlyingEnemy.tscn" id="5_7osof"]
+[ext_resource type="PackedScene" uid="uid://rtklii13ha0q" path="res://NPCs/NPC1/NPC1.tscn" id="6_tqbij"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_et2tj"]
 
@@ -107,3 +108,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.02127, 1.14, 36.171505)
 
 [node name="FlyingEnemy" parent="." unique_id=577321513 instance=ExtResource("5_7osof")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.81534, 1.14, -14.995216)
+
+[node name="NPC1" parent="." unique_id=912602157 instance=ExtResource("6_tqbij")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.966879, 1.6167045, -18.629192)

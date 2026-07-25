@@ -25,7 +25,7 @@ func _ready():
 func _create_interact_label():
 	var label_3d = Label3D.new()
 	label_3d.name = "InteractLabel"
-	label_3d.text = "Press E to interact"
+	label_3d.text = "Press F to interact"
 	label_3d.font_size = 32
 	label_3d.modulate = Color.YELLOW
 	label_3d.billboard = BaseMaterial3D.BILLBOARD_ENABLED
@@ -35,11 +35,12 @@ func _create_interact_label():
 	interact_label = label_3d
 
 func _unhandled_input(event):
-	if not player_in_range:
-		return
 	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_E:
-			_open_dialogue()
+		if event.keycode == KEY_F:
+			if dialogue_ui != null:
+				_close_dialogue()
+			elif player_in_range:
+				_open_dialogue()
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
@@ -59,16 +60,54 @@ func _on_body_exited(body):
 func _open_dialogue():
 	if dialogue_ui != null:
 		return
+	# Only disable camera/mouse look, not full physics
+	if player:
+		player.set_process_unhandled_input(false)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+	var canvas = CanvasLayer.new()
+	canvas.layer = 10
+	canvas.name = "DialogueCanvas"
+	get_tree().current_scene.add_child(canvas)
+	
+	
 	dialogue_ui = load("res://NPCs/NPC1/DialogueUI.tscn").instantiate()
-	get_tree().current_scene.add_child(dialogue_ui)
+	dialogue_ui.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	dialogue_ui.offset_top = -150
+	dialogue_ui.offset_bottom = 0
+	dialogue_ui.offset_left = 0
+	dialogue_ui.offset_right = 0
+	canvas.add_child(dialogue_ui)
 	dialogue_ui.setup(npc_name, dialogue, can_trade)
 	dialogue_ui.closed.connect(_close_dialogue)
 	dialogue_ui.trade_requested.connect(func(): emit_signal("trade_requested"))
+	
+	var overlay = ColorRect.new()
+	overlay.color = Color(0, 0, 0, 0.5)
+	overlay.anchor_left = 0
+	overlay.anchor_top = 0
+	overlay.anchor_right = 1
+	overlay.anchor_bottom = 1
+	overlay.offset_left = 0
+	overlay.offset_top = 0
+	overlay.offset_right = 0
+	overlay.offset_bottom = 0
+	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	canvas.add_child(overlay)
+	
+	if interact_label:
+		interact_label.visible = false
 
 func _close_dialogue():
 	if dialogue_ui == null:
 		return
-	dialogue_ui.queue_free()
+	if player:
+		player.set_process_unhandled_input(true)
+	var canvas = get_tree().current_scene.get_node_or_null("DialogueCanvas")
+	if canvas:
+		canvas.queue_free()
 	dialogue_ui = null
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	if interact_label and player_in_range:
+		interact_label.visible = true

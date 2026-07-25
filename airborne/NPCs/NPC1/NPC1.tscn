@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://rtklii13ha0q"]
 
 [ext_resource type="Script" uid="uid://bey8ohbc0w3e8" path="res://NPCs/NPC1/npc1.gd" id="1_sax1o"]
+[ext_resource type="Texture2D" uid="uid://doa3pn8od07es" path="res://icon.svg" id="2_d8yeo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hyxgw"]
 
@@ -17,6 +18,7 @@ shape = SubResource("CapsuleShape3D_hyxgw")
 
 [node name="Sprite3D" type="Sprite3D" parent="NPC1" unique_id=1090163138]
 billboard = 1
+texture = ExtResource("2_d8yeo")
 
 [node name="InteractArea" type="Area3D" parent="NPC1" unique_id=40642782]
 
