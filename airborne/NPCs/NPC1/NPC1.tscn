@@ -6,7 +6,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hyxgw"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d8yeo"]
-radius = 2.5
+radius = 8.0
 
 [node name="NPC1" type="Node3D" unique_id=912602157]
 

@@ -16,10 +16,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0419654, 0)
 shape = SubResource("CapsuleShape3D_q3lat")
 
 [node name="Head" type="Node3D" parent="." unique_id=865033745]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1388304, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.677538, -0.64454776)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=946532365]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5509467, -0.27941412)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1524351219]
 

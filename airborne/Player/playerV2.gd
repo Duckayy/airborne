@@ -71,6 +71,17 @@ func _ready():
 	stamina_bg.bg_color = Color(0.2, 0.2, 0.2, 1.0)
 	stamina_bar.add_theme_stylebox_override("background", stamina_bg)
 	stamina_bar.add_theme_color_override("font_color", Color.BLACK)
+	# Find all MeshInstance3D nodes inside the model and hide from layer 1
+	# Move player model to layer 2 only
+	for child in $Rangerv2.find_children("*", "MeshInstance3D", true):
+		child.set_layer_mask_value(1, false)
+		child.set_layer_mask_value(2, true)
+	
+	# First person camera ignores layer 2 only
+	$Head/Camera3D.set_cull_mask_value(2, false)
+	
+	# Third person camera sees layer 2
+	$ThirdPersonPivot/ThirdPersonCamera.set_cull_mask_value(2, true)
 
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed:
