@@ -45,7 +45,7 @@ var equipped_weapon_instance: Node3D = null
 @onready var third_person_pivot = $ThirdPersonPivot
 @onready var inventory = $HUD/Inventory
 @onready var viewmodel = $Head/Camera3D/Melee
-@onready var WeaponAnimation = $Head/WeaponHolder/AnimationPlayer
+@onready var WeaponAnimation = $Head/Camera3D/WeaponHolder/AnimationPlayer
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -300,7 +300,7 @@ func update_player_visuals(item_data):
 	var static_data = JsonData.item_data[item_data.item_name]
 	var weapon_scene: PackedScene = load(static_data["WeaponScenePath"])
 	var weapon_instance = weapon_scene.instantiate()
-	$Head/WeaponHolder.add_child(weapon_instance)
+	$Head/Camera3D/WeaponHolder.add_child(weapon_instance)
 	weapon_instance.setup(static_data)
 	equipped_weapon_instance = weapon_instance
 	pass
