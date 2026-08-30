@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpdibvbgofqas"
-path="res://.godot/imported/hammer.png-b4485462e784a1d4f827ce89f34051ec.ctex"
+path="res://.godot/imported/Hammer.png-2decb2d49edaaae8e22bafa2deae33bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://items/hammer.png"
-dest_files=["res://.godot/imported/hammer.png-b4485462e784a1d4f827ce89f34051ec.ctex"]
+source_file="res://items/Hammer.png"
+dest_files=["res://.godot/imported/Hammer.png-2decb2d49edaaae8e22bafa2deae33bb.ctex"]
 
 [params]
 
