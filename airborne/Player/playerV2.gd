@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 signal died
+signal debug_toggled(state: bool)
 
 @export var speed = 14.0
 @export var sprint_speed = 35.0
@@ -206,6 +207,7 @@ func _on_quit():
 func _toggle_debug():
 	debug_open = !debug_open
 	debug_menu.visible = debug_open
+	debug_toggled.emit(debug_open)
 	if debug_open:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	else:

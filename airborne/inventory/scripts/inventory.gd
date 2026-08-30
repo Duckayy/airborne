@@ -16,7 +16,7 @@ var debug_menu = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	player.debug_state.connect(_debug_menu)
+	player.debug_toggled.connect(_debug_menu)
 	
 	 #Allows slots to accept input
 	for inv_slots in inventory_slots.get_children():

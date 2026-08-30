@@ -47,7 +47,7 @@ shape = SubResource("ConcavePolygonShape3D_et2tj")
 [node name="EnemiesV2" parent="." unique_id=730054890 instance=ExtResource("2_et2tj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.64209, 1.8647635, 4.913553)
 
-[node name="Player2" parent="." unique_id=61944695 instance=ExtResource("1_f0ew4")]
+[node name="Player2" parent="." unique_id=61944695 groups=["Player"] instance=ExtResource("1_f0ew4")]
 transform = Transform3D(-0.9999947, 0, -0.0032638572, 0, 1, 0, 0.0032638572, 0, -0.9999947, 0, 1.5881703, -5.424842)
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1828699135]
