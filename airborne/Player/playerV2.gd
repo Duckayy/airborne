@@ -1,7 +1,5 @@
 extends CharacterBody3D
 
-signal item_model(item_name)
-signal debug_state(state: bool)
 signal died
 
 @export var speed = 14.0
@@ -27,10 +25,6 @@ var health = max_health
 var is_dead = false
 var debug_open = false
 var is_third_person = false
-var equipped_weapon = null
-var inventory_screen = false
-var is_attacking = false
-var equipped_weapon_instance: Node3D = null
 
 @onready var debug_menu = $HUD/DebugMenu
 @onready var head = $Head
@@ -44,8 +38,7 @@ var equipped_weapon_instance: Node3D = null
 @onready var third_person_camera = $ThirdPersonPivot/ThirdPersonCamera
 @onready var third_person_pivot = $ThirdPersonPivot
 @onready var inventory = $HUD/Inventory
-@onready var viewmodel = $Head/Camera3D/Melee
-@onready var WeaponAnimation = $Head/Camera3D/WeaponHolder/AnimationPlayer
+
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -78,14 +71,17 @@ func _ready():
 	stamina_bg.bg_color = Color(0.2, 0.2, 0.2, 1.0)
 	stamina_bar.add_theme_stylebox_override("background", stamina_bg)
 	stamina_bar.add_theme_color_override("font_color", Color.BLACK)
+	# Find all MeshInstance3D nodes inside the model and hide from layer 1
+	# Move player model to layer 2 only
+	for child in $Rangerv2.find_children("*", "MeshInstance3D", true):
+		child.set_layer_mask_value(1, false)
+		child.set_layer_mask_value(2, true)
 	
-	#Get inventory node
-	inventory.item_selected.connect(_on_item_selected)
-	inventory.inventory_menu.connect(_on_inventory_open)
+	# First person camera ignores layer 2 only
+	$Head/Camera3D.set_cull_mask_value(2, false)
 	
-	#load viewmodels
-	inventory.update_selection()
-	
+	# Third person camera sees layer 2
+	$ThirdPersonPivot/ThirdPersonCamera.set_cull_mask_value(2, true)
 
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed:
@@ -93,7 +89,7 @@ func _unhandled_input(event):
 			_toggle_debug()
 			return
 	if event is InputEventMouseMotion:
-		if debug_open or inventory_screen:
+		if debug_open:
 			return
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		if is_third_person: 
@@ -119,7 +115,6 @@ func _unhandled_input(event):
 			first_person_camera.current = true
 
 func _physics_process(delta):
-	
 	if is_dead:
 		return
 
@@ -180,19 +175,6 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("Primary Attack"):
-		attack()
-		
-func attack():
-	is_attacking = true
-	viewmodel.play_animation()
-	if equipped_weapon_instance:
-		perform_attack()
-	
-	#viewmodel_attack_animation.play("prototype_sword")
-	#timer.start(1.0)
-	
 func take_damage(amount: float):
 	if is_dead:
 		return
@@ -228,7 +210,6 @@ func _toggle_debug():
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	debug_state.emit(debug_open)
 
 func _build_debug_menu():
 	var vbox = $HUD/DebugMenu/ScrollContainer/VBoxContainer
@@ -275,38 +256,3 @@ func _build_debug_menu():
 	quit_btn.text = "Quit Game"
 	quit_btn.pressed.connect(get_tree().quit)
 	vbox.add_child(quit_btn)
-
-func _on_item_selected(item_data):
-	if item_data:
-		equipped_weapon = item_data.item_name
-	else:
-		equipped_weapon = null
-	update_player_visuals(item_data)
-	item_model.emit(equipped_weapon)
-	print("Equiped Weapon: ", equipped_weapon)
-	
-func _on_inventory_open(open):
-	if open:
-		inventory_screen = true
-	else:
-		inventory_screen = false
-	
-func update_player_visuals(item_data):
-	if equipped_weapon_instance != null:
-		equipped_weapon_instance.queue_free()
-		equipped_weapon_instance = null
-	if item_data == null:
-		return
-	var static_data = JsonData.item_data[item_data.item_name]
-	var weapon_scene: PackedScene = load(static_data["WeaponScenePath"])
-	var weapon_instance = weapon_scene.instantiate()
-	$Head/Camera3D/WeaponHolder.add_child(weapon_instance)
-	weapon_instance.setup(static_data)
-	equipped_weapon_instance = weapon_instance
-	pass
-
-func on_timer_countdown():
-	is_attacking = false
-	
-func perform_attack() -> void:
-	WeaponAnimation.play("WeaponAttacksWorld/prototype_sword")
