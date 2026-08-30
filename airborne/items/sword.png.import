@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://77t27ngv8nmw"
-path.s3tc="res://.godot/imported/sword.png-900b72c4f1761a2dc904730c9a4445d0.s3tc.ctex"
+path.s3tc="res://.godot/imported/Sword.png-6285a0fd53d5a1973e97d610da0623a4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://items/sword.png"
-dest_files=["res://.godot/imported/sword.png-900b72c4f1761a2dc904730c9a4445d0.s3tc.ctex"]
+source_file="res://items/Sword.png"
+dest_files=["res://.godot/imported/Sword.png-6285a0fd53d5a1973e97d610da0623a4.s3tc.ctex"]
 
 [params]
 
