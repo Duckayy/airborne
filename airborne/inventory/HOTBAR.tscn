@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://btpjwl1dvmm2s"]
+
+[ext_resource type="Texture2D" uid="uid://dh8nswo1weee0" path="res://inventory/inventoryslot.png" id="1_0g2wj"]
+[ext_resource type="Script" uid="uid://ddhufkkpsrdyp" path="res://inventory/scripts/slots.gd" id="2_q327d"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y2c8r"]
+texture = ExtResource("1_0g2wj")
+
+[node name="Hotbar" type="Control" unique_id=794020706]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1029967526]
+layout_mode = 0
+offset_left = 653.0
+offset_top = 512.0
+offset_right = 1138.0
+offset_bottom = 632.0
+
+[node name="slot1" type="Panel" parent="HBoxContainer" unique_id=619237052]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_y2c8r")
+script = ExtResource("2_q327d")
+
+[node name="slot2" type="Panel" parent="HBoxContainer" unique_id=892330693]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_y2c8r")
+script = ExtResource("2_q327d")
+
+[node name="slot3" type="Panel" parent="HBoxContainer" unique_id=293480334]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_y2c8r")
+script = ExtResource("2_q327d")
+
+[node name="slot4" type="Panel" parent="HBoxContainer" unique_id=1113777652]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_y2c8r")
+script = ExtResource("2_q327d")

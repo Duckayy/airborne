@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://be6iufwojrhg2"]
+
+[ext_resource type="Script" uid="uid://da6cho2m2pfy8" path="res://Enemy Test Spawning Arena/arena.gd" id="1_yo5bw"]
+[ext_resource type="Script" uid="uid://dpc3ld00m33o2" path="res://Enemy Test Spawning Arena/spawn_manager.gd" id="2_aet1b"]
+[ext_resource type="Script" uid="uid://4la6eumihua5" path="res://Enemy Test Spawning Arena/spawn_queue.gd" id="3_sy4wt"]
+[ext_resource type="Script" uid="uid://c7kgbiceqkj2b" path="res://Enemy Test Spawning Arena/arena_debug_menu.gd" id="4_cmt4b"]
+[ext_resource type="PackedScene" uid="uid://bngbegk1f5iue" path="res://Player/Player.tscn" id="5_cutvx"]
+[ext_resource type="Script" uid="uid://c4vdhtryd1oek" path="res://Enemy Test Spawning Arena/combat_log.gd" id="6_aet1b"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wf00a"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yo5bw"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="EnemySpawnTestArena" type="Node3D" unique_id=6769495]
+script = ExtResource("1_yo5bw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1909507328]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=271595433]
+transform = Transform3D(400, 0, 0, 0, 1, 0, 0, 0, 400, 0, 0, 0)
+mesh = SubResource("BoxMesh_wf00a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=364675911]
+transform = Transform3D(400, 0, 0, 0, 1, 0, 0, 0, 400, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_yo5bw")
+
+[node name="SpawnPoints" type="Node3D" parent="." unique_id=405460313]
+
+[node name="SpawnPoint1" type="Marker3D" parent="SpawnPoints" unique_id=257310964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 0)
+
+[node name="SpawnPoint2" type="Marker3D" parent="SpawnPoints" unique_id=1627257205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 0)
+
+[node name="SpawnPoint3" type="Marker3D" parent="SpawnPoints" unique_id=280463089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 5)
+
+[node name="SpawnPoint4" type="Marker3D" parent="SpawnPoints" unique_id=1853207901]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5)
+
+[node name="SpawnPoint5" type="Marker3D" parent="SpawnPoints" unique_id=855789024]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 5)
+
+[node name="SpawnPoint6" type="Marker3D" parent="SpawnPoints" unique_id=661951904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -5)
+
+[node name="SpawnManager" type="Node" parent="." unique_id=1290649071]
+script = ExtResource("2_aet1b")
+
+[node name="SpawnQueue" type="Node" parent="." unique_id=70343003]
+script = ExtResource("3_sy4wt")
+
+[node name="PLAYER" parent="." unique_id=421517997 instance=ExtResource("5_cutvx")]
+transform = Transform3D(-0.043584526, 0, 0.9990497, 0, 1, 0, -0.9990497, 0, -0.043584526, 38.324944, 1, 0)
+
+[node name="ArenaDebugMenu" type="CanvasLayer" parent="." unique_id=113067643]
+script = ExtResource("4_cmt4b")
+
+[node name="CombatLog" type="CanvasLayer" parent="." unique_id=2076157133]
+script = ExtResource("6_aet1b")

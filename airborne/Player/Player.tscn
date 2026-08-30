@@ -1,35 +1,32 @@
 [gd_scene format=3 uid="uid://bngbegk1f5iue"]
 
 [ext_resource type="Script" uid="uid://bfbfabdu0rkwq" path="res://Player/playerV2.gd" id="1_3qydi"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_3qydi"]
+[ext_resource type="PackedScene" uid="uid://8qewhu38evia" path="res://inventory/inventory.tscn" id="2_tok1r"]
+[ext_resource type="PackedScene" uid="uid://dqqxh2o6fjvrh" path="res://Models/Rangerv2.glb" id="3_tok1r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3lat"]
+radius = 0.32421875
+height = 2.036026
 
 [node name="PLAYER" type="CharacterBody3D" unique_id=421517997 groups=["player"]]
 script = ExtResource("1_3qydi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2097901659]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9512358, 0)
-mesh = SubResource("CapsuleMesh_3qydi")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=543733144]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.953411, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0419654, 0)
 shape = SubResource("CapsuleShape3D_q3lat")
 
 [node name="Head" type="Node3D" parent="." unique_id=865033745]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0260494, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.677538, -0.64454776)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=946532365]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5509467, -0.27941412)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1524351219]
 
 [node name="StaminaBar" type="ProgressBar" parent="CanvasLayer" unique_id=616705718]
-offset_left = 19.0
-offset_top = 570.0
-offset_right = 336.0
-offset_bottom = 597.0
+offset_left = 13.0
+offset_top = 46.0
+offset_right = 215.0
+offset_bottom = 73.0
 value = 100.0
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1970272350]
@@ -38,11 +35,21 @@ value = 100.0
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 19.0
-offset_top = -40.0
-offset_right = 593.0
-offset_bottom = -13.0
+offset_left = 13.0
+offset_top = -633.0
+offset_right = 570.0
+offset_bottom = -606.0
 grow_vertical = 0
+
+[node name="HPLabel" type="Label" parent="HUD/HPBar" unique_id=1140272104]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DeathScreen" type="Control" parent="HUD" unique_id=476535539]
 layout_mode = 3
@@ -81,3 +88,44 @@ offset_right = 675.0
 offset_bottom = 581.0
 theme_override_font_sizes/font_size = 30
 text = "RESTART"
+
+[node name="DebugMenu" type="Control" parent="HUD" unique_id=1130276896]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="HUD/DebugMenu" unique_id=2014461445]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.7058824)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HUD/DebugMenu" unique_id=2084196056]
+process_mode = 3
+layout_mode = 0
+offset_left = 50.0
+offset_top = 100.0
+offset_right = 450.0
+offset_bottom = 600.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/DebugMenu/ScrollContainer" unique_id=1364587404]
+process_mode = 3
+layout_mode = 2
+
+[node name="Inventory" parent="HUD" unique_id=518256483 instance=ExtResource("2_tok1r")]
+
+[node name="Rangerv2" parent="." unique_id=1335684350 instance=ExtResource("3_tok1r")]
+transform = Transform3D(0.0155503005, 0, 0.99987906, 0, 1, 0, -0.99987906, 0, 0.0155503005, -0.020346105, 0.056899607, 1.0086656)
+
+[node name="ThirdPersonPivot" type="Node3D" parent="." unique_id=502752551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="ThirdPersonCamera" type="Camera3D" parent="ThirdPersonPivot" unique_id=2011120114]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 4)
