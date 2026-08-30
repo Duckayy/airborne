@@ -44,7 +44,7 @@ var equipped_weapon_instance: Node3D = null
 @onready var third_person_camera = $ThirdPersonPivot/ThirdPersonCamera
 @onready var third_person_pivot = $ThirdPersonPivot
 @onready var inventory = $HUD/Inventory
-@onready var viewmodel = $Head/Camera3D/Melee
+@onready var viewmodel = $HUD/Viewmodel
 @onready var WeaponAnimation = $Head/Camera3D/WeaponHolder/AnimationPlayer
 
 func _ready():

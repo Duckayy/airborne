@@ -12,6 +12,8 @@ var player_in_range = false
 var player: Node3D = null
 var dialogue_ui = null
 var interact_label = null
+var player_in_label_range = false
+
 
 @onready var interact_area = $InteractArea
 
@@ -21,6 +23,26 @@ func _ready():
 	interact_area.body_entered.connect(_on_body_entered)
 	interact_area.body_exited.connect(_on_body_exited)
 	_create_interact_label()
+
+func _physics_process(_delta):
+	if player == null:
+		return
+	var dist = global_position.distance_to(player.global_position)
+	
+	# Show label at 8m
+	if dist <= 8.0:
+		if interact_label:
+			interact_label.visible = true
+	else:
+		if interact_label:
+			interact_label.visible = false
+	
+	# Only allow interaction at 3m
+	player_in_range = dist <= 3.0
+	
+	# Close dialogue if player walks away
+	if dist > 3.0 and dialogue_ui != null:
+		_close_dialogue()
 
 func _create_interact_label():
 	var label_3d = Label3D.new()
@@ -46,15 +68,11 @@ func _on_body_entered(body):
 	if body.is_in_group("player"):
 		player = body
 		player_in_range = true
-		if interact_label:
-			interact_label.visible = true
 
 func _on_body_exited(body):
 	if body.is_in_group("player"):
 		player = null
 		player_in_range = false
-		if interact_label:
-			interact_label.visible = false
 		_close_dialogue()
 
 func _open_dialogue():

@@ -4,7 +4,7 @@ var inventory_data = JsonData.LoadData("res://Data/Inventory/InventoryData.json"
 var item_data = JsonData.LoadData("res://Data/ItemData.json")
 var item_asset_data = JsonData.LoadData("res://Data/ItemAssetData.json")
 
-@onready var player = $"../../.."
+@onready var player = $"../.."
 @onready var model = $SubViewportContainer/SubViewport/Swords
 @onready var animation = $SubViewportContainer/SubViewport/Swords/AnimationPlayer
 

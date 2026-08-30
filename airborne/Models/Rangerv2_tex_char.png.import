@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://77t27ngv8nmw"
-path.s3tc="res://.godot/imported/Sword.png-6285a0fd53d5a1973e97d610da0623a4.s3tc.ctex"
+uid="uid://oh8258au2bve"
+path.s3tc="res://.godot/imported/Rangerv2_tex_char.png-6ce38c567270c00ff3f0b091ef5f40e0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "9984ec5780c2b3805780c28ef988f108"
+}
 
 [deps]
 
-source_file="res://items/Sword.png"
-dest_files=["res://.godot/imported/Sword.png-6285a0fd53d5a1973e97d610da0623a4.s3tc.ctex"]
+source_file="res://Models/Rangerv2_tex_char.png"
+dest_files=["res://.godot/imported/Rangerv2_tex_char.png-6ce38c567270c00ff3f0b091ef5f40e0.s3tc.ctex"]
 
 [params]
 
