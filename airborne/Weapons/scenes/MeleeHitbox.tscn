@@ -1,22 +1,17 @@
 [gd_scene format=3 uid="uid://dfjrwdwwa8kc5"]
 
-[ext_resource type="PackedScene" uid="uid://cvdlswnhag8u0" path="res://Models/Viewmodels/Weapons/Swords.glb" id="1_8euau"]
 [ext_resource type="Script" uid="uid://cm8pmw27avmyb" path="res://Weapons/scripts/WeaponHitbox.gd" id="1_x04oc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x04oc"]
-size = Vector3(1, 10.883909, 1)
+size = Vector3(0.99, 1, 3.715)
 
 [node name="Node3D" type="Node3D" unique_id=302008554 groups=["Player"]]
 script = ExtResource("1_x04oc")
 damage = 10
 
-[node name="Swords" parent="." unique_id=978528198 groups=["Player"] instance=ExtResource("1_8euau")]
-transform = Transform3D(0.285, 0, 0, 0, 0.285, 0, 0, 0, 0.285, -0.70765585, 0.64767593, 0.0027217865)
-
-[node name="Area3D" type="Area3D" parent="Swords" unique_id=509265093 groups=["Player"]]
+[node name="Area3D" type="Area3D" parent="." unique_id=509265093 groups=["Player"]]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Swords/Area3D" unique_id=660577719 groups=["Player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.530617, 2.2551334, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=660577719 groups=["Player"]]
 shape = SubResource("BoxShape3D_x04oc")

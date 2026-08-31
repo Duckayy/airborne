@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bfbfabdu0rkwq" path="res://Player/playerV2.gd" id="1_3qydi"]
 [ext_resource type="PackedScene" uid="uid://b2t2eydjcbi6l" path="res://Weapons/scenes/viewmodel.tscn" id="2_6ysni"]
 [ext_resource type="PackedScene" uid="uid://8qewhu38evia" path="res://inventory/inventory.tscn" id="2_tok1r"]
+[ext_resource type="PackedScene" uid="uid://dfjrwdwwa8kc5" path="res://Weapons/scenes/MeleeHitbox.tscn" id="2_vlldt"]
 [ext_resource type="AnimationLibrary" uid="uid://d0vrwyywm5b78" path="res://Animation/Libraries/WeaponAttacksWorld.res" id="3_8g4oa"]
 [ext_resource type="PackedScene" uid="uid://dqqxh2o6fjvrh" path="res://Models/Rangerv2.glb" id="3_tok1r"]
 
@@ -54,6 +55,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0260494, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=946532365]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5509467, -0.27941412)
+
+[node name="MeleeHitbox" parent="Head/Camera3D" unique_id=302008554 instance=ExtResource("2_vlldt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.305)
 
 [node name="WeaponHolder" type="Node3D" parent="Head/Camera3D" unique_id=1097903957]
 transform = Transform3D(0.9999999, 0, 0, 0, -4.371139e-08, 1.0000001, 0, -1, -4.3711392e-08, 0.36545807, -0.26108575, 0)
@@ -177,6 +181,7 @@ layout_mode = 2
 
 [node name="Rangerv2" parent="." unique_id=965406420 instance=ExtResource("3_tok1r")]
 transform = Transform3D(0.00047119058, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 0.00047119058, -0.0015862584, 0, 1.0063021)
+visible = false
 
 [node name="ThirdPersonPivot" type="Node3D" parent="." unique_id=502752551]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
