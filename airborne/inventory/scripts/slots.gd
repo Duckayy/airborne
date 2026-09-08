@@ -7,10 +7,7 @@ var item = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if randi() % 2 == 0:
-		item = ItemClass.instantiate()
-		add_child(item) # Replace with function body.
-		fit_item()
+	pass
 
 func fit_item() -> void:
 	item.position = Vector2.ZERO
@@ -20,11 +17,8 @@ func fit_item() -> void:
 	var label1 = item.get_node("Label")
 	texture_rect.anchors_preset = Control.PRESET_FULL_RECT
 	texture_rect.size = self.size
-	print("control size: ", self.size)
-	print("label size: ", label1.size)
-	print("label position: ", label1.position)
 	label1.anchors_preset = Control.PRESET_BOTTOM_RIGHT
-	label1.size = self.size / 4
+	label1.size = self.size
 
 ##Places object owned by user and puts it into slot
 func slot_place_item(held_item):
@@ -41,7 +35,7 @@ func slot_take_item():
 	ghost_panel.item = item
 	self.item = null
 
-func slot_mult_place(new_name, quantity):
+func create_item(new_name, quantity): #can be used to create items
 	item = ItemClass.instantiate()
 	item.setup(new_name, quantity)
 	add_child(item)

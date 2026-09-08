@@ -19,15 +19,17 @@ offset_left = 199.0
 offset_top = 75.0
 offset_right = 1052.0
 offset_bottom = 552.0
+scale = Vector2(0.86, 0.86)
 texture = ExtResource("1_qse2j")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="GridContainer1" type="GridContainer" parent="." unique_id=1798706670]
-offset_left = 218.0
-offset_top = 171.0
-offset_right = 825.0
-offset_bottom = 540.0
+offset_left = 215.99998
+offset_top = 160.0
+offset_right = 824.0
+offset_bottom = 529.0
+scale = Vector2(0.86, 0.86)
 theme_override_constants/h_separation = 2
 theme_override_constants/v_separation = 0
 columns = 5
@@ -137,11 +139,54 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
 script = ExtResource("3_f8i2h")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1692704235]
+offset_left = 524.0
+offset_top = 512.0
+offset_right = 1140.0
+offset_bottom = 632.0
+
+[node name="Slots1" type="Panel" parent="HBoxContainer" unique_id=1056197766]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
+script = ExtResource("3_f8i2h")
+
+[node name="Slots2" type="Panel" parent="HBoxContainer" unique_id=1174522626]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
+script = ExtResource("3_f8i2h")
+
+[node name="Slots3" type="Panel" parent="HBoxContainer" unique_id=266182263]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
+script = ExtResource("3_f8i2h")
+
+[node name="Slots4" type="Panel" parent="HBoxContainer" unique_id=1745913091]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
+script = ExtResource("3_f8i2h")
+
+[node name="Slots5" type="Panel" parent="HBoxContainer" unique_id=969041129]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qse2j")
+script = ExtResource("3_f8i2h")
+
 [node name="GhostSlot" type="Panel" parent="." unique_id=2132416458]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 120)
-offset_right = 120.0
-offset_bottom = 120.0
+offset_left = 524.0
+offset_top = 512.0
+offset_right = 644.0
+offset_bottom = 632.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_lhcfm")
 script = ExtResource("4_lhcfm")
