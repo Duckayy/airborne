@@ -1,0 +1,6 @@
+{
+	"MeleeStandard": {
+		"Dimensions": { "width": 0.9,  "height": 1.0,  "reach": 3.7},
+		"Position": { "x": 0,  "y": 0,  "z": 0}
+	}
+}

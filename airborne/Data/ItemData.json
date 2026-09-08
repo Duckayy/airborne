@@ -6,7 +6,8 @@
 		"StackSize": 1,
 		"Description": "Pretty dull blade but still sharp enough to be of use.",
 		"ModelPath": "res://Models/Viewmodels/Weapons/Swords.glb",
-		"WeaponScenePath": "res://Weapons/scenes/MeleeHitbox.tscn"
+		"WeaponScenePath": "res://Weapons/scenes/MeleeHitbox.tscn",
+		"Hitbox": "MeleeStandard"
 	},
 	"Hammer": {
 		"ItemCategory": "Item",
@@ -15,6 +16,7 @@
 		"StackSize": 4,
 		"Description": "Looks like the blacksmith made the handle a little too short.",
 		"ModelPath": "res://Models/Viewmodels/Weapons/Swords.glb",
-		"WeaponScenePath": "res://Weapons/scenes/MeleeHitbox.tscn"
+		"WeaponScenePath": "res://Weapons/scenes/MeleeHitbox.tscn",
+		"Hitbox": "MeleeStandard"
 	}
 }

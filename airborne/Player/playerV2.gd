@@ -4,6 +4,7 @@ signal item_model(item_name)
 signal debug_state(state: bool)
 signal died
 
+
 @export var speed = 14.0
 @export var sprint_speed = 35.0
 @export var acceleration = 50.0
@@ -46,6 +47,7 @@ var equipped_weapon_instance: Node3D = null
 @onready var inventory = $HUD/Inventory
 @onready var viewmodel = $HUD/Viewmodel
 @onready var WeaponAnimation = $Head/Camera3D/WeaponHolder/AnimationPlayer
+
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

@@ -15,7 +15,6 @@ var debug_menu = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	player.debug_state.connect(_debug_menu)
 	
 	 #Allows slots to accept input
@@ -167,6 +166,7 @@ func update_selection():
 	var slot = hotbar_slots.get_child(active_item_slot)
 	if active_item_slot < hotbar_slots.get_child_count():
 		item_selected.emit(slot.item)
+		print(slot.item)
 		slot.refresh_style(true)
 	else:
 		item_selected.emit(null)
