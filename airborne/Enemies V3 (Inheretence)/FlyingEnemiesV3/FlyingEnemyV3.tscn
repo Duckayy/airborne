@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bsu4hoxqmwxyj"]
 
 [ext_resource type="Script" uid="uid://ceahmsxcdealr" path="res://Enemies V3 (Inheretence)/FlyingEnemiesV3/flying_enemyV3.gd" id="1_vyiyi"]
-[ext_resource type="Texture2D" uid="uid://doa3pn8od07es" path="res://icon.svg" id="2_blt1y"]
 [ext_resource type="PackedScene" uid="uid://dqqxh2o6fjvrh" path="res://Models/Rangerv2.glb" id="3_j2nbp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_442qi"]
@@ -17,10 +16,8 @@ script = ExtResource("1_vyiyi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012451172, 0)
 shape = SubResource("CapsuleShape3D_442qi")
 
-[node name="Sprite3D" type="Sprite3D" parent="FlyingEnemy" unique_id=677284758]
-visible = false
-billboard = 1
-texture = ExtResource("2_blt1y")
+[node name="Rangerv2" parent="FlyingEnemy" unique_id=1713960138 instance=ExtResource("3_j2nbp")]
+transform = Transform3D(0.0155503005, 0, 0.99987906, 0, 1, 0, -0.99987906, 0, 0.0155503005, -0.020346105, -0.9943537, 1.0086656)
 
 [node name="LineOfSightRay" type="RayCast3D" parent="FlyingEnemy" unique_id=1101803036]
 
@@ -46,6 +43,3 @@ value = 100.0
 [node name="HealthBarSprite" type="Sprite3D" parent="FlyingEnemy/HealthBarAnchor" unique_id=1551949461]
 pixel_size = 0.005
 billboard = 1
-
-[node name="Rangerv2" parent="." unique_id=1713960138 instance=ExtResource("3_j2nbp")]
-transform = Transform3D(0.0155503005, 0, 0.99987906, 0, 1, 0, -0.99987906, 0, 0.0155503005, -0.020346105, -0.9943537, 1.0086656)
