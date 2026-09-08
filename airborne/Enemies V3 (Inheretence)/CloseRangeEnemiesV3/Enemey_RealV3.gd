@@ -1,7 +1,7 @@
 extends BaseEnemy
 
 @export var move_speed = 6.0
-@export var attack_range = 2.0
+@export var attack_range = 4.0
 
 @onready var attack_timer = $AttackTimer
 

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c7kgbiceqkj2b" path="res://Enemy Test Spawning Arena/arena_debug_menu.gd" id="4_cmt4b"]
 [ext_resource type="PackedScene" uid="uid://bngbegk1f5iue" path="res://Player/Player.tscn" id="5_cutvx"]
 [ext_resource type="Script" uid="uid://c4vdhtryd1oek" path="res://Enemy Test Spawning Arena/combat_log.gd" id="6_aet1b"]
+[ext_resource type="PackedScene" uid="uid://bc6isfo62qqc1" path="res://Hazards/spike_strip.tscn" id="7_sy4wt"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wf00a"]
 
@@ -59,3 +60,6 @@ script = ExtResource("4_cmt4b")
 
 [node name="CombatLog" type="CanvasLayer" parent="." unique_id=2076157133]
 script = ExtResource("6_aet1b")
+
+[node name="SpikeStrip" parent="." unique_id=1422921587 instance=ExtResource("7_sy4wt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.418577, 0.55, 0.08919954)
