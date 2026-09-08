@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cee0plgt263bl" path="res://Enemies V3 (Inheretence)/RangedEnemiesV3/ranged_enemyV3.gd" id="1_1fno6"]
 [ext_resource type="Texture2D" uid="uid://doa3pn8od07es" path="res://icon.svg" id="2_mi0vu"]
+[ext_resource type="PackedScene" uid="uid://dqqxh2o6fjvrh" path="res://Models/Rangerv2.glb" id="3_d762j"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rpnlf"]
+radius = 0.32177734
+height = 2.0361328
 
 [node name="RangedEnemiesV3" type="Node3D" unique_id=2134068809]
 
@@ -11,9 +14,11 @@
 script = ExtResource("1_1fno6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RangedEnemy" unique_id=712853169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018066406, 0)
 shape = SubResource("CapsuleShape3D_rpnlf")
 
 [node name="Sprite3D" type="Sprite3D" parent="RangedEnemy" unique_id=1871367218]
+visible = false
 billboard = 1
 texture = ExtResource("2_mi0vu")
 
@@ -46,3 +51,6 @@ value = 100.0
 [node name="HealthBarSprite" type="Sprite3D" parent="RangedEnemy/HealthBarAnchor" unique_id=112722526]
 pixel_size = 0.005
 billboard = 1
+
+[node name="Rangerv2" parent="." unique_id=1713960138 instance=ExtResource("3_d762j")]
+transform = Transform3D(0.0155503005, 0, 0.99987906, 0, 1, 0, -0.99987906, 0, 0.0155503005, -0.020346105, -1.0037177, 1.0086656)

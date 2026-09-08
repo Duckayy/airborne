@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dpjw0vfujihny" path="res://Enemies V3 (Inheretence)/CloseRangeEnemiesV3/Enemey_RealV3.gd" id="1_rucs4"]
 [ext_resource type="Texture2D" uid="uid://buj1t2wog8p3s" path="res://Enemies V3 (Inheretence)/CloseRangeEnemiesV3/Screenshot 2026-06-08 030527.png" id="2_2md7k"]
+[ext_resource type="PackedScene" uid="uid://dqqxh2o6fjvrh" path="res://Models/Rangerv2.glb" id="3_i51tr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pyp5w"]
+radius = 0.35107422
+height = 2.0310059
 
 [node name="EnemiesV3" type="Node3D" unique_id=730054890]
 
@@ -11,9 +14,11 @@
 script = ExtResource("1_rucs4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1113612187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013135895, -0.017583609, -0.024348736)
 shape = SubResource("CapsuleShape3D_pyp5w")
 
 [node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D" unique_id=783669240]
+visible = false
 billboard = 1
 texture = ExtResource("2_2md7k")
 
@@ -39,3 +44,6 @@ value = 100.0
 [node name="HealthBarSprite" type="Sprite3D" parent="CharacterBody3D/HealthBarAnchor" unique_id=950545608]
 pixel_size = 0.005
 billboard = 1
+
+[node name="Rangerv2" parent="." unique_id=1713960138 instance=ExtResource("3_i51tr")]
+transform = Transform3D(0.0155503005, 0, 0.99987906, 0, 1, 0, -0.99987906, 0, 0.0155503005, 0.004006803, -0.99407136, 1.0086656)
