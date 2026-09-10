@@ -47,6 +47,7 @@ var equipped_weapon_instance: Node3D = null
 @onready var inventory = $HUD/Inventory
 @onready var viewmodel = $HUD/Viewmodel
 @onready var WeaponAnimation = $Head/Camera3D/WeaponHolder/AnimationPlayer
+@onready var melee_weapon_hitbox = $Head/Camera3D/MeleeHitbox
 
 
 func _ready():
@@ -312,3 +313,4 @@ func on_timer_countdown():
 	
 func perform_attack() -> void:
 	WeaponAnimation.play("WeaponAttacksWorld/prototype_sword")
+	
