@@ -3,7 +3,7 @@ extends Node
 @export var damage: int
 
 @onready var area: Area3D = $Area3D
-@onready var CollisionBox: CollisionObject3D = $Area3D/CollisionShape3D
+@onready var CollisionBox: CollisionShape3D = $Area3D/CollisionShape3D
 
 
 var HitboxData = {}
