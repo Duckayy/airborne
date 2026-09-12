@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://bfbfabdu0rkwq" path="res://Player/playerV2.gd" id="1_3qydi"]
 [ext_resource type="PackedScene" uid="uid://8qewhu38evia" path="res://inventory/inventory.tscn" id="2_tok1r"]
 [ext_resource type="PackedScene" uid="uid://dqqxh2o6fjvrh" path="res://Models/Rangerv2.glb" id="3_tok1r"]
+[ext_resource type="Script" uid="uid://c5p5oc5sc72fx" path="res://DebugMenu/debug_menu.gd" id="4_6ysni"]
+[ext_resource type="Script" uid="uid://c4ng1dubces56" path="res://DebugMenu/debug_panel_player.gd" id="5_vlldt"]
+[ext_resource type="Script" uid="uid://bas4t35uiaa50" path="res://DebugMenu/debug_panel_spawn.gd" id="6_s1rgi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3lat"]
 radius = 0.32421875
@@ -89,36 +92,6 @@ offset_bottom = 581.0
 theme_override_font_sizes/font_size = 30
 text = "RESTART"
 
-[node name="DebugMenu" type="Control" parent="HUD" unique_id=1130276896]
-process_mode = 3
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Background" type="ColorRect" parent="HUD/DebugMenu" unique_id=2014461445]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0.7058824)
-
-[node name="ScrollContainer" type="ScrollContainer" parent="HUD/DebugMenu" unique_id=2084196056]
-process_mode = 3
-layout_mode = 0
-offset_left = 50.0
-offset_top = 100.0
-offset_right = 450.0
-offset_bottom = 600.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/DebugMenu/ScrollContainer" unique_id=1364587404]
-process_mode = 3
-layout_mode = 2
-
 [node name="Inventory" parent="HUD" unique_id=518256483 instance=ExtResource("2_tok1r")]
 
 [node name="Rangerv2" parent="." unique_id=1335684350 instance=ExtResource("3_tok1r")]
@@ -129,3 +102,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="ThirdPersonCamera" type="Camera3D" parent="ThirdPersonPivot" unique_id=2011120114]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 4)
+
+[node name="DebugMenu" type="CanvasLayer" parent="." unique_id=563456027]
+layer = 20
+script = ExtResource("4_6ysni")
+
+[node name="PlayerDebugPanel" type="Node" parent="DebugMenu" unique_id=202751546]
+script = ExtResource("5_vlldt")
+
+[node name="SpawnDebugPanel" type="Node" parent="DebugMenu" unique_id=1070367995]
+script = ExtResource("6_s1rgi")

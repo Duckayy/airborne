@@ -3,10 +3,12 @@
 [ext_resource type="Script" uid="uid://da6cho2m2pfy8" path="res://Enemy Test Spawning Arena/arena.gd" id="1_yo5bw"]
 [ext_resource type="Script" uid="uid://dpc3ld00m33o2" path="res://Enemy Test Spawning Arena/spawn_manager.gd" id="2_aet1b"]
 [ext_resource type="Script" uid="uid://4la6eumihua5" path="res://Enemy Test Spawning Arena/spawn_queue.gd" id="3_sy4wt"]
-[ext_resource type="Script" uid="uid://c7kgbiceqkj2b" path="res://Enemy Test Spawning Arena/arena_debug_menu.gd" id="4_cmt4b"]
 [ext_resource type="PackedScene" uid="uid://bngbegk1f5iue" path="res://Player/Player.tscn" id="5_cutvx"]
 [ext_resource type="Script" uid="uid://c4vdhtryd1oek" path="res://Enemy Test Spawning Arena/combat_log.gd" id="6_aet1b"]
+[ext_resource type="Script" uid="uid://c5p5oc5sc72fx" path="res://DebugMenu/debug_menu.gd" id="7_cutvx"]
 [ext_resource type="PackedScene" uid="uid://bc6isfo62qqc1" path="res://Hazards/spike_strip.tscn" id="7_sy4wt"]
+[ext_resource type="Script" uid="uid://c4ng1dubces56" path="res://DebugMenu/debug_panel_player.gd" id="8_wf00a"]
+[ext_resource type="Script" uid="uid://bas4t35uiaa50" path="res://DebugMenu/debug_panel_spawn.gd" id="9_humsm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wf00a"]
 
@@ -55,11 +57,18 @@ script = ExtResource("3_sy4wt")
 [node name="PLAYER" parent="." unique_id=421517997 instance=ExtResource("5_cutvx")]
 transform = Transform3D(-0.043584526, 0, 0.9990497, 0, 1, 0, -0.9990497, 0, -0.043584526, 38.324944, 1, 0)
 
-[node name="ArenaDebugMenu" type="CanvasLayer" parent="." unique_id=113067643]
-script = ExtResource("4_cmt4b")
-
 [node name="CombatLog" type="CanvasLayer" parent="." unique_id=2076157133]
 script = ExtResource("6_aet1b")
 
 [node name="SpikeStrip" parent="." unique_id=1422921587 instance=ExtResource("7_sy4wt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.418577, 0.55, 0.08919954)
+
+[node name="DebugMenu" type="CanvasLayer" parent="." unique_id=652587817]
+layer = 20
+script = ExtResource("7_cutvx")
+
+[node name="PlayerDebugPanel" type="Node" parent="DebugMenu" unique_id=242004285]
+script = ExtResource("8_wf00a")
+
+[node name="SpawnDebugPanel" type="Node" parent="DebugMenu" unique_id=1323670041]
+script = ExtResource("9_humsm")
