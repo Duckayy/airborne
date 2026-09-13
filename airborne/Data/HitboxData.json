@@ -2,5 +2,9 @@
 	"MeleeStandard": {
 		"Dimensions": { "width": 0.9,  "height": 1.0,  "reach": 3.7},
 		"Position": { "x": 0,  "y": 0,  "z": 0}
-	}
+	}, 
+	"MeleeHammer": {
+		"Dimensions": { "width": 4.7,  "height": 1.0,  "reach": 2.5},
+		"Position": { "x": 0,  "y": 0,  "z": 0}
+	}, 
 }

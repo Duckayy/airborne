@@ -90,6 +90,8 @@ func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
 						ghost_panel.item.remove_item_quantity(1)
 					else:
 						inv_slots.slot_place_item(ghost_panel.item)
+		if inv_slots == hotbar_slots.get_child(active_item_slot): #Ensures hotbar and inventory refreshes when updated
+			update_selection()
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if debug_menu:

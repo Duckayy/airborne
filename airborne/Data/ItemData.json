@@ -17,6 +17,6 @@
 		"Description": "Looks like the blacksmith made the handle a little too short.",
 		"ModelPath": "res://Models/Viewmodels/Weapons/Swords.glb",
 		"WeaponScenePath": "res://Weapons/scenes/MeleeHitbox.tscn",
-		"Hitbox": "MeleeStandard"
+		"Hitbox": "MeleeHammer"
 	}
 }
