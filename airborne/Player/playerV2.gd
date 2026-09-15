@@ -305,6 +305,7 @@ func update_player_visuals(item_data):
 	var weapon_instance = weapon_scene.instantiate()
 	$Head/Camera3D/WeaponHolder.add_child(weapon_instance)
 	weapon_instance.setup(static_data)
+	melee_weapon_hitbox.setup(static_data)
 	equipped_weapon_instance = weapon_instance
 	pass
 
