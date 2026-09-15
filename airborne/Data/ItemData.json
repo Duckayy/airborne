@@ -11,7 +11,7 @@
 	},
 	"Hammer": {
 		"ItemCategory": "Item",
-		"Damage": 5,
+		"Damage": 50,
 		"ItemSpeed": 0.5,
 		"StackSize": 4,
 		"Description": "Looks like the blacksmith made the handle a little too short.",

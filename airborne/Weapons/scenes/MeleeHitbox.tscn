@@ -7,7 +7,6 @@ size = Vector3(4.775, 1, 2.535)
 
 [node name="Node3D" type="Node3D" unique_id=302008554 groups=["Player"]]
 script = ExtResource("1_x04oc")
-damage = 10
 
 [node name="Area3D" type="Area3D" parent="." unique_id=509265093 groups=["Player"]]
 collision_layer = 2

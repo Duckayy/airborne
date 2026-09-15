@@ -1,11 +1,10 @@
 extends Node
 
-@export var damage: int
 
 @onready var area: Area3D = $Area3D
 @onready var CollisionBox: CollisionShape3D = $Area3D/CollisionShape3D
 
-
+var damage: int
 var HitboxData = {}
 var _active := false
 var _already_hit: Dictionary = {} #Bodies already hit this swing
@@ -18,6 +17,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 	
 func setup(data) -> void:
+	print("This is damage", damage)
 	damage = data["Damage"]
 	var hitbox_key = data["Hitbox"]
 	var hitbox_data = HitboxData[hitbox_key]
