@@ -10,7 +10,7 @@ func _ready():
 		points.append(child)
 	spawner.set_spawn_points(points)
 	spawn_queue.set_spawner(spawner)
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
 
 	# Connect trigger
 	spawner.player_entered_range.connect(_on_player_entered)

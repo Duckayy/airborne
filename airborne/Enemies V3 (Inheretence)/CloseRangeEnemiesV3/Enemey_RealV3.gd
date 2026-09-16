@@ -1,7 +1,7 @@
 extends BaseEnemy
 
 @export var move_speed = 6.0
-@export var attack_range = 2.0
+@export var attack_range = 4.0
 
 @onready var attack_timer = $AttackTimer
 
@@ -46,9 +46,20 @@ func _update_state():
 		state = State.IDLE
 
 func _chase():
-	var direction = (player.global_position - global_position).normalized()
+	if player == null:
+		return
+	# Recalculate direction every frame toward current player position
+	var direction = (player.global_position - global_position)
+	direction.y = 0  # ignore height difference so they don't float up
+	direction = direction.normalized()
+	
 	velocity.x = direction.x * move_speed
 	velocity.z = direction.z * move_speed
+	
+	# Face the player
+	var look_target = Vector3(player.global_position.x, global_position.y, player.global_position.z)
+	if look_target != global_position:
+		look_at(look_target, Vector3.UP)
 
 func _melee_attack():
 	can_attack = false
