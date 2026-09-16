@@ -154,6 +154,7 @@ text = "RESTART"
 
 [node name="Rangerv2" parent="." unique_id=1335684350 instance=ExtResource("3_tok1r")]
 transform = Transform3D(0.0155503005, 0, 0.99987906, 0, 1, 0, -0.99987906, 0, 0.0155503005, -0.020346105, 0.056899607, 1.0086656)
+visible = false
 
 [node name="ThirdPersonPivot" type="Node3D" parent="." unique_id=502752551]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
