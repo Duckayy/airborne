@@ -32,7 +32,7 @@ func _ready() -> void:
 	%GhostSlot.hide()
 
 func _input(event: InputEvent) -> void:
-	if debug_menu:
+	if debug_menu_state:
 		return
 	if event.is_action_pressed("ui_up"): #scroll up/left
 		hotbar_slots.get_child(active_item_slot).refresh_style()
@@ -95,7 +95,7 @@ func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
 			update_selection()
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	if debug_menu:
+	if debug_menu_state:
 		return
 	#open and closes inventory
 	if event.is_action_pressed("InventoryScreen"): 
@@ -176,7 +176,7 @@ func update_selection():
 		
 func _debug_menu_state(state):
 	if state:
-		debug_menu = true
+		debug_menu_state = true
 	else:
-		debug_menu = false
+		debug_menu_state = false
 	
