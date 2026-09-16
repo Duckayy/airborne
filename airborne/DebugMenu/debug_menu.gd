@@ -4,6 +4,8 @@
 extends CanvasLayer
 class_name DebugMenu
 
+signal debug_state(state: bool)
+
 var menu_visible = false
 var panels: Array = []
 var vbox: VBoxContainer = null
@@ -22,6 +24,8 @@ func _unhandled_input(event):
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			else:
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			debug_state.emit(menu_visible)
+			
 
 func _build_ui():
 	var root = Control.new()

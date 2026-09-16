@@ -1,7 +1,6 @@
 extends CharacterBody3D
 
 signal item_model(item_name)
-signal debug_state(state: bool)
 signal died
 
 

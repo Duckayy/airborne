@@ -8,14 +8,15 @@ const SlotClass = preload("res://inventory/scripts/slots.gd")
 @onready var ghost_panel = %GhostSlot
 @onready var hotbar_slots = $HBoxContainer
 @onready var player = $"../.."
+@onready var debug_menu = $"../../DebugMenu"
 var inventory_screen = false
 var save_data = []
 var active_item_slot = 0
-var debug_menu = false
+var debug_menu_state = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player.debug_state.connect(_debug_menu)
+	debug_menu.debug_state.connect(_debug_menu_state)
 	
 	 #Allows slots to accept input
 	for inv_slots in inventory_slots.get_children():
@@ -173,7 +174,7 @@ func update_selection():
 	else:
 		item_selected.emit(null)
 		
-func _debug_menu(state):
+func _debug_menu_state(state):
 	if state:
 		debug_menu = true
 	else:
