@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cx0e37mgk2hg3"]
+
+[ext_resource type="PackedScene" uid="uid://bcvqu1jd04c8g" path="res://Models/Viewmodels/Weapons/gun.glb" id="1_h5x46"]
+
+[node name="RangeWeaponHitscan" type="Node3D" unique_id=1690812453]
+
+[node name="Model" parent="." unique_id=854514481 instance=ExtResource("1_h5x46")]
+transform = Transform3D(0.09, 7.963435e-06, 1.51691665e-05, -7.916981e-06, 0.08999958, -0.00027592902, -1.5193464e-05, 0.00027592768, 0.08999958, 0, 0, 0)

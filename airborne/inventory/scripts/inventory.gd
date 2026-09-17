@@ -1,39 +1,51 @@
 extends Node
 
 signal item_selected(item_data)
+signal inventory_menu(state: bool)
 
 const SlotClass = preload("res://inventory/scripts/slots.gd")
 @onready var inventory_slots = $GridContainer1
 @onready var ghost_panel = %GhostSlot
 @onready var hotbar_slots = $HBoxContainer
-var hide_screen = true
+@onready var player = $"../.."
+@onready var debug_menu = $"../../DebugMenu"
+var inventory_screen = false
 var save_data = []
 var active_item_slot = 0
+var debug_menu_state = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	debug_menu.debug_state.connect(_debug_menu_state)
+	
 	 #Allows slots to accept input
 	for inv_slots in inventory_slots.get_children():
 		inv_slots.connect("gui_input", _slot_gui_input.bind(inv_slots))
 	for hot_slots in hotbar_slots.get_children(): 
 		hot_slots.connect("gui_input", _slot_gui_input.bind(hot_slots))
 	load_inventory()
+	hotbar_slots.get_child(active_item_slot).refresh_style(true)
+	
 	
 	$TextureRect.hide()
 	$GridContainer1.hide()
 	%GhostSlot.hide()
 
 func _input(event: InputEvent) -> void:
+	if debug_menu_state:
+		return
 	if event.is_action_pressed("ui_up"): #scroll up/left
+		hotbar_slots.get_child(active_item_slot).refresh_style()
 		active_item_slot = (active_item_slot - 1) % hotbar_slots.get_child_count()
 		if active_item_slot < 0:
 			active_item_slot = hotbar_slots.get_child_count() - 1
-		_update_selection()
-		print(active_item_slot)
+		update_selection()
+		#print("Current Active Item Slot: ", active_item_slot)
 	elif event.is_action_pressed("ui_down"): #scroll down/right
+		hotbar_slots.get_child(active_item_slot).refresh_style()
 		active_item_slot = (active_item_slot + 1) % hotbar_slots.get_child_count()
-		_update_selection()
-		print(active_item_slot)
+		update_selection()
+		#print("Current Active Item Slot: ", active_item_slot)
 
 func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
 	#print("input received")
@@ -79,33 +91,40 @@ func _slot_gui_input(event: InputEvent, inv_slots: SlotClass) -> void:
 						ghost_panel.item.remove_item_quantity(1)
 					else:
 						inv_slots.slot_place_item(ghost_panel.item)
+		if inv_slots == hotbar_slots.get_child(active_item_slot): #Ensures hotbar and inventory refreshes when updated
+			update_selection()
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	
+	if debug_menu_state:
+		return
 	#open and closes inventory
 	if event.is_action_pressed("InventoryScreen"): 
-		if hide_screen:
-			$TextureRect.show()
-			$GridContainer1.show()
-			%GhostSlot.show()
-			for hot_slots in hotbar_slots.get_children(): #Allows hotbar to be interacted
-				hot_slots.mouse_filter = Control.MOUSE_FILTER_STOP
-			hide_screen = false
-			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		else:
-			if ghost_panel.item != null:
-				print("Item needs to be dropped to close menu")
-				return
-			$TextureRect.hide()
-			$GridContainer1.hide()
-			%GhostSlot.hide()
-			for hot_slots in hotbar_slots.get_children(): #prevents hotbar to be interacted
-				hot_slots.mouse_filter = Control.MOUSE_FILTER_IGNORE
-			hide_screen = true
-			if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
-				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-			save_inventory()
+		toggle_inventory()
+
+func toggle_inventory():
+	if not inventory_screen:
+		$TextureRect.show()
+		$GridContainer1.show()
+		%GhostSlot.show()
+		for hot_slots in hotbar_slots.get_children(): #Allows hotbar to be interacted
+			hot_slots.mouse_filter = Control.MOUSE_FILTER_STOP
+		inventory_screen = true
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		if ghost_panel.item != null:
+			print("Item needs to be dropped to close menu")
+			return
+		$TextureRect.hide()
+		$GridContainer1.hide()
+		%GhostSlot.hide()
+		for hot_slots in hotbar_slots.get_children(): #prevents hotbar to be interacted
+			hot_slots.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		inventory_screen = false
+		if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		save_inventory()
+	inventory_menu.emit(inventory_screen)
 
 func save_inventory(): 
 	var inv_index = -1
@@ -119,7 +138,7 @@ func save_inventory():
 			if property["usage"] & PROPERTY_USAGE_SCRIPT_VARIABLE: #gets variables created in script of item.gd
 				slot_data[property["name"]] = inv_slots.item.get(property["name"])
 				slot_data["slot_index"] = inv_index
-		print(slot_data)
+		#print(slot_data)
 		save_data.append(slot_data)
 		# keep this one
 	for hot_slots in hotbar_slots.get_children():
@@ -146,10 +165,18 @@ func load_inventory():
 			var slot = hotbar_slots.get_child(save_data[i]["slot_index"] - inventory_slots.get_child_count()) #15 added to offset inventory
 			slot.create_item(save_data[i]["item_name"], save_data[i]["item_quantity"])
 
-func _update_selection():
+func update_selection():
+	var slot = hotbar_slots.get_child(active_item_slot)
 	if active_item_slot < hotbar_slots.get_child_count():
-		var slot = hotbar_slots.get_child(active_item_slot)
 		item_selected.emit(slot.item)
-		
+		print(slot.item)
+		slot.refresh_style(true)
 	else:
 		item_selected.emit(null)
+		
+func _debug_menu_state(state):
+	if state:
+		debug_menu_state = true
+	else:
+		debug_menu_state = false
+	

@@ -1,5 +1,9 @@
 extends CharacterBody3D
 
+signal item_model(item_name)
+signal died
+
+
 @export var speed = 14.0
 @export var sprint_speed = 35.0
 @export var acceleration = 50.0
@@ -21,11 +25,13 @@ var stamina = max_stamina
 var recharge_timer = 0.0
 var health = max_health
 var is_dead = false
-var debug_open = false
 var is_third_person = false
 var equipped_weapon = null
+var inventory_screen = false
+var is_attacking = false
+var equipped_weapon_instance: Node3D = null
 
-@onready var debug_menu = $HUD/DebugMenu
+
 @onready var head = $Head
 @onready var stamina_bar = $CanvasLayer/StaminaBar
 @onready var hp_bar = $HUD/HPBar
@@ -37,6 +43,9 @@ var equipped_weapon = null
 @onready var third_person_camera = $ThirdPersonPivot/ThirdPersonCamera
 @onready var third_person_pivot = $ThirdPersonPivot
 @onready var inventory = $HUD/Inventory
+@onready var viewmodel = $HUD/Viewmodel
+@onready var WeaponAnimation = $Head/Camera3D/WeaponHolder/AnimationPlayer
+@onready var melee_weapon_hitbox = $Head/Camera3D/MeleeHitbox
 
 
 func _ready():
@@ -48,8 +57,6 @@ func _ready():
 	hp_bar.value = health
 	restart_button.pressed.connect(_on_restart)
 	quit_button.pressed.connect(_on_quit)
-	debug_menu.visible = false
-	_build_debug_menu()
 	hp_bar.show_percentage = false
 	var hp_fill = StyleBoxFlat.new()
 	hp_fill.bg_color = Color(1.0, 0.0, 0.0, 1.0)
@@ -73,15 +80,14 @@ func _ready():
 	
 	#Get inventory node
 	inventory.item_selected.connect(_on_item_selected)
+	inventory.inventory_menu.connect(_on_inventory_open)
+	
+	#load viewmodels
+	inventory.update_selection()
+	
 
 func _unhandled_input(event):
-	if event is InputEventKey and event.pressed:
-		if event.is_action("ui_cancel"):
-			_toggle_debug()
-			return
 	if event is InputEventMouseMotion:
-		if debug_open:
-			return
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		if is_third_person: 
 			third_person_pivot.rotate_x(-event.relative.y * mouse_sensitivity)
@@ -106,6 +112,7 @@ func _unhandled_input(event):
 			first_person_camera.current = true
 
 func _physics_process(delta):
+	
 	if is_dead:
 		return
 
@@ -166,20 +173,36 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("Primary Attack"):
+		attack()
+		
+func attack():
+	is_attacking = true
+	viewmodel.play_animation()
+	if equipped_weapon_instance:
+		perform_attack()
+	
+	#viewmodel_attack_animation.play("prototype_sword")
+	#timer.start(1.0)
+	
 func take_damage(amount: float):
 	if is_dead:
+		return
+	if get_meta("god_mode", false):  # check god mode
 		return
 	health -= amount
 	health = clamp(health, 0, max_health)
 	hp_bar.value = health
+	hp_label.text = str(int(health)) + " / " + str(int(max_health))
 	if health <= 0:
 		_die()
-	hp_label.text = str(int(health)) + " / " + str(int(max_health))
 
 func _die():
 	if is_dead:
 		return
 	is_dead = true
+	emit_signal("died")
 	death_screen.visible = true
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -193,63 +216,39 @@ func _on_restart():
 func _on_quit():
 	get_tree().quit()
 	
-func _toggle_debug():
-	debug_open = !debug_open
-	debug_menu.visible = debug_open
-	if debug_open:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	else:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
-func _build_debug_menu():
-	var vbox = $HUD/DebugMenu/ScrollContainer/VBoxContainer
-	var title = Label.new()
-	title.text = "DEBUG MENU"
-	vbox.add_child(title)
-	var exports = {
-		"speed": "speed",
-		"sprint_speed": "sprint_speed",
-		"acceleration": "acceleration",
-		"friction": "friction",
-		"fall_acceleration": "fall_acceleration",
-		"jump_velocity": "jump_velocity",
-		"mouse_sensitivity": "mouse_sensitivity",
-		"max_stamina": "max_stamina",
-		"stamina_drain": "stamina_drain",
-		"stamina_regen": "stamina_regen",
-		"stamina_recharge_delay": "stamina_recharge_delay",
-		"max_health": "max_health",
-		"crouch_speed": "crouch_speed",
-		"crouch_height": "crouch_height",
-	}
-	for label_text in exports:
-		var prop = exports[label_text]
-		var row = HBoxContainer.new()
-		var lbl = Label.new()
-		lbl.text = label_text
-		lbl.custom_minimum_size.x = 200
-		row.add_child(lbl)
-		var slider = HSlider.new()
-		slider.min_value = 0
-		slider.max_value = 200
-		slider.value = get(prop)
-		slider.custom_minimum_size.x = 150
-		slider.value_changed.connect(func(val): set(prop, val))
-		row.add_child(slider)
-		var val_label = Label.new()
-		val_label.text = str(get(prop))
-		slider.value_changed.connect(func(val): val_label.text = str(snappedf(val, 0.01)))
-		row.add_child(val_label)
-		
-		vbox.add_child(row)
-	var quit_btn = Button.new()
-	quit_btn.text = "Quit Game"
-	quit_btn.pressed.connect(get_tree().quit)
-	vbox.add_child(quit_btn)
-
 func _on_item_selected(item_data):
 	if item_data:
 		equipped_weapon = item_data.item_name
 	else:
 		equipped_weapon = null
+	update_player_visuals(item_data)
+	item_model.emit(equipped_weapon)
+	print("Equiped Weapon: ", equipped_weapon)
+	
+func _on_inventory_open(open):
+	if open:
+		inventory_screen = true
+	else:
+		inventory_screen = false
+	
+func update_player_visuals(item_data):
+	if equipped_weapon_instance != null:
+		equipped_weapon_instance.queue_free()
+		equipped_weapon_instance = null
+	if item_data == null:
+		return
+	var static_data = JsonData.item_data[item_data.item_name]
+	var weapon_scene: PackedScene = load(static_data["WeaponScenePath"])
+	var weapon_instance = weapon_scene.instantiate()
+	$Head/Camera3D/WeaponHolder.add_child(weapon_instance)
+	weapon_instance.setup(static_data)
+	melee_weapon_hitbox.setup(static_data)
+	equipped_weapon_instance = weapon_instance
+	pass
+
+func on_timer_countdown():
+	is_attacking = false
+	
+func perform_attack() -> void:
+	WeaponAnimation.play("WeaponAttacksWorld/prototype_sword")
 	
