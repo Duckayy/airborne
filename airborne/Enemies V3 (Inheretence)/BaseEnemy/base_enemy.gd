@@ -26,6 +26,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	_setup_health_bar()
 	_enemy_ready()
+	add_to_group("Enemy")
 
 func _enemy_ready():
 	pass

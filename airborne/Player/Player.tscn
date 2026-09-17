@@ -59,10 +59,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0260494, 0)
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=946532365]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5509467, -0.27941412)
 
-[node name="MeleeHitbox" parent="Head/Camera3D" unique_id=302008554 instance=ExtResource("2_vlldt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.305)
+[node name="MeleeHitbox" parent="Head/Camera3D" unique_id=302008554 groups=["player"] instance=ExtResource("2_vlldt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3049998)
 
-[node name="WeaponHolder" type="Node3D" parent="Head/Camera3D" unique_id=1097903957]
+[node name="WeaponHolder" type="Node3D" parent="Head/Camera3D" unique_id=1097903957 groups=["Player", "player"]]
 transform = Transform3D(0.9999999, 0, 0, 0, -4.371139e-08, 1.0000001, 0, -1, -4.3711392e-08, 0.36545807, -0.26108575, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/WeaponHolder" unique_id=433821552]
