@@ -18,3 +18,4 @@ mono_crash.*.json
 airborne/Data/Inventory/InventoryData.json
 airborne/Data/Inventory/InventoryData.json
 airborne/Data/Inventory/InventoryData.json
+*.md
