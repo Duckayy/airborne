@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bc6isfo62qqc1" path="res://Hazards/spike_strip.tscn" id="7_sy4wt"]
 [ext_resource type="Script" uid="uid://c4ng1dubces56" path="res://DebugMenu/debug_panel_player.gd" id="8_wf00a"]
 [ext_resource type="Script" uid="uid://bas4t35uiaa50" path="res://DebugMenu/debug_panel_spawn.gd" id="9_humsm"]
+[ext_resource type="PackedScene" uid="uid://b7p16v5ys51yo" path="res://NPCs/Trader NPC/TraderNPC.tscn" id="10_wf00a"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wf00a"]
 
@@ -72,3 +73,6 @@ script = ExtResource("8_wf00a")
 
 [node name="SpawnDebugPanel" type="Node" parent="DebugMenu" unique_id=1323670041]
 script = ExtResource("9_humsm")
+
+[node name="TraderNpc" parent="." unique_id=111386275 instance=ExtResource("10_wf00a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.8528, 1.14, 45.886147)

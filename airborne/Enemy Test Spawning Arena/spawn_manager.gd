@@ -98,4 +98,7 @@ func get_enemy_count() -> int:
 func _on_enemy_removed(enemy):
 	if active_enemies.has(enemy):
 		active_enemies.erase(enemy)
+	var local_player = get_tree().get_first_node_in_group("player")
+	if local_player and local_player.get("coins") != null:
+		local_player.coins += 20
 	emit_signal("enemy_died", enemy)

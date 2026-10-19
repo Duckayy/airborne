@@ -78,7 +78,7 @@ func _build(content: Control):
 
 	DebugMenu.make_label(content, "Arena Controls", 15)
 
-	var clear_btn = DebugMenu.make_button(content, "🗑 Clear All Enemies", Color(0.8, 0.1, 0.1))
+	var clear_btn = DebugMenu.make_button(content, "Clear All Enemies", Color(0.8, 0.1, 0.1))
 	clear_btn.pressed.connect(func(): spawner.clear_all_enemies())
 
 	var quit_btn = DebugMenu.make_button(content, "Quit", Color(0.5, 0.05, 0.05))

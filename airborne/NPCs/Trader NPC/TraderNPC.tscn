@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b7p16v5ys51yo"]
+
+[ext_resource type="Script" uid="uid://dt3n6atkkge8u" path="res://NPCs/Trader NPC/shop_npc.gd" id="1_an44v"]
+[ext_resource type="Texture2D" uid="uid://doa3pn8od07es" path="res://icon.svg" id="2_kgrjy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6el1i"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hkk31"]
+radius = 8.0
+
+[node name="TraderNpc" type="StaticBody3D" unique_id=111386275]
+script = ExtResource("1_an44v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1061353935]
+shape = SubResource("CapsuleShape3D_6el1i")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2089151235]
+billboard = 1
+texture = ExtResource("2_kgrjy")
+
+[node name="InteractArea" type="Area3D" parent="." unique_id=1501337116]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=251913463]
+shape = SubResource("SphereShape3D_hkk31")

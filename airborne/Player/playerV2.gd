@@ -24,6 +24,7 @@ var recharge_timer = 0.0
 var health = max_health
 var is_dead = false
 var is_third_person = false
+var coints: int = 200
 
 
 @onready var head = $Head
