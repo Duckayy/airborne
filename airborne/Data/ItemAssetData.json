@@ -8,5 +8,10 @@
 		"ItemCategory": "Weapon",
 		"ModelPath": "res://Models/Viewmodels/Weapons/Swords.glb",
 		"UseAnimation": "res://Models/Viewmodels/Weapons/Animation/prototype_sword.res"
+	},
+	"Gun": {
+		"ItemCategory": "Weapon",
+		"ModelPath": "res://Models/Viewmodels/Weapons/gun.glb",
+		"UseAnimation": "res://Models/Viewmodels/Weapons/Animation/prototype_sword.res"
 	}
 }

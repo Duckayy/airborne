@@ -19,10 +19,11 @@ func _ready() -> void:
 func setup(data) -> void:
 	print("This is damage", damage)
 	damage = data["Damage"]
-	var hitbox_key = data["Hitbox"]
-	var hitbox_data = HitboxData[hitbox_key]
-	change_dimensions(hitbox_data)
-	change_position(hitbox_data)
+	var hitbox_key = data.get("Hitbox")
+	if hitbox_key:
+		var hitbox_data = HitboxData[hitbox_key]
+		change_dimensions(hitbox_data)
+		change_position(hitbox_data)
 	
 func attack(active: bool) -> void:
 	$Area3D.monitoring = active

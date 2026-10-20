@@ -18,5 +18,15 @@
 		"ModelPath": "res://Models/Viewmodels/Weapons/Swords.glb",
 		"WeaponScenePath": "res://Weapons/scenes/MeleeHitbox.tscn",
 		"Hitbox": "MeleeHammer"
+	},
+	"Gun": {
+		"ItemCategory": "Item",
+		"Damage": 20,
+		"ItemSpeed": 0.5,
+		"StackSize": 1,
+		"Description": "RAH TAH TAH TAH",
+		"ModelPath": "res://Models/Viewmodels/Weapons/gun.glb",
+		"WeaponScenePath": "res://Weapons/scenes/RangeWeaponHitscan.tscn",
+		"Hitbox": "MeleeHammer"
 	}
 }

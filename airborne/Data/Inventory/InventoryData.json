@@ -19,5 +19,12 @@
 		"item_quantity": 1,
 		"slot_index": 16,
 		"stack_size": 1
+	},
+	{
+		"item_category": "Item",
+		"item_name": "Gun",
+		"item_quantity": 1,
+		"slot_index": 17,
+		"stack_size": 1
 	}
 ]
