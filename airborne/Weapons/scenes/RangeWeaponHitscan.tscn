@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bcvqu1jd04c8g" path="res://Models/Viewmodels/Weapons/gun.glb" id="1_h5x46"]
 [ext_resource type="Script" uid="uid://c46slfu8r4as6" path="res://Weapons/scripts/WeaponRangedHitscan.gd" id="1_u5rv6"]
+[ext_resource type="Script" uid="uid://4sk8qdawuu4v" path="res://Weapons/scripts/components/hitscan.gd" id="3_fs5px"]
 
 [node name="RangeWeaponHitscan" type="Node3D" unique_id=1690812453]
 script = ExtResource("1_u5rv6")
@@ -14,3 +15,4 @@ transform = Transform3D(0.09, 7.963435e-06, 1.51691665e-05, -7.916981e-06, 0.089
 [node name="Marker3D" type="Marker3D" parent="." unique_id=494957551]
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=984183143]
+script = ExtResource("3_fs5px")
