@@ -15,4 +15,7 @@ transform = Transform3D(0.09, 7.963435e-06, 1.51691665e-05, -7.916981e-06, 0.089
 [node name="Marker3D" type="Marker3D" parent="." unique_id=494957551]
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=984183143]
+enabled = false
+target_position = Vector3(0, 0, -50)
+collision_mask = 2
 script = ExtResource("3_fs5px")
