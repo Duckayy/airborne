@@ -17,5 +17,4 @@ func shoot() -> void:
 		hit.emit(target, target_point)
 	else:
 		missed.emit()
-		
 	pass
