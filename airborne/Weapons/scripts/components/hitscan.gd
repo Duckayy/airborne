@@ -7,6 +7,10 @@ signal missed
 func _ready() -> void:
 	pass # Replace with function body.
 
+func _process(_delta: float) -> void:
+	shoot()
+	pass
+
 func shoot() -> void:
 	force_raycast_update()
 	if is_colliding():

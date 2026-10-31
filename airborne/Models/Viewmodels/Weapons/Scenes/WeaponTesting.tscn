@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cj6mrrxffwao3"]
+
+[ext_resource type="PackedScene" uid="uid://bngbegk1f5iue" path="res://Player/Player.tscn" id="1_vrqqo"]
+[ext_resource type="Script" uid="uid://4sk8qdawuu4v" path="res://Weapons/scripts/components/hitscan.gd" id="2_e68bl"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_51ri8"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vrqqo"]
+
+[node name="WeaponTesting" type="Node3D" unique_id=654630317]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=917321933 groups=["Enemy"]]
+transform = Transform3D(11.24, 0, 0, 0, 11.24, 0, 0, 0, 11.24, 0, -2.304862, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=266951857]
+transform = Transform3D(0.08896797, 0, 0, 0, 0.08896797, 0, 0, 0, 0.08896797, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_51ri8")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1319380816]
+mesh = SubResource("PlaneMesh_vrqqo")
+
+[node name="PLAYER" parent="." unique_id=421517997 instance=ExtResource("1_vrqqo")]
+
+[node name="RayCast3D" type="RayCast3D" parent="PLAYER" unique_id=2038593760]
+transform = Transform3D(11.24, 0, 0, 0, 11.24, 0, 0, 0, 11.24, 0, -2.304862, 0)
+script = ExtResource("2_e68bl")
